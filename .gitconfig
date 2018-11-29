@@ -1,0 +1,13 @@
+[color]
+    ui = auto
+[user]
+    email = hasefumi23@gmail.com
+    name = hasefumi23
+
+[ghq]
+    root = /mnt/c/Users/fumi/.ghq
+    root = /mnt/c/Users/fumi/lab
+[push]
+	default = simple
+[core]
+	editor = vim
