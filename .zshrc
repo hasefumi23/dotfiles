@@ -163,7 +163,41 @@ stty stop undef
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f /home/hase/.ghq/github.com/b4b4r07/enhancd/init.sh ] && source /home/hase/.ghq/github.com/b4b4r07/enhancd/init.sh
 
+bindkey '^[u' undo
+bindkey '^[r' redo
+
+alias c='code'
+alias p='pa aux'
+alias l='ls -al'
+alias v='vim'
+alias vi='vim'
+
 alias be='bundle exec'
 alias bi='bundle install'
 alias br='bundle exec rspec'
+
 alias py='python3'
+
+alias g='git'
+
+# below lines are from ZSH BOOK
+# set shell options
+setopt auto_cd
+setopt auto_remove_slash
+setopt auto_name_dirs
+setopt extended_history
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt prompt_subst
+setopt extended_glob
+setopt list_types no_beep
+setopt always_last_prompt
+setopt cdable_vars
+setopt sh_word_split auto_param_keys
+setopt pushd_ignore_dups
+# comment out these are to much sideeffect
+# setopt auto_menu
+# setopt correct rm_star_silent
+# setopt sun_keyboard_hack
+# setopt share_history
+# setopt inc_append_history

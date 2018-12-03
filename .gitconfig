@@ -1,13 +1,32 @@
+[alias]
+    brs = branch -a
+    ac = !git add -A . && git commit -av
+    ad = add
+    br = branch
+    ci = commit -v
+    co = checkout
+    pl = pull
+    pf = push -f
+    ps = push
+    st = status -sb
+
+[core]
+	editor = vim
+
 [color]
     ui = auto
-[user]
-    email = hasefumi23@gmail.com
-    name = hasefumi23
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
 
 [ghq]
     root = /mnt/c/Users/fumi/.ghq
     root = /mnt/c/Users/fumi/lab
+
 [push]
 	default = simple
-[core]
-	editor = vim
+
+[user]
+    email = hasefumi23@gmail.com
+    name = hasefumi23
