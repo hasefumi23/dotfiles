@@ -1,21 +1,36 @@
+syntax on
+
+set whichwrap=b,s,[,],<,>
+set wildmode=list:longest
+set visualbell
+set virtualedit=block
+set title
+set tabstop=2
+set smarttab
+set smartindent
+set shiftwidth=2
+set showmatch
+set showcmd
+set shiftround
+set nowrap
+set noswapfile
+set nobackup
+set number
 set nrformats=
-set history=200
+set nrformats-=octal
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+set list
+set laststatus=2
 set incsearch
 set hlsearch
-set number
-set title
-set ambiwidth=double
-set tabstop=4
-set expandtab
-set shiftwidth=4
-set smartindent
-set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-set nrformats-=octal
+set history=200
 set hidden
-set virtualedit=block
-set whichwrap=b,s,[,],<,>
+set fenc=utf-8
+set expandtab
 set backspace=indent,eol,start
+set ambiwidth=double
+set autoread
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
