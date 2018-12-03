@@ -11,3 +11,5 @@
 	default = simple
 [core]
 	editor = vim
+[alias]
+    purge = !git branch --merged | grep -vE master$ | grep -v \"*\" | xargs git branch -d
