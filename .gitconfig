@@ -9,6 +9,7 @@
     pf = push -f
     ps = push
     st = status -sb
+    purge = !git branch --merged | grep -vE master$ | grep -v \"*\" | xargs git branch -d
 
 [core]
     editor = vim
