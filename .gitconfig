@@ -9,7 +9,9 @@
     pf = push -f
     ps = push
     st = status -sb
-    purge = !git branch --merged | grep -vE master$ | grep -v \"*\" | xargs git branch -d↲
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit --date=relative
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --date=relative --all
+    purge = !git remote prune origin && git branch --merged | grep -vE master$ | grep -v \"*\" | xargs git branch -d
 
 [core]
     editor = vim
