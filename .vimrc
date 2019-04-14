@@ -1,5 +1,14 @@
 syntax on
 
+set fenc=utf-8
+set encoding=utf-8
+scriptencoding utf-8
+set fileformat=unix
+set ttyfast
+set cursorline?
+set relativenumber?
+set mouse=a?
+set wildmenu?
 set whichwrap=b,s,[,],<,>
 set wildmode=list:longest
 set visualbell
@@ -25,7 +34,6 @@ set incsearch
 set hlsearch
 set history=200
 set hidden
-set fenc=utf-8
 set expandtab
 set backspace=indent,eol,start
 set ambiwidth=double
