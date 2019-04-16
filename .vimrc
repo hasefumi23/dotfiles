@@ -5,10 +5,10 @@ set encoding=utf-8
 scriptencoding utf-8
 set fileformat=unix
 set ttyfast
-set cursorline?
-set relativenumber?
-set mouse=a?
-set wildmenu?
+set cursorline
+set relativenumber
+set mouse=a
+set wildmenu
 set whichwrap=b,s,[,],<,>
 set wildmode=list:longest
 set visualbell
