@@ -27,7 +27,7 @@ set nobackup
 set number
 set nrformats=
 set nrformats-=octal
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+set listchars=tab:Â»-,trail:-,eol:â†²,extends:Â»,precedes:Â«,nbsp:%
 set list
 set laststatus=2
 set incsearch
@@ -38,9 +38,9 @@ set expandtab
 set backspace=indent,eol,start
 set ambiwidth=double
 set autoread
-set statusline=[%{StatuslineMode()}]?
-set statusline+=\ %<%f\ %m\ %{b:gitbranch}?
-set statusline+=\ %h%r%=%-14.(%l,%c%V%)\ [%{&fenc!=''?&fenc:&enc}][%{&ff}]\ %L%8P?
+set statusline=[%{StatuslineMode()}]
+set statusline+=\ %<%f\ %m
+set statusline+=\ %h%r%=%-14.(%l,%c%V%)\ [%{&fenc!=''?&fenc:&enc}][%{&ff}]\ %L%8P
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 nnoremap <silent> [b :bprevious<CR>
@@ -83,23 +83,6 @@ function! QuickfixFilenames()
     endfor
     return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
-
-function! StatuslineGitBranch()
-  let b:gitbranch=""
-  if &modifiable
-    lcd %:p:h
-    let l:gitrevparse=system("git rev-parse --abbrev-ref HEAD")
-    lcd -
-    if l:gitrevparse!~"fatal: not a git repository"
-      let b:gitbranch="(".substitute(l:gitrevparse, '\n', '', 'g').") "
-    endif
-  endif
-endfunction
-
-augroup GetGitBranch
-  autocmd!
-  autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
-augroup END
 
 function! StatuslineMode()
   let l:mode=mode()
