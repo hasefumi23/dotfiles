@@ -38,6 +38,9 @@ set expandtab
 set backspace=indent,eol,start
 set ambiwidth=double
 set autoread
+set statusline=[%{StatuslineMode()}]?
+set statusline+=\ %<%f\ %m\ %{b:gitbranch}?
+set statusline+=\ %h%r%=%-14.(%l,%c%V%)\ [%{&fenc!=''?&fenc:&enc}][%{&ff}]\ %L%8P?
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 nnoremap <silent> [b :bprevious<CR>
@@ -79,4 +82,34 @@ function! QuickfixFilenames()
         let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
     endfor
     return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
+
+function! StatuslineGitBranch()
+  let b:gitbranch=""
+  if &modifiable
+    lcd %:p:h
+    let l:gitrevparse=system("git rev-parse --abbrev-ref HEAD")
+    lcd -
+    if l:gitrevparse!~"fatal: not a git repository"
+      let b:gitbranch="(".substitute(l:gitrevparse, '\n', '', 'g').") "
+    endif
+  endif
+endfunction
+
+augroup GetGitBranch
+  autocmd!
+  autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
+augroup END
+
+function! StatuslineMode()
+  let l:mode=mode()
+  if l:mode==#"n"
+    return "NORMAL"
+  elseif l:mode==?"v"
+    return "VISUAL"
+  elseif l:mode==#"i"
+    return "INSERT"
+  elseif l:mode==#"R"
+    return "REPLACE"
+  endif
 endfunction
