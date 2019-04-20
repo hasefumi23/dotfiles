@@ -27,6 +27,7 @@ alias l='ls -al'
 alias p='pa aux'
 alias v='vim'
 alias vi='vim'
+alias gh="open (git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')"
 
 # ruby
 alias be='bundle exec'
@@ -52,5 +53,5 @@ function fzf_select_history
 end
 
 function fish_user_key_bindings
-  bind \cr 'fzf_select_history (commandline -b)'
+    bind \cr 'fzf_select_history (commandline -b)'
 end
