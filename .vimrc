@@ -24,7 +24,6 @@ set shiftround
 set nowrap
 set noswapfile
 set nobackup
-set number
 set nrformats=
 set nrformats-=octal
 set listchars=tab:Â»-,trail:-,eol:â†²,extends:Â»,precedes:Â«,nbsp:%
@@ -41,6 +40,7 @@ set autoread
 set statusline=[%{StatuslineMode()}]
 set statusline+=\ %<%f\ %m
 set statusline+=\ %h%r%=%-14.(%l,%c%V%)\ [%{&fenc!=''?&fenc:&enc}][%{&ff}]\ %L%8P
+colorscheme pablo
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 nnoremap <silent> [b :bprevious<CR>
