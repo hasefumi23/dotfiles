@@ -8,6 +8,7 @@ set ttyfast
 set cursorline
 set relativenumber
 set mouse=a
+set ttymouse=xterm2
 set wildmenu
 set whichwrap=b,s,[,],<,>
 set wildmode=list:longest
