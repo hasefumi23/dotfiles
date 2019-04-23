@@ -42,6 +42,7 @@ set statusline+=\ %<%f\ %m
 set statusline+=\ %h%r%=%-14.(%l,%c%V%)\ [%{&fenc!=''?&fenc:&enc}][%{&ff}]\ %L%8P
 colorscheme pablo
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+autocmd InsertLeave * set nopaste
 
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
