@@ -5,6 +5,8 @@
     br = branch
     ci = commit -v
     co = checkout
+    d = diff
+    di = diff --no-index
     pl = pull
     pf = push -f
     ps = push
