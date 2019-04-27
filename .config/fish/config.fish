@@ -28,6 +28,7 @@ alias p='pa aux'
 alias v='vim'
 alias vi='vim'
 alias gh="open (git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')"
+alias p='powershell.exe'
 
 # ruby
 alias be='bundle exec'
