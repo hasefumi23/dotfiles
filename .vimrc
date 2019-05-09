@@ -98,3 +98,10 @@ function! StatuslineMode()
     return "REPLACE"
   endif
 endfunction
+
+if system('uname -a | grep Microsoft') != ''
+  augroup myYank
+    autocmd!
+    autocmd TextYankPost * :call system('clip.exe', @")
+  augroup END
+endif
