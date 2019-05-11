@@ -1,4 +1,17 @@
+umask 002
 set -gx fish_user_paths $HOME/.linuxbrew/bin $fish_user_paths
+
+set -x VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
+set -x PATH "$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
+set -x VAGRANT_PREFER_SYSTEM_BIN 0
+set -x PATH $HOME/.rbenv/bin:$PATH
+set -x GOPATH $HOME
+set -x PATH $GOPATH/bin:$PATH
+set -x JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+set -x JRE_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre
+
+rbenv init - | source
+status --is-interactive; and source (anyenv init -|psub)
 
 alias i='sudo apt install --yes'
 
