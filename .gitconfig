@@ -2,6 +2,7 @@
     brs = branch -a
     ac = !git add -A . && git commit -av
     ad = add
+    amd = commit --amend
     br = branch
     ci = commit -v
     co = checkout
