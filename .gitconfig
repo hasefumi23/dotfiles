@@ -17,6 +17,7 @@
 
 [core]
     editor = vim
+    pager = less
 
 [color]
     ui = auto
@@ -24,6 +25,14 @@
     diff = auto
     interactive = auto
     status = auto
+
+[fetch]
+    prune = true
+
+[pager]
+    log = diff-highlight | less
+    show = diff-highlight | less
+    diff = diff-highlight | less
 
 [ghq]
     root = /mnt/c/Users/fumi/.ghq
