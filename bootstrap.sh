@@ -43,8 +43,8 @@ FISHDIR=${HOME}/.config/fish
 
 mkdir -p ${BACKUPDIR}/.config
 cp -pfar ${FISHDIR} ${BACKUPDIR}/.config
-echo "Move: ${BACKUPDIR}/${SYMLINK}"
+echo "Move: ${BACKUPDIR}${FISHDIR}"
 
 echo "Link: ${PWD}/.config/fish => ${FISHDIR}"
-rm -Rf ${SYMLINK}
-ln -fs ${PWD}/${DOTFILE} ${SYMLINK}
+rm -Rf ${FISHDIR}
+ln -fs ${PWD}/.config/fish ${FISHDIR}
