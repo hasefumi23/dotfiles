@@ -6,6 +6,7 @@ scriptencoding utf-8
 set fileformat=unix
 set ttyfast
 set cursorline
+set number
 set relativenumber
 set mouse=a
 set ttymouse=xterm2
