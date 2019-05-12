@@ -1,5 +1,6 @@
 umask 002
 set -gx fish_user_paths $HOME/.linuxbrew/bin $fish_user_paths
+set -g fish_user_paths "/home/linuxbrew/.linuxbrew/sbin" $fish_user_paths
 
 set -x VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
 set -x PATH "$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
