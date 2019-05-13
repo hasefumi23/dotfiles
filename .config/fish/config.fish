@@ -2,6 +2,13 @@ umask 002
 set -gx fish_user_paths $HOME/.linuxbrew/bin $fish_user_paths
 set -g fish_user_paths "/home/linuxbrew/.linuxbrew/sbin" $fish_user_paths
 eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+# eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew";
+set -gx HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar";
+set -gx HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew";
+set -g fish_user_paths "/home/linuxbrew/.linuxbrew/bin" "/home/linuxbrew/.linuxbrew/sbin" $fish_user_paths;
+set -q MANPATH; or set MANPATH ''; set -gx MANPATH "/home/linuxbrew/.linuxbrew/share/man" $MANPATH;
+set -q INFOPATH; or set INFOPATH ''; set -gx INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH;
 
 set -x VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
 set -x PATH "$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
@@ -14,13 +21,9 @@ set -x DISPLAY localhost:0.0
 
 rbenv init - | source
 status --is-interactive; and source (anyenv init -|psub)
+# status --is-interactive; and source (anyenv init -|psub)
 
 alias i='sudo apt install --yes'
-
-# safety
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -i'
 
 # cd
 alias ..='cd ..'
