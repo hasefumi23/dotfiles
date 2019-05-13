@@ -1,5 +1,7 @@
 syntax on
 
+let mapleader="\<Space>"
+
 set fenc=utf-8
 set encoding=utf-8
 scriptencoding utf-8
@@ -42,6 +44,10 @@ set autoread
 set statusline=[%{StatuslineMode()}]
 set statusline+=\ %<%f\ %m
 set statusline+=\ %h%r%=%-14.(%l,%c%V%)\ [%{&fenc!=''?&fenc:&enc}][%{&ff}]\ %L%8P
+set scrolloff=5
+set display=lastline
+set pumheight=10
+
 colorscheme pablo
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd InsertLeave * set nopaste
@@ -52,6 +58,17 @@ nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 nnoremap <f5> :!ctags -R<CR>
+nnoremap Y y$
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q!<CR>
+nnoremap <Leader>a ggvG
+nnoremap <Leader>y ggvGy
+nnoremap H ^
+nnoremap L $
+nnoremap <C-a> ^
+nnoremap <C-e> $
+
+inoremap <silent> jj <ESC>
 
 " for matchit
 set nocompatible
@@ -106,3 +123,4 @@ if system('uname -a | grep Microsoft') != ''
     autocmd TextYankPost * :call system('clip.exe', @")
   augroup END
 endif
+
