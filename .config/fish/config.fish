@@ -75,3 +75,7 @@ end
 function fish_user_key_bindings
     bind \cr 'fzf_select_history (commandline -b)'
 end
+
+if test -e ~/.local/config.fish
+  source ~/.local/config.fish
+end
