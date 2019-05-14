@@ -30,7 +30,7 @@ set noswapfile
 set nobackup
 set nrformats=
 set nrformats-=octal
-set listchars=tab:Â»-,trail:-,eol:â†²,extends:Â»,precedes:Â«,nbsp:%
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set list
 set laststatus=2
 set incsearch
@@ -67,6 +67,9 @@ nnoremap H ^
 nnoremap L $
 nnoremap <C-a> ^
 nnoremap <C-e> $
+nnoremap <silent> <Leader>te :term<cr>
+
+noremap * *N
 
 inoremap <silent> jj <ESC>
 
@@ -123,4 +126,3 @@ if system('uname -a | grep Microsoft') != ''
     autocmd TextYankPost * :call system('clip.exe', @")
   augroup END
 endif
-
