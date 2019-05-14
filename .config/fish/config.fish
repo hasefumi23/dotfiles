@@ -35,6 +35,7 @@ alias ll='ls -alF'
 alias l='ls -alF'
 
 # tool
+alias ap='ansible-playbook'
 alias b='brew'
 alias c='code'
 alias clip='clip.exe'
