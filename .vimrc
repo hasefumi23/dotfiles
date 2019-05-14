@@ -61,8 +61,8 @@ nnoremap <f5> :!ctags -R<CR>
 nnoremap Y y$
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q!<CR>
-nnoremap <Leader>a ggvG
-nnoremap <Leader>y ggvGy
+nnoremap <Leader>a ggVG
+nnoremap <Leader>y ggVGy
 nnoremap H ^
 nnoremap L $
 nnoremap <C-a> ^
