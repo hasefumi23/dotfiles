@@ -1,47 +1,66 @@
-[alias]
-    brs = branch -a
-    ac = !git add -A . && git commit -av
-    ad = add
-    amd = commit --amend
-    br = branch
-    ci = commit -v
-    co = checkout
-    d = diff
-    di = diff --no-index
-    pl = pull
-    pf = push -f
-    ps = push
-    st = status -sb
-    lol = log --graph --decorate --pretty=oneline --abbrev-commit --date=relative
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --date=relative --all
-    purge = !git remote prune origin && git branch --merged | grep -vE master$ | grep -v \"*\" | xargs git branch -d
-
-[core]
-    editor = vim
-    pager = less
-
-[color]
-    ui = auto
-    branch = auto
-    diff = auto
-    interactive = auto
-    status = auto
-
-[fetch]
-    prune = true
-
-[pager]
-    log = diff-highlight | less
-    show = diff-highlight | less
-    diff = diff-highlight | less
-
 [ghq]
-    root = /mnt/c/Users/fumi/.ghq
-    root = /mnt/c/Users/fumi/lab
+  root = /mnt/c/Users/fumi/.ghq
+  root = /mnt/c/Users/fumi/lab
 
-[push]
-    default = simple
+[ghq "CODECOMMIT-URL"]
+  vcs = git
 
 [user]
-    email = hasefumi23@gmail.com
-    name = hasefumi23
+  email = hasefumi23@gmail.com
+  name = hasefumi23
+
+[alias]
+  ac = !git add -A . && git commit -av
+  ad = add
+  amd = commit --amend
+  br = branch
+  brs = branch -a
+  ci = commit -v
+  co = checkout
+  d = diff
+  di = diff --no-index
+  pl = pull
+  pf = push -f
+  ps = push
+  st = status -sb
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit --date=relative
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --date=relative --all
+  purge = !git remote prune origin && git branch --merged | grep -vE master$ | grep -v \"*\" | xargs git branch -d
+
+[url "git@github.com:"]
+  insteadOf = "gh:"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+  insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+  insteadOf = "gst:"
+  pushInsteadOf = "gist:"
+  pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+  insteadOf = "gist:"
+
+[core]
+  editor = vim
+  pager = less
+
+[color]
+  ui = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+
+[fetch]
+  prune = true
+
+[pager]
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
+
+[push]
+  default = simple
