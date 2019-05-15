@@ -42,8 +42,11 @@ done
 FISHDIR=${HOME}/.config/fish
 
 mkdir -p ${BACKUPDIR}/.config
-cp -pfar ${FISHDIR} ${BACKUPDIR}/.config
-echo "Move: ${BACKUPDIR}${FISHDIR}"
+if [ -d ${FISHDIR} ]
+then
+  cp -pfar ${FISHDIR} ${BACKUPDIR}/.config
+  echo "Move: ${BACKUPDIR}${FISHDIR}"
+fi
 
 echo "Link: ${PWD}/.config/fish => ${FISHDIR}"
 rm -Rf ${FISHDIR}
