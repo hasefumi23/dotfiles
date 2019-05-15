@@ -31,8 +31,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # ls
-alias ll='ls -alF'
-alias l='ls -alF'
+alias ll='ls -alFh'
 
 # tool
 alias ap='ansible-playbook'
