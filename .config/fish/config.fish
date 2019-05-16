@@ -18,6 +18,7 @@ set -x PATH $GOPATH/bin:$PATH
 set -x JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 set -x JRE_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre
 set -x DISPLAY localhost:0.0
+set -x DOCKER_HOST tcp://localhost:2375
 
 rbenv init - | source
 status --is-interactive; and source (anyenv init -|psub)
