@@ -153,14 +153,6 @@ bind status  y      @bash -c "echo -n '%(file)' | clip.exe"
 bind tree    y      @bash -c "echo -n '%(file)' | clip.exe"
 bind blob    y      @bash -c "echo -n '%(file)' | clip.exe"
 
-# K で cherry-pick (default: 'C')
-bind main    K      ?git cherry-pick %(commit)
-bind diff    K      ?git cherry-pick %(commit)
-
-# Alt-k で cherry-pick -n (--no-commit)
-bind main    <Esc>k ?git cherry-pick -n %(commit)
-bind diff    <Esc>k ?git cherry-pick -n %(commit)
-
 ## 以下、Shift付きでブランチ指定、Alt付きでコミットID指定のコマンド
 
 # = で checkout
