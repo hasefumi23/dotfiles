@@ -47,8 +47,10 @@ alias l='ls -al'
 alias p='pa aux'
 alias v='vim'
 alias vi='vim'
+alias vimr='vim -R -'
 alias gh="open (git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')"
 alias p='powershell.exe'
+alias rl='readlink -f'
 
 # ruby
 alias be='bundle exec'
@@ -80,3 +82,14 @@ end
 if test -e ~/.local/config.fish
   source ~/.local/config.fish
 end
+
+function fuck -d "Correct your previous console command"
+  set -l fucked_up_command $history[1]
+  env TF_SHELL=fish TF_ALIAS=fuck PYTHONIOENCODING=utf-8 thefuck $fucked_up_command | read -l unfucked_command
+  if [ "$unfucked_command" != "" ]
+    eval $unfucked_command
+    builtin history delete --exact --case-sensitive -- $fucked_up_command
+    builtin history merge ^ /dev/null
+  end
+end
+
