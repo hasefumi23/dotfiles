@@ -65,6 +65,7 @@ alias py='python3'
 alias vimfish='vim ~/.config/fish/config.fish'
 alias vimrc='vim ~/.vimrc'
 alias vimssh='vim ~/.ssh/config'
+alias vimgit='vim ~/.gitconfig'
 alias refish='source ~/.config/fish/config.fish'
 
 function fzf_select_history
