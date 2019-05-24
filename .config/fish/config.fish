@@ -69,12 +69,12 @@ alias vimgit='vim ~/.gitconfig'
 alias refish='source ~/.config/fish/config.fish'
 
 function fzf_select_history
-    history|fzf|read slct
-    if [ $slct ]
-        commandline $slct
-    else
-        commandline ''
-    end
+  history|fzf|read slct
+  if [ $slct ]
+      commandline $slct
+  else
+      commandline ''
+  end
 end
 
 function fish_user_key_bindings
@@ -112,3 +112,4 @@ function fpsql
   end
   psql -h $sshLoginHost
 end
+
