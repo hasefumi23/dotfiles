@@ -94,3 +94,20 @@ function fuck -d "Correct your previous console command"
   end
 end
 
+function fssh
+  set -l sshLoginHost (cat ~/.ssh/config | grep "^Host" | grep -v '*' | awk '{print $2}' | fzf)
+  if [ "$sshLoginHost" = "" ]
+    # ex) Ctrl-C.
+    return 1
+  end
+  ssh $sshLoginHost
+end
+
+function fpsql
+  set -l sshLoginHost (cat ~/.ssh/config | grep "^Host" | grep -v '*' | awk '{print $2}' | fzf)
+  if [ "$sshLoginHost" = "" ]
+    # ex) Ctrl-C.
+    return 1
+  end
+  psql -h $sshLoginHost
+end
