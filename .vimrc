@@ -68,6 +68,9 @@ nnoremap L $
 nnoremap <C-a> ^
 nnoremap <C-e> $
 nnoremap <silent> <Leader>te :term<cr>
+nnoremap <Leader><CR> V:!sh<CR>
+
+vnoremap <Leader><CR> :!sh<CR>
 
 noremap * *N
 
