@@ -74,6 +74,13 @@ vnoremap <Leader><CR> :!sh<CR>
 
 noremap * *N
 
+onoremap 8 i(
+onoremap 2 i"
+onoremap 7 i'
+onoremap @ i`
+onoremap [ i[
+onoremap { i{
+
 inoremap <silent> jj <ESC>
 
 " for matchit
@@ -129,3 +136,4 @@ if system('uname -a | grep Microsoft') != ''
     autocmd TextYankPost * :call system('clip.exe', @")
   augroup END
 endif
+
