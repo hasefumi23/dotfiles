@@ -50,4 +50,4 @@ fi
 
 echo "Link: ${PWD}/.config/fish => ${FISHDIR}"
 rm -Rf ${FISHDIR}
-ln -fs ${PWD}/.config/fish ${FISHDIR}
+ln -fs ${PWD}/.config/fish ${HOME}/.config

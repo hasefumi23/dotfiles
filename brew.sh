@@ -21,6 +21,7 @@ brew install direnv
 brew install dos2unix
 brew install figlet
 brew install fish
+brew install fzf
 brew install gibo
 brew install gcc
 brew install ghq
