@@ -105,11 +105,11 @@ function fssh
 end
 
 function fpsql
-  set -l sshLoginHost (cat ~/.ssh/config | grep "^Host" | grep -v '*' | awk '{print $2}' | fzf)
-  if [ "$sshLoginHost" = "" ]
+  set -l psqlLoginHost (cat ~/.ssh/config | grep "^Host" | grep -v '*' | awk '{print $2}' | fzf)
+  if [ "$psqlLoginHost" = "" ]
     # ex) Ctrl-C.
     return 1
   end
-  psql -h $sshLoginHost
+  psql -h $psqlLoginHost
 end
 
