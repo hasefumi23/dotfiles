@@ -113,3 +113,58 @@ function fpsql
   psql -h $psqlLoginHost
 end
 
+function tree_select
+  tree -N -a --charset=o -f -I '.git|.idea|resolution-cache|target/streams|node_modules' | \
+    fzf --preview '
+      set target (echo {} | grep -o "\./.*\$" | xargs)
+      if [ -d $target ]
+        ls -lh $target
+      else
+        head -n 10 $target
+      end' | \
+      sed -e "s/ ->.*\$//g" | \
+      tr -d '\||`| ' | \
+      tr '\n' ' ' | \
+      sed -e "s/--//g" | \
+      xargs echo
+end
+
+function vim_from_tree
+  set selected_file (tree_select)
+  if [ -n "$selected_file" ]
+    vim "$selected_file"
+  end
+end
+
+function vim_from_git_files
+  set selected_files (fzf_git_files)
+  if [ -n "$selected_files" ]
+    vim $selected_files
+  end
+end
+
+function fzf_git_files
+  set files (git ls-files)
+  echo "$files" | sed 's/ /\n/g' | fzf --preview 'head -100 {}'
+end
+
+function fvim
+  if git rev-parse 2> /dev/null
+    vim_from_git_files
+  else
+    vim_from_tree
+  end
+end
+
+function fcode
+  set selected_files (fzf_git_files)
+  if [ -n "$selected_files" ]
+    code-insiders $selected_files
+  end
+end
+
+function fish_user_key_bindings
+  bind \cr 'fzf_select_history (commandline -b)'
+  bind \c] 'fvim'
+end
+>>>>>>> 4622098... Use fzf.
