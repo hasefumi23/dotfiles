@@ -174,4 +174,8 @@ function fish_user_key_bindings
   bind \cr 'fzf_select_history (commandline -b)'
   bind \c] 'fvim'
 end
->>>>>>> 4622098... Use fzf.
+
+function fbr
+  set branch (git branch -a -vv | fzf +m)
+  git checkout (echo "$branch" | sed "s/remotes\/origin\///" | awk '{print $1}' | sed "s/.* //")
+end
