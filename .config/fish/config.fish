@@ -120,7 +120,7 @@ function tree_select
       if [ -d $target ]
         ls -lh $target
       else
-        head -n 10 $target
+        head -n 50 $target
       end' | \
       sed -e "s/ ->.*\$//g" | \
       tr -d '\||`| ' | \
@@ -160,6 +160,13 @@ function fcode
   set selected_files (fzf_git_files)
   if [ -n "$selected_files" ]
     code-insiders $selected_files
+  end
+end
+
+function fd
+  set dir (find . -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m)
+  if [ -n "$dir" ]
+    cd "$dir"
   end
 end
 
