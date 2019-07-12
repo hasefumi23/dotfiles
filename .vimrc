@@ -71,6 +71,8 @@ nnoremap <silent> <Leader>te :term<cr>
 nnoremap <Leader><CR> V:!sh<CR>
 
 vnoremap <Leader><CR> :!sh<CR>
+vnoremap <c-a> <c-a>gv
+vnoremap <c-x> <c-x>gv
 
 noremap * *N
 
