@@ -85,20 +85,15 @@ onoremap { i{
 
 inoremap <silent> jj <ESC>
 
-" for matchit
-set nocompatible
 filetype plugin on
+filetype plugin indent on
+
 runtime macros/matchit.vim
 
-set nocompatible
-filetype plugin indent on
 set hidden
 if has("autocmd")
   autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
 endif
-
-set nocompatible
-filetype plugin on
 
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
