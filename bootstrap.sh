@@ -3,9 +3,10 @@
 # symlinks
 PWD=`pwd`
 DOTFILES=`ls -a`
-IGNOREFILES=( . .. backup bootstrap.sh brew.sh .config README.md .git .gitignore )
+IGNOREFILES=( . .. backup bootstrap.sh brew.sh .config README.md .git .gitignore .vim )
 
-BACKUPTIME=`date +%s`
+BACKUPTIME=`date +%F-%H%M%S`
+
 BACKUPDIR="${PWD}/backup/${BACKUPTIME}"
 
 for DOTFILE in ${DOTFILES[@]}
@@ -40,7 +41,6 @@ done
 
 # for .config/fish directory
 FISHDIR=${HOME}/.config/fish
-
 mkdir -p ${BACKUPDIR}/.config
 if [ -d ${FISHDIR} ]
 then
@@ -51,3 +51,16 @@ fi
 echo "Link: ${PWD}/.config/fish => ${FISHDIR}"
 rm -Rf ${FISHDIR}
 ln -fs ${PWD}/.config/fish ${HOME}/.config
+
+# for vim plugin config
+VIMDIR=${HOME}/.vim/rc
+mkdir -p ${BACKUPDIR}/.vim
+if [ -d ${VIMDIR} ]; then
+  cp -pfar ${VIMDIR} ${BACKUPDIR}/.vim
+  echo "Move: ${BACKUPDIR}/.vim/rc"
+fi
+
+mkdir -p ~/.vim
+rm -Rf ${VIMDIR}/rc
+ln -fs ${PWD}/.vim/rc ~/.vim
+
