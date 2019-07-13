@@ -64,6 +64,9 @@ let g:comfortable_motion_air_drag = 3.0
 nmap f <Plug>Sneak_s
 nmap F <Plug>Sneak_S
 
+nmap <Leader>c <Plug>NERDCommenterToggle
+vmap <Leader>c <Plug>NERDCommenterToggle
+
 set helplang=ja,en
 set fenc=utf-8
 set encoding=utf-8
@@ -137,15 +140,15 @@ nnoremap [ %
 inoremap <silent> jj <ESC>
 inoremap <C-a> ^
 inoremap <C-e> $
-imap <C-p> <Up>
-imap <C-n> <Down>
-imap <C-b> <Left>
-imap <C-f> <Right>
-imap <C-a> <C-o>:call <SID>home()<CR>
-imap <C-e> <End>
-imap <C-d> <Del>
-imap <C-h> <BS>
-imap <C-k> <C-r>=<SID>kill()<CR>
+inoremap <C-p> <Up>
+inoremap <C-n> <Down>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-a> <C-o>:call <SID>home()<CR>
+inoremap <C-e> <End>
+inoremap <C-d> <Del>
+inoremap <C-h> <BS>
+inoremap <C-k> <C-r>=<SID>kill()<CR>
 
 function! s:home()
   let start_column = col('.')
