@@ -127,10 +127,9 @@ function! StatuslineMode()
   endif
 endfunction
 
-if system('uname -a | grep Microsoft') != ''
-  augroup myYank
-    autocmd!
-    autocmd TextYankPost * :call system('clip.exe', @")
-  augroup END
-endif
-
+" if system('uname -a | grep microsoft') != ''
+"   augroup myYank
+"     autocmd!
+"     autocmd TextYankPost * :call system('win32yank.exe -i', @")
+"   augroup END
+" endif
