@@ -2,6 +2,69 @@ syntax on
 
 let mapleader="\<Space>"
 
+"dein Scripts
+"キャッシュを消したくなったら以下のコマンドを実行する
+" :call dein#recache_runtimepath()
+if &compatible
+  set nocompatible
+endif
+
+" プラグインが実際にインストールされるディレクトリ
+let s:dein_path = expand('~/.vim/dein')
+" dein.vim 本体
+let s:dein_repo_path = s:dein_path . '/repos/github.com/Shougo/dein.vim'
+
+" Required:
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+
+" deinなかったらcloneでもってくる
+if !isdirectory(s:dein_repo_path)
+  execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_path
+endif
+
+if dein#load_state(s:dein_path)
+  call dein#begin(s:dein_path)
+  execute 'set runtimepath^=' . s:dein_repo_path
+
+  let g:dein#install_progress_type = 'title'
+  let g:dein#enable_notification = 1
+  call dein#load_toml('~/.vim/rc/dein.toml', {'lazy': 0})
+  call dein#load_toml('~/.vim/rc/lazy_dein.toml', {'lazy': 1})
+
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you wat to install not installed plugins on startup.
+if dein#check_install()
+ call dein#install()
+endif
+
+" for pulugin
+" polyglot
+let g:polyglot_disabled = ['markdown']
+
+map _ <Plug>(operator-replace)
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+nmap <Leader>w <Plug>(easymotion-overwin-line)
+nmap <Leader>j <Plug>(easymotion-j)
+nmap <Leader>k <Plug>(easymotion-k)
+map <Leader>s <Plug>(easymotion-s2)
+
+let g:comfortable_motion_interval = 2400.0 / 60
+let g:comfortable_motion_friction = 100.0
+let g:comfortable_motion_air_drag = 3.0
+
+nmap f <Plug>Sneak_s
+nmap F <Plug>Sneak_S
+
+set helplang=ja,en
 set fenc=utf-8
 set encoding=utf-8
 scriptencoding utf-8
@@ -59,22 +122,60 @@ nnoremap <silent> ]B :blast<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 nnoremap <f5> :!ctags -R<CR>
 nnoremap Y y$
-nnoremap <Leader>w :w<CR>
+"nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q!<CR>
 nnoremap <Leader>a ggVG
 nnoremap <Leader>y ggVGy
 nnoremap H ^
 nnoremap L $
-nnoremap <C-a> ^
-nnoremap <C-e> $
 nnoremap <silent> <Leader>te :term<cr>
 nnoremap <Leader><CR> V:!sh<CR>
+nnoremap * *N
+nnoremap <Leader>R :source ~/.vimrc<CR>
+nnoremap [ %
+
+inoremap <silent> jj <ESC>
+inoremap <C-a> ^
+inoremap <C-e> $
+imap <C-p> <Up>
+imap <C-n> <Down>
+imap <C-b> <Left>
+imap <C-f> <Right>
+imap <C-a> <C-o>:call <SID>home()<CR>
+imap <C-e> <End>
+imap <C-d> <Del>
+imap <C-h> <BS>
+imap <C-k> <C-r>=<SID>kill()<CR>
+
+function! s:home()
+  let start_column = col('.')
+  normal! ^
+  if col('.') == start_column
+    normal! 0
+  endif
+  return ''
+endfunction
+
+function! s:kill()
+  let [text_before, text_after] = s:split_line()
+  if len(text_after) == 0
+    normal! J
+  else
+    call setline(line('.'), text_before)
+  endif
+  return ''
+endfunction
+
+function! s:split_line()
+  let line_text = getline(line('.'))
+  let text_after  = line_text[col('.')-1 :]
+  let text_before = (col('.') > 1) ? line_text[: col('.')-2] : ''
+  return [text_before, text_after]
+endfunction
 
 vnoremap <Leader><CR> :!sh<CR>
 vnoremap <c-a> <c-a>gv
 vnoremap <c-x> <c-x>gv
-
-noremap * *N
 
 onoremap 8 i(
 onoremap 2 i"
@@ -82,8 +183,25 @@ onoremap 7 i'
 onoremap @ i`
 onoremap [ i[
 onoremap { i{
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap ss :sp<CR><C-w>w
+nnoremap sv :vs<CR><C-w>w
 
-inoremap <silent> jj <ESC>
+call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+call submode#map('bufmove', 'n', '', '<', '<C-w><')
+call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
 filetype plugin on
 filetype plugin indent on
@@ -127,9 +245,9 @@ function! StatuslineMode()
   endif
 endfunction
 
-" if system('uname -a | grep microsoft') != ''
-"   augroup myYank
-"     autocmd!
-"     autocmd TextYankPost * :call system('win32yank.exe -i', @")
-"   augroup END
-" endif
+"if system('uname -a | grep microsoft') != ''
+"  augroup myYank
+"    autocmd!
+"    autocmd TextYankPost * :call system('win32yank.exe -i', @")
+"  augroup END
+"endif
