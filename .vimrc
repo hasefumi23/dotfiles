@@ -122,24 +122,24 @@ autocmd InsertLeave * set nopaste
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-nnoremap <silent> [b :bprevious<CR>
-nnoremap <silent> ]b :bnext<CR>
-nnoremap <silent> [B :bfirst<CR>
-nnoremap <silent> ]B :blast<CR>
-nmap <silent> <tab> :bnext<CR>
-nmap <silent> <S-tab> :bprevious<CR>
-nmap <silent> <C-g> :GFiles<CR>
-nmap <silent> <C-p> :Buffers<CR>
+nnoremap <silent> [b :<C-u>bprevious<CR>
+nnoremap <silent> ]b :<C-u>bnext<CR>
+nnoremap <silent> [B :<C-u>bfirst<CR>
+nnoremap <silent> ]B :<C-u>blast<CR>
+nnoremap <silent> <tab> :<C-u>bnext<CR>
+nnoremap <silent> <S-tab> :<C-u>bprevious<CR>
+nnoremap <silent> <C-g> :<C-u>GFiles<CR>
+nnoremap <silent> <C-p> :<C-u>Buffers<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 nnoremap <f5> :!ctags -R<CR>
 nnoremap Y y$
 "nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q!<CR>
+nnoremap <Leader>q :<C-u>q!<CR>
 nnoremap <Leader>a ggVG
 nnoremap <Leader>y ggVGy
 nnoremap H ^
 nnoremap L $
-nnoremap <silent> <Leader>te :term<cr>
+nnoremap <silent> <Leader>te :<C-u>term<cr>
 nnoremap <Leader><CR> V:!sh<CR>
 nnoremap * *N
 nnoremap <Leader>R :source ~/.vimrc<CR>
@@ -208,8 +208,8 @@ nnoremap sJ <C-w>J
 nnoremap sK <C-w>K
 nnoremap sL <C-w>L
 nnoremap sH <C-w>H
-nnoremap ss :sp<CR><C-w>w
-nnoremap sv :vs<CR><C-w>w
+nnoremap ss :<C-u>sp<CR><C-w>w
+nnoremap sv :<C-u>vs<CR><C-w>w
 
 call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
 call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
