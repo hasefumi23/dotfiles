@@ -52,7 +52,8 @@ map _ <Plug>(operator-replace)
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-nmap <Leader>w <Plug>(easymotion-overwin-line)
+"nmap <Leader>w <Plug>(easymotion-overwin-line)
+nmap <Leader>w <Plug>(easymotion-bd-jk)
 nmap <Leader>j <Plug>(easymotion-j)
 nmap <Leader>k <Plug>(easymotion-k)
 map <Leader>s <Plug>(easymotion-s2)
@@ -80,7 +81,7 @@ set mouse=a
 set ttymouse=xterm2
 set wildmenu
 set whichwrap=b,s,[,],<,>
-set wildmode=list:longest
+set wildmode=list:full
 set visualbell
 set virtualedit=block
 set title
@@ -118,6 +119,9 @@ colorscheme pablo
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd InsertLeave * set nopaste
 
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
@@ -140,8 +144,8 @@ nnoremap [ %
 inoremap <silent> jj <ESC>
 inoremap <C-a> ^
 inoremap <C-e> $
-inoremap <C-p> <Up>
-inoremap <C-n> <Down>
+"inoremap <C-p> <Up>
+"inoremap <C-n> <Down>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <C-a> <C-o>:call <SID>home()<CR>
