@@ -42,11 +42,10 @@ repo = 'jiangmiao/auto-pairs'
 repo = 'tpope/vim-surround'
 
 [[plugins]]
-repo = 'kana/vim-operator-user'
+repo = 'kana/vim-operator-replace'
 
 [[plugins]]
-repo = 'kana/vim-operator-replace'
-depends = ['kana/vim-operator-user']
+repo = 'kana/vim-operator-user'
 
 [[plugins]]
 repo = 'terryma/vim-expand-region'
@@ -68,4 +67,13 @@ repo = 'scrooloose/nerdtree'
 
 [[plugins]]
 repo = 'scrooloose/nerdcommenter'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build =  './install --all'
+merged = 0
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'
 
