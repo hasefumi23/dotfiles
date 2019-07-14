@@ -114,6 +114,7 @@ set statusline+=\ %h%r%=%-14.(%l,%c%V%)\ [%{&fenc!=''?&fenc:&enc}][%{&ff}]\ %L%8
 set scrolloff=5
 set display=lastline
 set pumheight=10
+set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 
 colorscheme pablo
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -126,6 +127,10 @@ nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
+nmap <silent> <tab> :bnext<CR>
+nmap <silent> <S-tab> :bprevious<CR>
+nmap <silent> <C-g> :GFiles<CR>
+nmap <silent> <C-p> :Buffers<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 nnoremap <f5> :!ctags -R<CR>
 nnoremap Y y$
@@ -183,6 +188,12 @@ endfunction
 vnoremap <Leader><CR> :!sh<CR>
 vnoremap <c-a> <c-a>gv
 vnoremap <c-x> <c-x>gv
+vnoremap 8 i(
+vnoremap 2 i"
+vnoremap 7 i'
+vnoremap @ i`
+vnoremap [ i[
+vnoremap { i{
 
 onoremap 8 i(
 onoremap 2 i"
