@@ -20,6 +20,7 @@ set -x JRE_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre
 set -x DISPLAY localhost:0.0
 set -x DOCKER_HOST tcp://localhost:2375
 set -gx MANPAGER 'vim -c MANPAGER -'
+set -gx FZF_DEFAULT_COMMAND  'rg --files --no-ignore-vcs --hidden'
 
 rbenv init - | source
 status --is-interactive; and source (anyenv init -|psub)
@@ -53,6 +54,7 @@ alias vimr='vim -R -'
 alias gh="open (git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')"
 alias p='powershell.exe'
 alias rl='readlink -f'
+alias fkill="ps aux | fzf | awk '{print $2}' | xargs kill"
 
 # ruby
 alias be='bundle exec'
