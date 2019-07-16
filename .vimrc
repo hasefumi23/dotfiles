@@ -69,6 +69,9 @@ vmap <Leader>c <Plug>NERDCommenterToggle
 
 let g:fzf_layout = { 'down': '~50%'  }
 
+" vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
+let g:indent_guides_enable_on_vim_startup = 1
+
 set helplang=ja,en
 set fenc=utf-8
 set encoding=utf-8
@@ -130,7 +133,8 @@ nnoremap <silent> [B :<C-u>bfirst<CR>
 nnoremap <silent> ]B :<C-u>blast<CR>
 nnoremap <silent> <tab> :<C-u>bnext<CR>
 nnoremap <silent> <S-tab> :<C-u>bprevious<CR>
-nnoremap <silent> <C-g> :<C-u>GFiles<CR>
+nnoremap <silent> <C-g> :<C-u>Lines<CR>
+nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
 nnoremap <silent> <C-p> :<C-u>Buffers<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 nnoremap <f5> :!ctags -R<CR>

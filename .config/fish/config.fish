@@ -116,7 +116,7 @@ function fpsql
   psql -h $psqlLoginHost
 end
 
-function tree_select
+function ftree
   tree -N -a --charset=o -f -I '.git|.idea|resolution-cache|target/streams|node_modules' | \
     fzf --preview '
       set target (echo {} | grep -o "\./.*\$" | xargs)
@@ -133,7 +133,7 @@ function tree_select
 end
 
 function vim_from_tree
-  set selected_file (tree_select)
+  set selected_file (ftree)
   if [ -n "$selected_file" ]
     vim "$selected_file"
   end
