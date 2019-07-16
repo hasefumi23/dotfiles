@@ -67,6 +67,8 @@ nmap F <Plug>Sneak_S
 nmap <Leader>c <Plug>NERDCommenterToggle
 vmap <Leader>c <Plug>NERDCommenterToggle
 
+let g:fzf_layout = { 'down': '~50%'  }
+
 set helplang=ja,en
 set fenc=utf-8
 set encoding=utf-8
