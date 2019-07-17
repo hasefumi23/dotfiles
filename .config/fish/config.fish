@@ -20,15 +20,21 @@ set -x JRE_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre
 set -x DISPLAY localhost:0.0
 set -x DOCKER_HOST tcp://localhost:2375
 set -gx MANPAGER 'vim -c MANPAGER -'
-set -gx FZF_DEFAULT_COMMAND  'rg --files --no-ignore-vcs --hidden'
-set -x FZF_DEFAULT_OPTS '--color dark,hl:33,hl+:37,fg+:235,bg+:50,fg+:254 --color info:254,prompt:37,spinner:108,pointer:235,marker:235'
 set -gx LANG ja_JP.UTF-8
+set -gx FZF_DEFAULT_COMMAND  'rg --files --no-ignore-vcs --hidden'
+set -x FZF_DEFAULT_OPTS '
+  --color=fg:#d0d0d0,bg:#121212,hl:#5f87af
+  --color=fg+:#d0d0d0,bg+:#607537,hl+:#5fd7ff
+  --color=info:#afaf87,prompt:#d7005f,pointer:#ffffff
+  --color=marker:#87ff00,spinner:#ae88d4,header:#87afaf
+'
 
 rbenv init - | source
 status --is-interactive; and source (anyenv init -|psub)
 # status --is-interactive; and source (anyenv init -|psub)
 
 alias i='sudo apt install --yes'
+status --is-interactive; and source (anyenv init -|psub)
 
 # cd
 alias ..='cd ..'
@@ -57,6 +63,7 @@ alias gh="open (git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 |
 alias p='powershell.exe'
 alias rl='readlink -f'
 alias fkill="ps aux | fzf | awk '{print $2}' | xargs kill"
+alias i='sudo apt install --yes'
 
 # ruby
 alias be='bundle exec'
@@ -125,7 +132,10 @@ function ftree
       if [ -d $target ]
         ls -lh $target
       else
-        head -n 50 $target
+        highlight -O ansi $target ||
+        coderay $target ||
+        rougify $target ||
+        cat $target 2> /dev/null | head -100
       end' | \
       sed -e "s/ ->.*\$//g" | \
       tr -d '\||`| ' | \
@@ -150,7 +160,13 @@ end
 
 function fzf_git_files
   set files (git ls-files)
-  echo "$files" | sed 's/ /\n/g' | fzf --preview 'head -100 {}'
+  echo "$files" | sed 's/ /\n/g' |
+    fzf --preview '
+      highlight -O ansi {} ||
+      coderay {} ||
+      rougify {} ||
+      cat {} 2> /dev/null | head -500
+    '
 end
 
 function fvim
