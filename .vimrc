@@ -44,10 +44,7 @@ if dein#check_install()
  call dein#install()
 endif
 
-" for pulugin
-" polyglot
-let g:polyglot_disabled = ['markdown']
-
+" for plugin
 map _ <Plug>(operator-replace)
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -65,7 +62,6 @@ vmap <Leader>c <Plug>NERDCommenterToggle
 
 let g:fzf_layout = { 'down': '~50%'  }
 
-" vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
 let g:indent_guides_enable_on_vim_startup = 1
 nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
 nnoremap <silent> <C-p> :<C-u>Buffers<CR>
@@ -139,7 +135,6 @@ nnoremap <silent> <C-p> :<C-u>Buffers<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 nnoremap <f5> :!ctags -R<CR>
 nnoremap Y y$
-"nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :<C-u>q!<CR>
 nnoremap <Leader>a ggVG
 nnoremap <Leader>y ggVGy
@@ -155,8 +150,6 @@ nnoremap <Leader>vim :e ~/.vimrc<CR>
 inoremap <silent> jj <ESC>
 inoremap <C-a> ^
 inoremap <C-e> $
-"inoremap <C-p> <Up>
-"inoremap <C-n> <Down>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <C-a> <C-o>:call <SID>home()<CR>
