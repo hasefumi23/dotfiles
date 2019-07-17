@@ -54,9 +54,6 @@ repo = 'terryma/vim-expand-region'
 repo = 'easymotion/vim-easymotion'
 
 [[plugins]]
-repo = 'yuttie/comfortable-motion.vim'
-
-[[plugins]]
 repo = 'thinca/vim-quickrun'
 
 [[plugins]]
