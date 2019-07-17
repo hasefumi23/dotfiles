@@ -57,10 +57,6 @@ nmap <Leader>j <Plug>(easymotion-j)
 nmap <Leader>k <Plug>(easymotion-k)
 map <Leader>s <Plug>(easymotion-s2)
 
-let g:comfortable_motion_interval = 2400.0 / 60
-let g:comfortable_motion_friction = 100.0
-let g:comfortable_motion_air_drag = 3.0
-
 nmap f <Plug>Sneak_s
 nmap F <Plug>Sneak_S
 
@@ -71,6 +67,9 @@ let g:fzf_layout = { 'down': '~50%'  }
 
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
 let g:indent_guides_enable_on_vim_startup = 1
+nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
+nnoremap <silent> <C-p> :<C-u>Buffers<CR>
+nnoremap <silent> <C-g> :<C-u>Lines<CR>
 
 set helplang=ja,en
 set fenc=utf-8
@@ -118,9 +117,10 @@ set statusline+=\ %h%r%=%-14.(%l,%c%V%)\ [%{&fenc!=''?&fenc:&enc}][%{&ff}]\ %L%8
 set scrolloff=5
 set display=lastline
 set pumheight=10
-set diffopt=internal,filler,algorithm:histogram,indent-heuristic
+"set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 
-colorscheme pablo
+"colorscheme pablo
+colorscheme neuromancer
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd InsertLeave * set nopaste
 
@@ -150,6 +150,7 @@ nnoremap <Leader><CR> V:!sh<CR>
 nnoremap * *N
 nnoremap <Leader>R :source ~/.vimrc<CR>
 nnoremap [ %
+nnoremap <Leader>vim :e ~/.vimrc<CR>
 
 inoremap <silent> jj <ESC>
 inoremap <C-a> ^
