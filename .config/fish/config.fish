@@ -194,7 +194,7 @@ end
 function fish_user_key_bindings
   bind \cr 'fzf_select_history (commandline -b)'
   bind \c] 'fvim'
-  bind \ci 'tig'
+  bind \ct 'tig'
 end
 
 function fbr
