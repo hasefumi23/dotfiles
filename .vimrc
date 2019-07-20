@@ -67,6 +67,8 @@ nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
 nnoremap <silent> <C-p> :<C-u>Buffers<CR>
 nnoremap <silent> <C-g> :<C-u>Lines<CR>
 
+let g:quickrun_config={'*': {'split': ''}}
+
 set helplang=ja,en
 set fenc=utf-8
 set encoding=utf-8

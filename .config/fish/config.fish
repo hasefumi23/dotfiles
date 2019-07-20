@@ -10,15 +10,16 @@ set -g fish_user_paths "/home/linuxbrew/.linuxbrew/bin" "/home/linuxbrew/.linuxb
 set -q MANPATH; or set MANPATH ''; set -gx MANPATH "/home/linuxbrew/.linuxbrew/share/man" $MANPATH;
 set -q INFOPATH; or set INFOPATH ''; set -gx INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH;
 
-set -x VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
-set -x PATH "$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
-set -x VAGRANT_PREFER_SYSTEM_BIN 0
-set -x GOPATH $HOME
-set -x PATH $GOPATH/bin:$PATH
-set -x JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
-set -x JRE_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre
 set -x DISPLAY localhost:0.0
 set -x DOCKER_HOST tcp://localhost:2375
+set -x GOPATH $HOME
+set -x JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+set -x JRE_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre
+set -x PATH $HOME/.cargo/bin:$PATH
+set -x PATH "$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
+set -x PATH $GOPATH/bin:$PATH
+set -x VAGRANT_PREFER_SYSTEM_BIN 0
+set -x VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
 set -gx MANPAGER 'vim -c MANPAGER -'
 set -gx LANG ja_JP.UTF-8
 set -gx FZF_DEFAULT_COMMAND  'rg --files --no-ignore-vcs --hidden'
@@ -134,7 +135,6 @@ function ftree
       else
         highlight -O ansi $target ||
         coderay $target ||
-        rougify $target ||
         cat $target 2> /dev/null | head -100
       end' | \
       sed -e "s/ ->.*\$//g" | \
@@ -194,6 +194,7 @@ end
 function fish_user_key_bindings
   bind \cr 'fzf_select_history (commandline -b)'
   bind \c] 'fvim'
+  bind \ci 'tig'
 end
 
 function fbr
