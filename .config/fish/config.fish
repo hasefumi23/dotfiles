@@ -203,7 +203,7 @@ function fbr
 end
 
 function fkill
-  set pid (ps -xf | sed 1d | fzf -m | awk '{print $2}')
+  set pid (ps -xf | sed 1d | fzf -m | awk '{print $1}')
 
   if [ "x$pid" != "x" ]
     echo $pid | xargs kill
