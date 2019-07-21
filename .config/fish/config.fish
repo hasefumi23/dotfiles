@@ -63,7 +63,7 @@ alias vimr='vim -R -'
 alias gh="open (git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')"
 alias p='powershell.exe'
 alias rl='readlink -f'
-alias fkill="ps aux | fzf | awk '{print $2}' | xargs kill"
+#alias fkill="ps aux | fzf -m | awk '{print $2}' | xargs kill"
 alias i='sudo apt install --yes'
 
 # ruby
@@ -200,4 +200,12 @@ end
 function fbr
   set branch (git branch -a -vv | fzf +m)
   git checkout (echo "$branch" | sed "s/remotes\/origin\///" | awk '{print $1}' | sed "s/.* //")
+end
+
+function fkill
+  set pid (ps -xf | sed 1d | fzf -m | awk '{print $2}')
+
+  if [ "x$pid" != "x" ]
+    echo $pid | xargs kill
+  end
 end
