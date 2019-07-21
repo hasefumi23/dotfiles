@@ -69,6 +69,8 @@ nnoremap <silent> <C-g> :<C-u>Lines<CR>
 
 let g:quickrun_config={'*': {'split': ''}}
 
+nnoremap <Leader>d :Gdiffsplit<CR>
+
 set helplang=ja,en
 set fenc=utf-8
 set encoding=utf-8
