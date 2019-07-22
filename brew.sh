@@ -24,7 +24,11 @@ brew install fish
 brew install fzf
 brew install gcc
 brew install ghq
+brew install libffi
+brew install lua
+brew install ncurses
 brew install gibo
+brew install highlight
 brew install hub
 brew install jpeg
 brew install jq
@@ -39,6 +43,10 @@ brew install mercurial
 brew install mpfr
 brew install nkf
 brew install openssl
+brew install patchelf
+brew install pcre2
+brew install peco
+brew install python
 brew install pkgconfig
 brew install postgresql
 brew install q
@@ -47,6 +55,9 @@ brew install ripgrep
 brew install socat
 brew install thefuck
 brew install tig
+brew install unzip
+brew install xz
+brew install zlib
 brew install tmux
 brew install tree
 brew install unixodbc
