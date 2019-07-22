@@ -17,9 +17,6 @@ repo = 'vim-airline/vim-airline-themes'
 [[plugins]]
 repo = 'andymass/vim-matchup'
 
-#[[plugins]]
-#repo = 'deris/vim-shot-f'
-
 [[plugins]]
 repo = 'machakann/vim-highlightedyank'
 

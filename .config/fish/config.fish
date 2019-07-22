@@ -22,7 +22,7 @@ set -x VAGRANT_PREFER_SYSTEM_BIN 0
 set -x VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
 set -gx MANPAGER 'vim -c MANPAGER -'
 set -gx LANG ja_JP.UTF-8
-set -gx FZF_DEFAULT_COMMAND  'rg --files --no-ignore-vcs --hidden'
+set -gx FZF_DEFAULT_COMMAND 'rg --files --no-ignore-vcs --hidden'
 set -x FZF_DEFAULT_OPTS '
   --color=fg:#d0d0d0,bg:#121212,hl:#5f87af
   --color=fg+:#d0d0d0,bg+:#9620b3,hl+:#5fd7ff
