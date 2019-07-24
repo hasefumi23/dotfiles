@@ -1,13 +1,12 @@
 [ghq]
-  root = /mnt/c/Users/fumi/.ghq
-  root = /mnt/c/Users/fumi/lab
+  root = /mnt/c/src
 
 [ghq "CODECOMMIT-URL"]
   vcs = git
 
 [user]
-  email = hasefumi23@gmail.com
-  name = hasefumi23
+  email = hasegawa-f@east-inc.jp
+  name = hasegawa-f
 
 [alias]
   ac = !git add -A . && git commit -av
@@ -44,7 +43,7 @@
   insteadOf = "gist:"
 
 [core]
-  editor = vim
+  editor = vim --clean
   pager = less
   excludesfile = ~/.gitignore_global
 
@@ -59,9 +58,12 @@
   prune = true
 
 [pager]
-  log = diff-highlight | less
-  show = diff-highlight | less
-  diff = diff-highlight | less
+  ;log = diff-highlight | less
+  ;show = diff-highlight | less
+  ;diff = diff-highlight | less
+  log = vim -R -
+  show = vim -R -
+  diff = vim -R -
 
 [push]
   default = simple

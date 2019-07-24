@@ -59,6 +59,7 @@ alias l='ls -al'
 alias p='pa aux'
 alias v='vim'
 alias vi='vim'
+alias vimc='vim --clean'
 alias vimr='vim -R -'
 alias gh="open (git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')"
 alias p='powershell.exe'
