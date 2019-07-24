@@ -185,8 +185,8 @@ function fcode
   end
 end
 
-function fd
-  set dir (find . -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m --preview 'ls -alh {}')
+function fcd
+  set dir (fd -t d 2> /dev/null | fzf +m --preview 'exa -alh {}')
   if [ -n "$dir" ]
     cd "$dir"
   end
