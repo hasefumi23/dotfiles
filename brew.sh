@@ -69,6 +69,9 @@ brew install yarn
 brew install zlib
 brew install zsh
 
+brew tap cjbassi/gotop
+brew install gotop
+
 brew cleanup
 
 fi

@@ -1,5 +1,5 @@
 [ghq]
-  root = /mnt/c/src
+  root = /mnt/c/.ghq
 
 [ghq "CODECOMMIT-URL"]
   vcs = git

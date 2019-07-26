@@ -6,7 +6,9 @@ eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew";
 set -gx HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar";
 set -gx HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew";
-set -g fish_user_paths "/home/linuxbrew/.linuxbrew/bin" "/home/linuxbrew/.linuxbrew/sbin" $fish_user_paths;
+#set -g fish_user_paths "/home/linuxbrew/.linuxbrew/bin" "/home/linuxbrew/.linuxbrew/sbin" $fish_user_paths;
+set -x PATH "/home/linuxbrew/.linuxbrew/bin" $PATH
+set -x PATH "/home/linuxbrew/.linuxbrew/sbin" $PATH
 set -q MANPATH; or set MANPATH ''; set -gx MANPATH "/home/linuxbrew/.linuxbrew/share/man" $MANPATH;
 set -q INFOPATH; or set INFOPATH ''; set -gx INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH;
 
@@ -15,9 +17,9 @@ set -x DOCKER_HOST tcp://localhost:2375
 set -x GOPATH $HOME
 set -x JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 set -x JRE_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre
-set -x PATH $HOME/.cargo/bin:$PATH
-set -x PATH "$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
-set -x PATH $GOPATH/bin:$PATH
+set -x PATH $HOME/.cargo/bin $PATH
+set -x PATH "/mnt/c/Program Files/Oracle/VirtualBox" $PATH
+set -x PATH $GOPATH/bin $PATH
 set -x VAGRANT_PREFER_SYSTEM_BIN 0
 set -x VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
 set -gx MANPAGER 'vim -c MANPAGER -'
