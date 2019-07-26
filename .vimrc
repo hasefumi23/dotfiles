@@ -66,13 +66,12 @@ nnoremap <silent> <C-g> :<C-u>Lines<CR>
 
 let g:fzf_layout = { 'down': '~50%'  }
 " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
-"command! -bang -nargs=* Rg
-  "\ call fzf#vim#grep(
-  "\   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  "\   <bang>0 ? fzf#vim#with_preview('up:60%')
-  "\           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  "\   <bang>0
-")
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
 let g:indent_guides_enable_on_vim_startup = 1
 nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
@@ -107,7 +106,6 @@ set shiftwidth=2
 set showmatch
 set showcmd
 set shiftround
-set nowrap
 set noswapfile
 set nobackup
 set nrformats=
