@@ -121,13 +121,9 @@ set expandtab
 set backspace=indent,eol,start
 set ambiwidth=double
 set autoread
-set statusline=[%{StatuslineMode()}]
-set statusline+=\ %<%f\ %m
-set statusline+=\ %h%r%=%-14.(%l,%c%V%)\ [%{&fenc!=''?&fenc:&enc}][%{&ff}]\ %L%8P
 set scrolloff=5
 set display=lastline
 set pumheight=10
-"set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 
 "colorscheme pablo
 colorscheme neuromancer
@@ -276,10 +272,10 @@ function! StatuslineMode()
   endif
 endfunction
 
-if system('uname -a | grep Microsoft') != ''
-  augroup myYank
-    autocmd!
-    autocmd TextYankPost * :call system('clip.exe', @")
-  augroup END
-endif
+"if system('uname -a | grep Microsoft') != ''
+  "augroup myYank
+    "autocmd!
+    "autocmd TextYankPost * :call system('clip.exe', @")
+  "augroup END
+"endif
 
