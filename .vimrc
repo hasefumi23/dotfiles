@@ -54,8 +54,7 @@ nmap <Leader>j <Plug>(easymotion-j)
 nmap <Leader>k <Plug>(easymotion-k)
 map <Leader>s <Plug>(easymotion-s2)
 
-nmap f <Plug>Sneak_s
-nmap F <Plug>Sneak_S
+nmap F <Plug>Sneak_s
 
 nmap <Leader>c <Plug>NERDCommenterToggle
 vmap <Leader>c <Plug>NERDCommenterToggle
@@ -65,13 +64,6 @@ nnoremap <silent> <C-p> :<C-u>Buffers<CR>
 nnoremap <silent> <C-g> :<C-u>Lines<CR>
 
 let g:fzf_layout = { 'down': '~50%'  }
-" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
 
 let g:indent_guides_enable_on_vim_startup = 1
 nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
@@ -81,6 +73,11 @@ nnoremap <silent> <C-g> :<C-u>Lines<CR>
 let g:quickrun_config={'*': {'split': ''}}
 
 nnoremap <Leader>d :Gdiffsplit<CR>
+set updatetime=200
+let g:gitgutter_override_sign_column_highlight = 0
+highlight SignColumn ctermbg=brown
+nmap gp <Plug>GitGutterPrevHunk
+nmap gn <Plug>GitGutterNextHunk
 
 set helplang=ja,en
 set fenc=utf-8
@@ -278,4 +275,3 @@ endfunction
     "autocmd TextYankPost * :call system('clip.exe', @")
   "augroup END
 "endif
-
