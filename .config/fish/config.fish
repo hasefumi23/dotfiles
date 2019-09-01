@@ -67,7 +67,7 @@ alias gh="open (git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 |
 alias p='powershell.exe'
 alias rl='readlink -f'
 alias fkill="ps aux | fzf -m | awk '{print $2}' | xargs kill"
-alias frm="ls | fzf -m | xargs rm"
+alias frm="ls -a | fzf -m | xargs rm"
 alias i='sudo apt install --yes'
 
 # ruby
