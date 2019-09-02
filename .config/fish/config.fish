@@ -22,7 +22,7 @@ set -x PATH "/mnt/c/Program Files/Oracle/VirtualBox" $PATH
 set -x PATH $GOPATH/bin $PATH
 set -x VAGRANT_PREFER_SYSTEM_BIN 0
 set -x VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
-set -gx MANPAGER 'vim -c MANPAGER -'
+set -x MANPAGER "/bin/sh -c \"col -b -x | vim -R -c 'set ft=man nolist nonu noma' -\""
 set -gx LANG ja_JP.UTF-8
 set -gx FZF_DEFAULT_COMMAND 'rg --files --no-ignore-vcs --hidden'
 set -x FZF_DEFAULT_OPTS '
