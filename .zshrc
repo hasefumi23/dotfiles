@@ -1,8 +1,11 @@
+# 遅くなったら zprof 使って原因を特定する
+# zmodload zsh/zprof && zprof
+
 umask 002
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 #set -x DISPLAY localhost:0.0
 export DOCKER_HOST=tcp://localhost:2375
@@ -24,7 +27,6 @@ export MANPAGER="/bin/sh -c \"col -b -x | vim -R -c 'set ft=man nolist nonu noma
 export GOPATH=$HOME
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 export FZF_DEFAULT_OPTS='
-  --color=fg:#d0d0d0,bg:#121212,hl:#5f87af
   --color=fg+:#d0d0d0,bg+:#9620b3,hl+:#5fd7ff
   --color=info:#afaf87,prompt:#d7005f,pointer:#ffffff
   --color=marker:#87ff00,spinner:#ae88d4,header:#87afaf
@@ -57,11 +59,113 @@ SAVEHIST=10000
 HISTFILE=~/.zsh_history
 HISTCONTROL=ignoreboth
 
+function fhistory () {
+  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g')
+}
+zle -N fhistory
+bindkey '^r' fhistory
+
+function fcode () {
+  local selected_files=$(fgit_files)
+  if [ -n "$selected_files" ]; then
+    code-insiders $selected_files
+  fi
+}
+
 function fkill () {
   local pid=$(ps -xf | sed 1d | fzf -m | awk '{print $1}')
 
   if [ "x$pid" != "x" ]; then
     echo $pid | xargs kill
+  fi
+}
+
+function fgit_files () {
+  local files=$(git ls-files)
+  echo "$files" | sed 's/ /\n/g' |
+    fzf --preview '
+      highlight -O ansi {} ||
+      coderay {} ||
+      rougify {} ||
+      cat {} 2> /dev/null | head -500
+    '
+}
+
+function fssh () {
+  local sshLoginHost=$(cat ~/.ssh/config | grep "^Host" | grep -v '*' | awk '{print $2}' | fzf)
+  if [ "$sshLoginHost" = "" ]; then
+    # ex) Ctrl-C.
+    return 1
+  fi
+  ssh $sshLoginHost
+}
+zle -N fssh
+bindkey '^js' fssh
+
+function ftree () {
+  tree -N -a --charset=o -f -I '.git|.idea|resolution-cache|target/streams|node_modules' | \
+    fzf --preview '
+      local target=$(echo {} | grep -o "\./.*\$" | xargs)
+      if [ -d $target ]
+        ls -lh $target
+      else
+        highlight -O ansi $target ||
+        coderay $target ||
+        cat $target 2> /dev/null | head -100
+      fi' | \
+      sed -e "s/ ->.*\$//g" | \
+      tr -d '\||`| ' | \
+      tr '\n' ' ' | \
+      sed -e "s/--//g" | \
+      xargs echo
+}
+
+function vim_from_tree () {
+  local selected_file=$(ftree)
+  if [ -n "$selected_file" ]; then
+    vim "$selected_file"
+  fi
+}
+
+function vim_from_git_files () {
+  local selected_files=$(fgit_files)
+  if [ -n "$selected_files" ]; then
+    vim $selected_files
+  fi
+}
+
+function fvim () {
+  if git rev-parse 2> /dev/null; then
+    vim_from_git_files
+  else
+    vim_from_tree
+  fi
+}
+zle -N fvim
+bindkey '^jv' fvim
+
+function fpsql () {
+  local psqlLoginHost=$(cat ~/.ssh/config | grep "^Host" | grep -v '*' | awk '{print $2}' | fzf)
+  if [ "$psqlLoginHost" = "" ]; then
+    # ex) Ctrl-C.
+    return 1
+  fi
+  psql -h $psqlLoginHost
+}
+
+function fcd () {
+  local dir=$(fd -t d 2> /dev/null | fzf +m --preview 'exa -alh {}')
+  if [ -n "$dir" ]; then
+    cd "$dir"
+  fi
+}
+zle -N fcd
+bindkey '^jd' fcd
+
+function fbr () {
+  local branch=$(git branch -a -vv | fzf +m)
+  if [ -n "$branch" ]; then
+    git checkout $(echo "$branch" | sed "s/remotes\/origin\///" | awk '{print $1}' | sed "s/.* //")
   fi
 }
 
@@ -83,9 +187,9 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias l='exa -alF --color=auto'
+alias ll='exa -alF --color=auto'
+alias la='exa -a --color=auto'
 
 alias ap='ansible-playbook'
 alias b='brew'
@@ -102,9 +206,7 @@ alias frm="ls -a | fzf -m | xargs rm"
 alias g='git'
 alias gh="open $(git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')"
 alias i='sudo apt install --yes'
-alias l='ls -al'
 alias open='explorer.exe'
-alias p='pa aux'
 alias p='powershell.exe'
 alias rl='readlink -f'
 alias v='vim'
@@ -129,9 +231,8 @@ zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*' menu select=2
+zstyle ':completion:*:default' menu select=2
 eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
@@ -166,3 +267,8 @@ setopt inc_append_history
 # setopt sun_keyboard_hack
 
 [ -f ~/.local/config.fish ] && source ~/.local/.zshrc
+
+# 遅くなったら zprof 使って原因を特定する
+# if (which zprof > /dev/null 2>&1) ;then
+#   zprof
+# fi
