@@ -7,3 +7,5 @@ symbol = "⋊>"
 [directory]
 fish_style_pwd_dir_length = 1
 
+[git_status]
+disabled = true

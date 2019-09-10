@@ -272,3 +272,7 @@ setopt inc_append_history
 # if (which zprof > /dev/null 2>&1) ;then
 #   zprof
 # fi
+
+if [[ ! -n $TMUX  ]]; then
+  tmux new-session
+fi
