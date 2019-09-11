@@ -26,18 +26,12 @@ set -x MANPAGER "/bin/sh -c \"col -b -x | vim -R -c 'set ft=man nolist nonu noma
 set -gx LANG ja_JP.UTF-8
 set -gx FZF_DEFAULT_COMMAND 'rg --files --no-ignore-vcs --hidden'
 set -x FZF_DEFAULT_OPTS '
-  --color=fg:#d0d0d0,bg:#121212,hl:#5f87af
   --color=fg+:#d0d0d0,bg+:#9620b3,hl+:#5fd7ff
   --color=info:#afaf87,prompt:#d7005f,pointer:#ffffff
   --color=marker:#87ff00,spinner:#ae88d4,header:#87afaf
 '
 
-rbenv init - | source
-status --is-interactive; and source (anyenv init -|psub)
-# status --is-interactive; and source (anyenv init -|psub)
-
 alias i='sudo apt install --yes'
-status --is-interactive; and source (anyenv init -|psub)
 
 # cd
 alias ..='cd ..'
