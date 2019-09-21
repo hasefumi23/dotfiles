@@ -13,3 +13,6 @@ disabled = true
 [git_branch]
 truncation_length = 6
 
+[ruby]
+disabled = true
+
