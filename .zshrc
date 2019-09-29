@@ -9,22 +9,20 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 #set -x DISPLAY localhost:0.0
 export DOCKER_HOST=tcp://localhost:2375
-export GOPATH=$HOME
+#export GOPATH=$(go env GOPATH)
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
-export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:"/mnt/c/Program Files/Oracle/VirtualBox"
-export PATH=$PATH:$GOPATH/bin
 export VAGRANT_PREFER_SYSTEM_BIN=0
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 export NO_PROXY=127.0.0.1
 export MANPAGER="/bin/sh -c \"col -b -x | vim -R -c 'set ft=man nolist nonu noma' -\""
 export LANG=ja_JP.UTF-8
-export GOPATH=$HOME
-export PATH=$PATH:$GOPATH/bin
 export MANPAGER="/bin/sh -c \"col -b -x | vim -R -c 'set ft=man nolist nonu noma' -\""
-export GOPATH=$HOME
+export RUBYOPT=-EUTF-8
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 export FZF_DEFAULT_OPTS='
   --color=fg+:#d0d0d0,bg+:#9620b3,hl+:#5fd7ff
@@ -195,7 +193,7 @@ alias ap='ansible-playbook'
 alias b='brew'
 alias be='bundle exec'
 alias bi='bundle install'
-alias br='bundle exec rspec'
+alias ber='bundle exec rspec'
 alias c='code-insiders'
 alias cl='clip.exe'
 alias d='docker'
@@ -245,7 +243,8 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # below lines are from ZSH BOOK
-setopt histignorealldups sharehistory
+setopt histignorealldups 
+setopt sharehistory
 setopt auto_cd
 setopt auto_remove_slash
 setopt auto_name_dirs
@@ -266,13 +265,13 @@ setopt inc_append_history
 # setopt correct rm_star_silent
 # setopt sun_keyboard_hack
 
-[ -f ~/.local/config.fish ] && source ~/.local/.zshrc
+[ -f ~/.local/.zshrc ] && source ~/.local/.zshrc
 
 # 遅くなったら zprof 使って原因を特定する
 # if (which zprof > /dev/null 2>&1) ;then
 #   zprof
 # fi
 
-if [[ ! -n $TMUX  ]]; then
-  tmux new-session
-fi
+#if [[ ! -n $TMUX  ]]; then
+  #tmux new-session
+#fi
