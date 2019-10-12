@@ -1,12 +1,13 @@
 [ghq]
   root = /mnt/c/.ghq
+  root = ~/go/src
 
 [ghq "CODECOMMIT-URL"]
   vcs = git
 
 [user]
-  email = hasegawa-f@east-inc.jp
-  name = hasegawa-f
+  email = hasefumi23@gmail.com
+  name = hasefumi23
 
 [alias]
   ac = !git add -A . && git commit -av
