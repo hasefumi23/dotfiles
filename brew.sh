@@ -17,6 +17,7 @@ brew install autossh
 brew install awscli
 brew install coreutils
 brew install ctags
+brew install denisidoro/tools/navi
 brew install direnv
 brew install dos2unix
 brew install exa
