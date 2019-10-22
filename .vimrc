@@ -44,6 +44,12 @@ if dein#check_install()
  call dein#install()
 endif
 
+let s:removed_plugins = dein#check_clean()
+if len(s:removed_plugins) > 0
+  call map(s:removed_plugins, "delete(v:val, 'rf')")
+  call dein#recache_runtimepath()
+endif
+
 " for plugin
 map _ <Plug>(operator-replace)
 vmap v <Plug>(expand_region_expand)
@@ -83,6 +89,7 @@ scriptencoding utf-8
 set ambiwidth=double
 set autoread
 set backspace=indent,eol,start
+set clipboard+=unnamed
 set cursorline
 set display=lastline
 set encoding=utf-8
@@ -111,6 +118,7 @@ set shiftround
 set shiftwidth=2
 set showcmd
 set showmatch
+set showtabline=2
 set smartindent
 set smarttab
 set tabstop=2
@@ -199,6 +207,7 @@ vnoremap 8 i(
 vnoremap 2 i"
 vnoremap 7 i'
 vnoremap @ i`
+onoremap , i<
 vnoremap [ i[
 vnoremap { i{
 
@@ -206,6 +215,7 @@ onoremap 8 i(
 onoremap 2 i"
 onoremap 7 i'
 onoremap @ i`
+onoremap , i<
 onoremap [ i[
 onoremap { i{
 nnoremap sj <C-w>j
@@ -257,9 +267,15 @@ function! QuickfixFilenames()
     return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
-"if system('uname -a | grep Microsoft') != ''
-  "augroup myYank
-    "autocmd!
-    "autocmd TextYankPost * :call system('clip.exe', @")
-  "augroup END
-"endif
+if has('persistent_undo')
+  let undo_path = expand('~/.vim/undo')
+  exe 'set undodir=' . undo_path
+  set undofile
+endif
+
+if system('uname -a | grep microsoft') != ''
+  augroup myYank
+    autocmd!
+    autocmd TextYankPost * :call system('clip.exe', @")
+  augroup END
+endif
