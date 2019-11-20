@@ -181,6 +181,7 @@ bindkey '^g' peco-src
 
 bindkey '^[u' undo
 bindkey '^[r' redo
+bindkey \^U backward-kill-line
 
 alias ..='cd ..'
 alias ...='cd ../..'
