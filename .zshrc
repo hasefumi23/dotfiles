@@ -58,16 +58,10 @@ SAVEHIST=10000
 HISTFILE=~/.zsh_history
 HISTCONTROL=ignoreboth
 
-function fhistory () {
-  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g')
-}
-zle -N fhistory
-bindkey '^r' fhistory
-
 function fcode () {
   local selected_files=$(fgit_files)
   if [ -n "$selected_files" ]; then
-    code-insiders $selected_files
+    code $selected_files
   fi
 }
 
@@ -181,7 +175,7 @@ bindkey '^g' peco-src
 
 bindkey '^[u' undo
 bindkey '^[r' redo
-bindkey \^U backward-kill-line
+bindkey '^U' backward-kill-line
 
 alias ..='cd ..'
 alias ...='cd ../..'
