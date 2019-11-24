@@ -65,7 +65,8 @@ nmap F <Plug>Sneak_s
 nmap <Leader>c <Plug>NERDCommenterToggle
 vmap <Leader>c <Plug>NERDCommenterToggle
 
-nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
+nnoremap <silent> <Leader>p :<C-u>Files<CR>
+nnoremap <silent> <Leader>f :<C-u>GFiles<CR>
 nnoremap <silent> <C-p> :<C-u>Buffers<CR>
 nnoremap <silent> <C-g> :<C-u>Lines<CR>
 
