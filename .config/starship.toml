@@ -4,7 +4,8 @@ add_newline = false
 disabled = true
 
 [character]
-symbol = "⋊>"
+symbol = "λ"
+#symbol = "⋊>"
 
 [directory]
 fish_style_pwd_dir_length = 1
