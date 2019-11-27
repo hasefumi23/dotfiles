@@ -54,7 +54,7 @@ function fhistory () {
 function fcode () {
   local selected_files=$(fgit_files)
   if [ -n "$selected_files" ]; then
-    code-insiders $selected_files
+    code $selected_files
   fi
 }
 
