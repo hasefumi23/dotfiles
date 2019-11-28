@@ -90,6 +90,7 @@ scriptencoding utf-8
 set ambiwidth=double
 set autoread
 set backspace=indent,eol,start
+set breakindent
 set clipboard+=unnamed
 set cursorline
 set display=lastline
@@ -227,6 +228,8 @@ nnoremap sJ <C-w>J
 nnoremap sK <C-w>K
 nnoremap sL <C-w>L
 nnoremap sH <C-w>H
+nnoremap so <C-w><Bar><C-w>_
+nnoremap sO <C-w>=
 nnoremap ss :<C-u>sp<CR><C-w>w
 nnoremap sv :<C-u>vs<CR><C-w>w
 

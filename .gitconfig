@@ -23,6 +23,7 @@
   pf = push -f
   ps = push
   st = status -sb
+  sw = switch
   lol = log --graph --decorate --pretty=oneline --abbrev-commit --date=relative
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --date=relative --all
   purge = !git remote prune origin && git branch --merged | grep -vE master$ | grep -v \"*\" | xargs git branch -d
@@ -44,7 +45,7 @@
   insteadOf = "gist:"
 
 [core]
-  editor = vim --clean
+  editor = vim
   pager = less
   excludesfile = ~/.gitignore_global
 
@@ -64,7 +65,7 @@
   ;diff = diff-highlight | less
   log = vim -R -
   show = vim -R -
-  diff = vim -R -
+  ;diff = vim -R -
 
 [push]
   default = simple
