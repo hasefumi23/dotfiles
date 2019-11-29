@@ -134,7 +134,8 @@ set wildmenu
 set wildmode=list:full
 
 "colorscheme pablo
-colorscheme neuromancer
+"colorscheme neuromancer
+colorscheme iceberg
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd InsertLeave * set nopaste
 
@@ -155,7 +156,7 @@ nnoremap <f5> :!ctags -R<CR>
 nnoremap Y y$
 nnoremap <Leader>q :<C-u>q!<CR>
 nnoremap <Leader>a ggVG
-nnoremap <Leader>y ggVGy
+nnoremap <Leader>y :<C-u>%y<CR>
 nnoremap H ^
 nnoremap L $
 nnoremap <silent> <Leader>te :<C-u>term<cr>

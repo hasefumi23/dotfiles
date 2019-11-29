@@ -4,7 +4,6 @@
 # time ( zsh -i -c exit  )
 
 umask 002
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval "$(starship init zsh)"
@@ -31,6 +30,7 @@ export FZF_DEFAULT_OPTS='
   --color=fg+:#d0d0d0,bg+:#9620b3,hl+:#5fd7ff
   --color=info:#afaf87,prompt:#d7005f,pointer:#ffffff
   --color=marker:#87ff00,spinner:#ae88d4,header:#87afaf
+  --height 60% --reverse --border
 '
 stty stop undef
 
@@ -220,6 +220,8 @@ alias vimssh='vim ~/.ssh/config'
 alias vimstar='vim ~/.config/starship.toml'
 alias vimgit='vim ~/.gitconfig'
 alias vimtmux='vim ~/.tmux.conf'
+alias vimdein='vim ~/.vim/rc/dein.toml'
+alias vimdeinl='vim ~/.vim/rc/lazy_dein.toml'
 alias refish='source ~/.config/fish/config.fish'
 alias rezsh='source ~/.zshrc'
 
@@ -300,3 +302,4 @@ zplugin light zsh-users/zsh-autosuggestions
 zplugin ice wait'!0' zplugin load zsh-users/zsh-completions
 zplugin ice wait'!0' zplugin load zdharma/fast-syntax-highlighting
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
