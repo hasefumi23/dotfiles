@@ -247,23 +247,28 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # below lines are from ZSH BOOK
-setopt histignorealldups 
-setopt sharehistory
+setopt always_last_prompt
 setopt auto_cd
-setopt auto_remove_slash
 setopt auto_name_dirs
+setopt auto_remove_slash
+setopt cdable_vars
+setopt extended_glob
 setopt extended_history
+setopt hist_ignore_all_dups
 setopt hist_ignore_dups
 setopt hist_ignore_space
-setopt prompt_subst
-setopt extended_glob
-setopt list_types no_beep
-setopt always_last_prompt
-setopt cdable_vars
-setopt sh_word_split auto_param_keys
-setopt pushd_ignore_dups
-setopt share_history
+setopt hist_ignore_space
+setopt hist_no_store
+setopt hist_reduce_blanks
+setopt hist_save_no_dups
+setopt histignorealldups 
 setopt inc_append_history
+setopt list_types no_beep
+setopt prompt_subst
+setopt pushd_ignore_dups
+setopt sh_word_split auto_param_keys
+setopt share_history
+setopt sharehistory
 # comment out these are to much sideeffect
 # setopt auto_menu
 # setopt correct rm_star_silent

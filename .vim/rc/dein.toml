@@ -73,3 +73,6 @@ depends = 'fzf'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
