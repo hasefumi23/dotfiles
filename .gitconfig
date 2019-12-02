@@ -60,12 +60,9 @@
   prune = true
 
 [pager]
-  ;log = diff-highlight | less
-  ;show = diff-highlight | less
-  ;diff = diff-highlight | less
-  log = vim -R -
-  show = vim -R -
-  ;diff = vim -R -
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
 
 [push]
   default = simple
