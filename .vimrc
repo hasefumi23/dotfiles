@@ -172,7 +172,7 @@ nnoremap <Leader>R :source ~/.vimrc<CR>
 nnoremap [ %
 nnoremap <Leader>vim :e ~/.vimrc<CR>
 
-inoremap <silent> jj <ESC>:<C-u>w<CR>
+inoremap <silent> jj <ESC>
 inoremap <C-a> ^
 inoremap <C-e> $
 inoremap <C-b> <Left>
