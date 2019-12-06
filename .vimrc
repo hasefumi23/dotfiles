@@ -36,6 +36,7 @@ if dein#load_state(s:dein_path)
 endif
 
 " Required:
+filetype plugin on
 filetype plugin indent on
 syntax enable
 
@@ -85,6 +86,16 @@ let g:gitgutter_override_sign_column_highlight = 0
 highlight SignColumn ctermbg=brown
 nmap gp <Plug>GitGutterPrevHunk
 nmap gn <Plug>GitGutterNextHunk
+
+" plugin anzu
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
+" clear status
+nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+" statusline
+set statusline=%{anzu#search_status()}
 
 scriptencoding utf-8
 set ambiwidth=double
@@ -213,6 +224,8 @@ vnoremap @ i`
 onoremap , i<
 vnoremap [ i[
 vnoremap { i{
+vnoremap < <gv
+vnoremap > >gv
 
 onoremap 8 i(
 onoremap 2 i"
@@ -242,9 +255,6 @@ call submode#map('bufmove', 'n', '', '>', '<C-w>>')
 call submode#map('bufmove', 'n', '', '<', '<C-w><')
 call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
-
-filetype plugin on
-filetype plugin indent on
 
 runtime macros/matchit.vim
 

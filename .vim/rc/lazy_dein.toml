@@ -1,3 +1,5 @@
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
