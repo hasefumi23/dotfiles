@@ -126,12 +126,18 @@ set smarttab
 set tabstop=2
 set title
 set ttyfast
-set ttymouse=xterm2
 set virtualedit=block
 set visualbell
 set whichwrap=b,s,[,],<,>
 set wildmenu
 set wildmode=list:full
+
+" for vim nvim compatible
+if has('nvim')
+  set inccommand=split
+else
+  set ttymouse=xterm2
+endif
 
 "colorscheme pablo
 "colorscheme neuromancer
@@ -166,7 +172,7 @@ nnoremap <Leader>R :source ~/.vimrc<CR>
 nnoremap [ %
 nnoremap <Leader>vim :e ~/.vimrc<CR>
 
-inoremap <silent> jj <ESC>
+inoremap <silent> jj <ESC>:<C-u>w<CR>
 inoremap <C-a> ^
 inoremap <C-e> $
 inoremap <C-b> <Left>

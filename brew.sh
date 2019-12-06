@@ -63,6 +63,7 @@ brew install tree
 brew install unixodbc
 brew install unzip
 brew install vim
+brew install nvim
 brew install w3m
 brew install wget
 brew install xz
