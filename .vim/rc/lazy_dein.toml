@@ -1,3 +1,6 @@
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 
+[[plugins]]
+repo = 'roxma/vim-tmux-clipboard'
+
