@@ -76,3 +76,6 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
