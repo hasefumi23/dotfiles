@@ -72,6 +72,10 @@ nnoremap <silent> <C-p> :<C-u>Buffers<CR>
 nnoremap <silent> <C-g> :<C-u>Lines<CR>
 
 let g:fzf_layout = { 'down': '~50%'  }
+" :Filesによる表示の変更
+let g:fzf_files_options =
+      \ '--tiebreak=end,index --preview "(bat {-1} || rougify {-1} || ccat {-1} || cat {-1}) 2> /dev/null"'
+let g:fzf_buffers_jump = 1
 
 let g:indent_guides_enable_on_vim_startup = 1
 nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
@@ -137,12 +141,18 @@ set smarttab
 set tabstop=2
 set title
 set ttyfast
-set ttymouse=xterm2
 set virtualedit=block
 set visualbell
 set whichwrap=b,s,[,],<,>
 set wildmenu
 set wildmode=list:full
+
+" for vim nvim compatible
+if has('nvim')
+  set inccommand=split
+else
+  set ttymouse=xterm2
+endif
 
 "colorscheme pablo
 "colorscheme neuromancer
@@ -294,3 +304,25 @@ if system('uname -a | grep microsoft') != ''
     autocmd TextYankPost * :call system('clip.exe', @")
   augroup END
 endif
+
+function! WrapForTmux(s)
+  if !exists('$TMUX')
+    return a:s
+  endif
+
+  let tmux_start = "\<Esc>Ptmux;"
+  let tmux_end = "\<Esc>\\"
+
+  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()

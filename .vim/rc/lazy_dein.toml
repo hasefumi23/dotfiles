@@ -3,3 +3,7 @@ repo = 'sheerun/vim-polyglot'
 
 [[plugins]]
 repo = 'osyo-manga/vim-anzu'
+
+[[plugins]]
+repo = 'roxma/vim-tmux-clipboard'
+
