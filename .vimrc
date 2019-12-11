@@ -71,7 +71,7 @@ nnoremap <silent> <Leader>f :<C-u>GFiles<CR>
 nnoremap <silent> <C-p> :<C-u>Buffers<CR>
 nnoremap <silent> <C-g> :<C-u>Lines<CR>
 
-let g:fzf_layout = { 'down': '~50%'  }
+let g:fzf_layout = { 'down': '~100%'  }
 " :Filesによる表示の変更
 let g:fzf_files_options =
       \ '--tiebreak=end,index --preview "(bat {-1} || rougify {-1} || ccat {-1} || cat {-1}) 2> /dev/null"'
