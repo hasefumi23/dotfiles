@@ -7,14 +7,8 @@ disabled = true
 symbol = "λ"
 #symbol = "⋊>"
 
-[directory]
-fish_style_pwd_dir_length = 1
-
 [git_status]
 disabled = true
-
-[git_branch]
-truncation_length = 6
 
 [ruby]
 disabled = true

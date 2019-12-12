@@ -113,6 +113,7 @@ set encoding=utf-8
 set expandtab
 set fenc=utf-8
 set fileformat=unix
+set foldmethod=marker
 set helplang=ja,en
 set hidden
 set history=200
