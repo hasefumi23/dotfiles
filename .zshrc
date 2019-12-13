@@ -21,9 +21,8 @@ export PATH=$PATH:/opt/ghc/bin/
 export VAGRANT_PREFER_SYSTEM_BIN=0
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 export NO_PROXY=127.0.0.1
-export MANPAGER="/bin/sh -c \"col -b -x | vim -R -c 'set ft=man nolist nonu noma' -\""
 export LANG=ja_JP.UTF-8
-export MANPAGER="/bin/sh -c \"col -b -x | vim -R -c 'set ft=man nolist nonu noma' -\""
+export MANPAGER="/bin/zsh -c \"col -b -x | view -c 'set ft=man nolist nonu noma' -\""
 export RUBYOPT=-EUTF-8
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 export FZF_DEFAULT_OPTS='
