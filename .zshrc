@@ -30,8 +30,9 @@ export FZF_DEFAULT_OPTS='
   --color=fg+:#d0d0d0,bg+:#9620b3,hl+:#5fd7ff
   --color=info:#afaf87,prompt:#d7005f,pointer:#ffffff
   --color=marker:#87ff00,spinner:#ae88d4,header:#87afaf
-  --height 60% --reverse --border
+  --height 100% --reverse --border
 '
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/highlighters
 stty stop undef
 
 # If not running interactively, don't do anything
@@ -174,6 +175,19 @@ function chpwd() {
   fi
 }
 
+# Tmux + SSH
+function ssh_tmux() {
+  tmux set-option default-terminal "screen" \; \
+    new-window -n $(echo $@ | perl -ple 's/(^|\s)-[^\s] *[^\s]+//g' | cut -d" " -f2 ) "exec ssh $(echo $@)" \; \
+    run-shell        "[ ! -d $HOME/.tmuxlog/#W/$(date +%Y-%m/%d)  ] && mkdir -p $HOME/.tmuxlog/#W/$(date +%Y-%m/%d)" \; \
+    pipe-pane        "cat >> $HOME/.tmuxlog/#W/$(date +%Y-%m/%d/%H%M%S.log)" \; \
+    display-message  "Started logging to $HOME/.tmuxlog/#W/$(date +%Y-%m/%d/%H%M%S.log)"
+}
+
+if [[ $TERM = screen  ]] || [[ $TERM = screen-256color  ]] ; then
+  alias ssh=ssh_tmux
+fi
+
 bindkey '^[u' undo
 bindkey '^[r' redo
 bindkey '^U' backward-kill-line
@@ -307,6 +321,9 @@ autoload -Uz _zplugin
 ### End of Zplugin's installer chunk
 
 zplugin light zsh-users/zsh-autosuggestions
+zplugin light rupa/z
+zplugin light zsh-users/zsh-syntax-highlighting
+#zplugin ice wait'!0' zplugin load zsh-users/zsh-syntax-highlighting
 zplugin ice wait'!0' zplugin load zsh-users/zsh-completions
 zplugin ice wait'!0' zplugin load zdharma/fast-syntax-highlighting
 
