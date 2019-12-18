@@ -42,7 +42,7 @@ syntax enable
 
 " If you wat to install not installed plugins on startup.
 if dein#check_install()
- call dein#install()
+  call dein#install()
 endif
 
 let s:removed_plugins = dein#check_clean()
@@ -189,6 +189,8 @@ nnoremap [ %
 nnoremap <Leader>vim :e ~/.vimrc<CR>
 
 inoremap <silent> jj <ESC>
+" 残念ながらWSLでは動かない
+inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 inoremap <C-a> ^
 inoremap <C-e> $
 inoremap <C-b> <Left>
