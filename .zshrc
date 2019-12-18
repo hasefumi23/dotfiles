@@ -9,6 +9,7 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval "$(starship init zsh)"
 
 export EDITOR=vim
+export THOR_MERGE=vim
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on

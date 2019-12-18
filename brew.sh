@@ -28,6 +28,7 @@ brew install fzf
 brew install gcc
 brew install ghq
 brew install gibo
+brew install git-now
 brew install highlight
 brew install hub
 brew install jpeg
