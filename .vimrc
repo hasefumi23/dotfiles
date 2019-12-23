@@ -230,6 +230,9 @@ endfunction
 vnoremap <Leader><CR> :!sh<CR>
 vnoremap <c-a> <c-a>gv
 vnoremap <c-x> <c-x>gv
+" replace currently selected text with default register
+" without yanking it
+vnoremap p "_dP
 vnoremap 8 i(
 vnoremap 2 i"
 vnoremap 7 i'
