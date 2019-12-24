@@ -307,7 +307,7 @@ if has('persistent_undo')
   set undofile
 endif
 
-if system('uname -a | grep microsoft') != ''
+if system('uname -a | grep -E "(M|m)icrosoft"') != ''
   augroup myYank
     autocmd!
     autocmd TextYankPost * :call system('clip.exe', @")
