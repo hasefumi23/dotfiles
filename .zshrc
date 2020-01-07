@@ -208,6 +208,7 @@ alias bi='bundle install'
 alias ber='bundle exec rspec'
 #alias c='code-insiders'
 alias c='code'
+alias cdu='cd-gitroot'
 alias cl='clip.exe'
 alias d='docker'
 alias e='explorer.exe .'
@@ -323,12 +324,10 @@ autoload -Uz _zplugin
 
 zplugin light zsh-users/zsh-autosuggestions
 zplugin light rupa/z
-zplugin light zsh-users/zsh-syntax-highlighting
 zplugin light mollifier/cd-gitroot
+zplugin light zdharma/fast-syntax-highlighting
 
-#zplugin ice wait'!0' zplugin load zsh-users/zsh-syntax-highlighting
 zplugin ice wait'!0' zplugin load zsh-users/zsh-completions
-zplugin ice wait'!0' zplugin load zdharma/fast-syntax-highlighting
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
