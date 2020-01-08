@@ -8,6 +8,7 @@ umask 002
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval "$(starship init zsh)"
 
+#export DOCKER_HOST=tcp://localhost:2375
 export EDITOR=vim
 export THOR_MERGE=vim
 export GOPATH=$HOME/go
