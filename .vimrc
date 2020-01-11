@@ -121,7 +121,6 @@ set helplang=ja,en
 set hidden
 set history=200
 set hlsearch
-set ignorecase
 set incsearch
 set laststatus=2
 set list
@@ -140,6 +139,7 @@ set shiftwidth=2
 set showcmd
 set showmatch
 set showtabline=2
+set smartcase
 set smartindent
 set smarttab
 set tabstop=2
