@@ -24,6 +24,7 @@ export VAGRANT_PREFER_SYSTEM_BIN=0
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 export NO_PROXY=127.0.0.1
 export LANG=ja_JP.UTF-8
+export LESS="-R"
 export MANPAGER="/bin/zsh -c \"col -b -x | view -c 'set ft=man nolist nonu noma' -\""
 export RUBYOPT=-EUTF-8
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
@@ -225,6 +226,7 @@ alias open='explorer.exe'
 alias p='powershell.exe'
 alias rl='readlink -f'
 alias t='tmux'
+alias tl='tldr'
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
