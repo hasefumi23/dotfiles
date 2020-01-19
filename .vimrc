@@ -191,6 +191,8 @@ nnoremap * *N
 nnoremap <Leader>R :source ~/.vimrc<CR>
 nnoremap [ %
 nnoremap <Leader>vim :e ~/.vimrc<CR>
+nnoremap <C-e> 5<C-e>
+nnoremap <C-y> 5<C-y>
 
 inoremap <silent> jj <ESC>
 " 残念ながらWSLでは動かない
