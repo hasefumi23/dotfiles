@@ -111,6 +111,7 @@ set backspace=indent,eol,start
 set breakindent
 set clipboard+=unnamed
 set cursorline
+set cmdwinheight=20
 set display=lastline
 set encoding=utf-8
 set expandtab
@@ -503,5 +504,4 @@ nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 "nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 "nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
 
