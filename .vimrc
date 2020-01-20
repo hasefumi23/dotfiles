@@ -51,21 +51,29 @@ if len(s:removed_plugins) > 0
   call dein#recache_runtimepath()
 endif
 
-" for plugin
+" ##############################
+" # for plugin
+" ##############################
+
+" === plugin ===
 map _ <Plug>(operator-replace)
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+" === plugin easymotion ===
 nmap <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>j <Plug>(easymotion-j)
 nmap <Leader>k <Plug>(easymotion-k)
 map <Leader>s <Plug>(easymotion-s2)
 
+" === plugin sneak ===
 nmap F <Plug>Sneak_s
 
+" === plugin nerdcommenter ===
 nmap <Leader>c <Plug>NERDCommenterToggle
 vmap <Leader>c <Plug>NERDCommenterToggle
 
+" === plugin fzf.vim ===
 nnoremap <silent> <Leader>p :<C-u>Files<CR>
 nnoremap <silent> <Leader>f :<C-u>GFiles<CR>
 nnoremap <silent> <C-p> :<C-u>Buffers<CR>
@@ -82,6 +90,7 @@ nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
 nnoremap <silent> <C-p> :<C-u>Buffers<CR>
 nnoremap <silent> <C-g> :<C-u>Lines<CR>
 
+" === plugin quickrun ===
 let g:quickrun_config={'*': {'split': ''}}
 
 nnoremap <Leader>d :Gdiffsplit<CR>
@@ -94,7 +103,7 @@ nmap gn <Plug>GitGutterNextHunk
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
-" plugin anzu
+" === plugin anzu ===
 nmap n <Plug>(anzu-n-with-echo)
 nmap N <Plug>(anzu-N-with-echo)
 nmap * <Plug>(anzu-star-with-echo)
@@ -103,6 +112,11 @@ nmap # <Plug>(anzu-sharp-with-echo)
 nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 " statusline
 set statusline=%{anzu#search_status()}
+
+" === plugin incsearch ===
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
 scriptencoding utf-8
 set ambiwidth=double
