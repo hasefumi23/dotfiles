@@ -179,48 +179,6 @@ colorscheme iceberg
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd InsertLeave * set nopaste
 
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-
-nnoremap <silent> [b :<C-u>bprevious<CR>
-nnoremap <silent> ]b :<C-u>bnext<CR>
-nnoremap <silent> [B :<C-u>bfirst<CR>
-nnoremap <silent> ]B :<C-u>blast<CR>
-nnoremap <silent> <tab> :<C-u>bnext<CR>
-nnoremap <silent> <S-tab> :<C-u>bprevious<CR>
-nnoremap <silent> <C-g> :<C-u>Lines<CR>
-nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
-nnoremap <silent> <C-p> :<C-u>Buffers<CR>
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-nnoremap <f5> :!ctags -R<CR>
-nnoremap Y y$
-nnoremap <Leader>q :<C-u>q!<CR>
-nnoremap <Leader>a ggVG
-nnoremap <Leader>y :<C-u>%y<CR>
-nnoremap H ^
-nnoremap L $
-nnoremap <silent> <Leader>te :<C-u>term<cr>
-nnoremap <Leader><CR> V:!sh<CR>
-nnoremap * *N
-nnoremap <Leader>R :source ~/.vimrc<CR>
-nnoremap [ %
-nnoremap <Leader>vim :e ~/.vimrc<CR>
-nnoremap <C-e> 5<C-e>
-nnoremap <C-y> 5<C-y>
-
-inoremap <silent> jj <ESC>
-" 残念ながらWSLでは動かない
-inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
-inoremap <C-a> ^
-inoremap <C-e> $
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
-inoremap <C-a> <C-o>:call <SID>home()<CR>
-inoremap <C-e> <End>
-inoremap <C-d> <Del>
-inoremap <C-h> <BS>
-inoremap <C-k> <C-r>=<SID>kill()<CR>
-
 function! s:home()
   let start_column = col('.')
   normal! ^
@@ -247,39 +205,86 @@ function! s:split_line()
   return [text_before, text_after]
 endfunction
 
+" normal mapping
+" cmap
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+
+" imap
+inoremap <C-a> <C-o>:call <SID>home()<CR>
+inoremap <C-a> ^
+inoremap <C-b> <Left>
+inoremap <C-d> <Del>
+inoremap <C-e> $
+inoremap <C-e> <End>
+inoremap <C-f> <Right>
+inoremap <C-h> <BS>
+inoremap <C-k> <C-r>=<SID>kill()<CR>
+" 残念ながらWSLでは動かない
+inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+inoremap <silent> jj <ESC>
+
+" vmap
+vnoremap 2 i"
+vnoremap 7 i'
+vnoremap 8 i(
+vnoremap < <gv
 vnoremap <Leader><CR> :!sh<CR>
 vnoremap <c-a> <c-a>gv
 vnoremap <c-x> <c-x>gv
-" replace currently selected text with default register
-" without yanking it
-vnoremap p "_dP
-vnoremap 8 i(
-vnoremap 2 i"
-vnoremap 7 i'
-vnoremap @ i`
-onoremap , i<
-vnoremap [ i[
-vnoremap { i{
-vnoremap < <gv
 vnoremap > >gv
+vnoremap @ i`
+vnoremap [ i[
+" replace currently selected text with default register without yanking it
+vnoremap p "_dP
+vnoremap { i{
 
-onoremap 8 i(
+" omap
+onoremap , i<
 onoremap 2 i"
 onoremap 7 i'
+onoremap 8 i(
 onoremap @ i`
-onoremap , i<
 onoremap [ i[
 onoremap { i{
-nnoremap sj <C-w>j
-nnoremap sk <C-w>k
-nnoremap sl <C-w>l
-nnoremap sh <C-w>h
+
+" nmap
+nnoremap * *N
+nnoremap /  /\v
+nnoremap <C-e> 5<C-e>
+nnoremap <C-y> 5<C-y>
+nnoremap <Leader><CR> V:!sh<CR>
+nnoremap <Leader>R :source ~/.vimrc<CR>
+nnoremap <Leader>a ggVG
+nnoremap <Leader>q :<C-u>q!<CR>
+nnoremap <Leader>vim :e ~/.vimrc<CR>
+nnoremap <Leader>y :<C-u>%y<CR>
+nnoremap <f5> :!ctags -R<CR>
+nnoremap <silent> <C-g> :<C-u>Lines<CR>
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+nnoremap <silent> <C-p> :<C-u>Buffers<CR>
+nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
+nnoremap <silent> <Leader>te :<C-u>term<cr>
+nnoremap <silent> <S-tab> :<C-u>bprevious<CR>
+nnoremap <silent> <tab> :<C-u>bnext<CR>
+nnoremap <silent> [B :<C-u>bfirst<CR>
+nnoremap <silent> [b :<C-u>bprevious<CR>
+nnoremap <silent> ]B :<C-u>blast<CR>
+nnoremap <silent> ]b :<C-u>bnext<CR>
+nnoremap H ^
+nnoremap L $
+nnoremap Y y$
+nnoremap [ %
+nnoremap sH <C-w>H
 nnoremap sJ <C-w>J
 nnoremap sK <C-w>K
 nnoremap sL <C-w>L
-nnoremap sH <C-w>H
-nnoremap so <C-w><Bar><C-w>_
 nnoremap sO <C-w>=
+nnoremap sh <C-w>h
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap so <C-w><Bar><C-w>_
 nnoremap ss :<C-u>sp<CR><C-w>w
 nnoremap sv :<C-u>vs<CR><C-w>w
 
