@@ -95,3 +95,6 @@ repo = 'haya14busa/incsearch-migemo.vim'
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
