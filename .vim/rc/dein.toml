@@ -75,9 +75,6 @@ depends = 'fzf'
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
-repo = 'cocopon/iceberg.vim'
-
-[[plugins]]
 repo = 'osyo-manga/vim-anzu'
 
 [[plugins]]
@@ -89,3 +86,12 @@ hook_post_update = '''
   call firenvim#install(0)
 '''
 
+[[plugins]]
+repo = 'haya14busa/incsearch-fuzzy.vim'
+
+[[plugins]]
+repo = 'haya14busa/incsearch-migemo.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'

@@ -118,6 +118,16 @@ map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
+" === plugin incsearch-fuzzy.vim ===
+map z/ <Plug>(incsearch-fuzzyspell-/)
+map z? <Plug>(incsearch-fuzzyspell-?)
+map zg/ <Plug>(incsearch-fuzzyspell-stay)
+
+" === plugin haya14busa/incsearch-migemo.vim ===
+map m/ <Plug>(incsearch-migemo-/)
+map m? <Plug>(incsearch-migemo-?)
+map mg/ <Plug>(incsearch-migemo-stay)
+
 scriptencoding utf-8
 set ambiwidth=double
 set autoread
@@ -137,6 +147,7 @@ set hidden
 set history=200
 set hlsearch
 set incsearch
+set ignorecase
 set laststatus=2
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
