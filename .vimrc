@@ -262,7 +262,6 @@ onoremap { i{
 
 " nmap
 nnoremap * *N
-nnoremap /  /\v
 nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
 nnoremap <Leader><CR> V:!sh<CR>
