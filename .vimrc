@@ -142,6 +142,9 @@ set encoding=utf-8
 set expandtab
 set fenc=utf-8
 set fileformat=unix
+set fileencoding=utf-8
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+set fileformats=unix,dos,mac
 set foldmethod=marker
 set helplang=ja,en
 set hidden
