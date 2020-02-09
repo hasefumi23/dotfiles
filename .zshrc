@@ -52,6 +52,9 @@ SAVEHIST=10000
 HISTFILE=~/.zsh_history
 HISTCONTROL=ignoreboth
 
+function gh () {
+  open $(git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')
+}
 function fhistory () {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g')
 }
@@ -219,14 +222,13 @@ alias -g f='| fzf'
 alias fkill="ps aux | fzf -m | awk '{print $2}' | xargs kill"
 alias frm="ls -a | fzf -m | xargs rm"
 alias g='git'
-#alias gh="open $(git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')"
 alias h='runhaskell'
 alias gr='go run'
 alias gd='go doc -all $(ghq list | fzf) | less'
 alias i='sudo apt install --yes'
 alias m='cat $MEMO_PATH'
 alias md='mkdir -p'
-alias open='explorer.exe'
+alias -g open='explorer.exe'
 alias p='powershell.exe'
 alias rl='readlink -f'
 alias t='tmux'
