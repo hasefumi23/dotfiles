@@ -26,6 +26,7 @@ brew install figlet
 brew install fish
 brew install fzf
 brew install gcc
+brew install github/gh/gh
 brew install ghq
 brew install gibo
 brew install git-extras
