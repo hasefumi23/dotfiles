@@ -13,6 +13,7 @@
   ac = !git add -A . && git commit -av
   ad = add
   amd = commit --amend
+  an = !git add . && git now && git push
   br = branch
   brs = branch -a
   ci = commit -v
