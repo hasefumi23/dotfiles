@@ -68,3 +68,6 @@
 
 [push]
   default = simple
+
+[rebase]
+  autostash = true

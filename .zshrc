@@ -249,6 +249,7 @@ alias vimtmux='vim ~/.tmux.conf'
 alias vimdein='vim ~/.vim/rc/dein.toml'
 alias vimdeinl='vim ~/.vim/rc/lazy_dein.toml'
 alias vimmemo='vim $MEMO_PATH'
+alias vimhosts='vim /etc/hosts'
 alias refish='source ~/.config/fish/config.fish'
 alias rezsh='source ~/.zshrc'
 
