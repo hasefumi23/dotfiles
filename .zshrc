@@ -218,6 +218,7 @@ alias cl='clip.exe'
 alias d='docker'
 alias e='explorer.exe .'
 alias -g f='| fzf'
+alias fdf='git diff --no-index $(fd | fzf) $(fd | fzf)'
 alias fkill="ps aux | fzf -m | awk '{print $2}' | xargs kill"
 alias frm="ls -a | fzf -m | xargs rm"
 alias g='git'
