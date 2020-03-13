@@ -146,14 +146,13 @@ function fpsql () {
   psql -h $psqlLoginHost
 }
 
-function fcd () {
+function fs () {
   local dir=$(fd -t d 2> /dev/null | fzf +m --preview 'exa -alh {}')
   if [ -n "$dir" ]; then
     cd "$dir"
   fi
 }
-zle -N fcd
-bindkey '^jd' fcd
+zle -N fs
 
 function fbr () {
   local branch=$(git branch -a -vv | fzf +m)
