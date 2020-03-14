@@ -205,7 +205,6 @@ alias l='exa -alF --color=auto'
 alias ll='exa -alF --color=auto'
 alias la='exa -a --color=auto'
 
-alias -g f='| fzf'
 alias -g open='explorer.exe'
 alias ap='ansible-playbook'
 alias b='brew'
