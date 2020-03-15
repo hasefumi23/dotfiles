@@ -318,18 +318,19 @@ setopt sharehistory
 
 #complete -o filenames -F _stack stack
 
-### Added by Zplugin's installer
-source '/home/fumi/.zplugin/bin/zplugin.zsh'
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
-### End of Zplugin's installer chunk
+### Added by zinit's installer
+#source '~/.zinit/bin/zinit.zsh'
+source ~/.zinit/bin/zinit.zsh
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of zinit's installer chunk
 
-zplugin light zsh-users/zsh-autosuggestions
-zplugin light rupa/z
-zplugin light mollifier/cd-gitroot
-zplugin light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light rupa/z
+zinit light mollifier/cd-gitroot
+zinit light zdharma/fast-syntax-highlighting
 
-zplugin ice wait'!0' zplugin load zsh-users/zsh-completions
+zinit ice wait'!0' zinit load zsh-users/zsh-completions
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
