@@ -342,3 +342,4 @@ zinit ice wait'!0' zinit load zsh-users/zsh-completions
 # if (which zprof > /dev/null 2>&1) ;then
 #   zprof
 # fi
+### End of Zinit's installer chunk

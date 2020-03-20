@@ -87,6 +87,8 @@ let g:fzf_files_options =
 let g:fzf_buffers_jump = 1
 
 let g:indent_guides_enable_on_vim_startup = 1
+highlight Normal ctermbg=NONE
+
 nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
 nnoremap <silent> <C-p> :<C-u>Buffers<CR>
 nnoremap <silent> <C-g> :<C-u>Lines<CR>
