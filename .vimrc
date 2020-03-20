@@ -286,23 +286,23 @@ nnoremap H ^
 nnoremap L $
 nnoremap Y y$
 nnoremap [ %
-nnoremap sH <C-w>H
-nnoremap sJ <C-w>J
-nnoremap sK <C-w>K
-nnoremap sL <C-w>L
-nnoremap sO <C-w>=
-nnoremap sh <C-w>h
-nnoremap sj <C-w>j
-nnoremap sk <C-w>k
-nnoremap sl <C-w>l
-nnoremap so <C-w><Bar><C-w>_
-nnoremap ss :<C-u>sp<CR><C-w>w
-nnoremap sv :<C-u>vs<CR><C-w>w
+nnoremap zH <C-w>H
+nnoremap zJ <C-w>J
+nnoremap zK <C-w>K
+nnoremap zL <C-w>L
+nnoremap zO <C-w>=
+nnoremap zh <C-w>h
+nnoremap zj <C-w>j
+nnoremap zk <C-w>k
+nnoremap zl <C-w>l
+nnoremap zo <C-w><Bar><C-w>_
+nnoremap zs :<C-u>sp<CR><C-w>w
+nnoremap zv :<C-u>vs<CR><C-w>w
 
-call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
-call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
-call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
-call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+call submode#enter_with('bufmove', 'n', '', 'z>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', 'z<', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', 'z+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', 'z-', '<C-w>-')
 call submode#map('bufmove', 'n', '', '>', '<C-w>>')
 call submode#map('bufmove', 'n', '', '<', '<C-w><')
 call submode#map('bufmove', 'n', '', '+', '<C-w>+')
