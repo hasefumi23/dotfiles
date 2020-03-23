@@ -68,7 +68,7 @@ map <Leader>s <Plug>(easymotion-s2)
 
 " === plugin sneak ===
 nmap f <Plug>Sneak_f
-nmap F <Plug>Sneak_s
+nmap s <Plug>Sneak_s
 
 " === plugin nerdcommenter ===
 nmap <Leader>c <Plug>NERDCommenterToggle
