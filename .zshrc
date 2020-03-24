@@ -75,7 +75,7 @@ function fkill () {
 }
 
 function fgit_files () {
-  local files=$(git ls-files)
+  local files=$(fd --type f)
   echo "$files" | sed 's/ /\n/g' |
     fzf --preview '
       highlight -O ansi {} ||
