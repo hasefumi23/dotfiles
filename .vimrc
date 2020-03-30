@@ -250,8 +250,9 @@ vnoremap > >gv
 vnoremap @ i`
 vnoremap [ i[
 " replace currently selected text with default register without yanking it
-vnoremap p "_dP
+vnoremap p "_dp
 vnoremap { i{
+vmap f <Plug>Sneak_f
 
 " omap
 onoremap , i<

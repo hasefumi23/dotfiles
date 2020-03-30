@@ -75,7 +75,12 @@ function fkill () {
 }
 
 function fgit_files () {
-  local files=$(fd --type f)
+  if [ "$1" = "i" ]; then
+    local files=$(fd --type f --hidden --exclude .git --no-ignore)
+  else
+    local files=$(fd --type f --hidden --exclude .git)
+  fi
+
   echo "$files" | sed 's/ /\n/g' |
     fzf --preview '
       highlight -O ansi {} ||
@@ -117,14 +122,14 @@ function ftree () {
 function vim_from_tree () {
   local selected_file=$(ftree)
   if [ -n "$selected_file" ]; then
-    vim "$selected_file"
+    nvim "$selected_file"
   fi
 }
 
 function vim_from_git_files () {
   local selected_files=$(fgit_files)
   if [ -n "$selected_files" ]; then
-    vim $selected_files
+    nvim $selected_files
   fi
 }
 
@@ -137,6 +142,13 @@ function fvim () {
 }
 zle -N fvim
 bindkey '^jv' fvim
+
+function fvimi () {
+  local selected_files=$(fgit_files i)
+  if [ -n "$selected_files" ]; then
+    nvim $selected_files
+  fi
+}
 
 function fpsql () {
   local psqlLoginHost=$(cat ~/.ssh/config | grep "^Host" | grep -v '*' | awk '{print $2}' | fzf)
