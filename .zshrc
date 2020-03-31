@@ -29,7 +29,7 @@ export LANG=ja_JP.UTF-8
 export LESS="-R"
 export MANPAGER="/bin/zsh -c \"col -b -x | view -c 'set ft=man nolist nonu noma' -\""
 export RUBYOPT=-EUTF-8
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+export FZF_DEFAULT_COMMAND="rg --files --hidden -g '!.git/*'"
 export FZF_DEFAULT_OPTS='
   --color=fg+:#d0d0d0,bg+:#9620b3,hl+:#5fd7ff
   --color=info:#afaf87,prompt:#d7005f,pointer:#ffffff
@@ -202,9 +202,9 @@ function ssh_tmux() {
     display-message  "Started logging to $HOME/.tmuxlog/#W/$(date +%Y-%m/%d/%H%M%S.log)"
 }
 
-if [[ $TERM = screen  ]] || [[ $TERM = screen-256color  ]] ; then
-  alias ssh=ssh_tmux
-fi
+#if [[ $TERM = screen  ]] || [[ $TERM = screen-256color  ]] ; then
+#  alias ssh=ssh_tmux
+#fi
 
 bindkey '^[u' undo
 bindkey '^[r' redo
@@ -231,7 +231,8 @@ alias cl='clip.exe'
 alias d='docker'
 alias e='explorer.exe .'
 alias fdf='git diff --ignore-space-change --no-index $(fd | fzf) $(fd | fzf)'
-alias frm="ls -a | fzf -m | xargs rm"
+alias frm="fzf -m | xargs rm"
+alias frmi="rg --files --hidden -g '!.git/*' --no-ignore-vcs | fzf -m | xargs rm"
 alias g='git'
 alias gd='go doc -all $(ghq list | fzf) | less'
 alias gr='go run'
@@ -241,7 +242,7 @@ alias m='cat $MEMO_PATH'
 alias md='mkdir -p'
 alias p='powershell.exe'
 alias rl='readlink -f'
-alias t='tmux'
+alias t='tmux -u'
 alias tl='tldr'
 alias v='nvim'
 alias vi='nvim'
