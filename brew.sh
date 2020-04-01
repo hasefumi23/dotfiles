@@ -55,6 +55,7 @@ brew install pcre2
 brew install peco
 brew install pkgconfig
 brew install postgresql
+brew install pv
 brew install python
 brew install q
 brew install readline
