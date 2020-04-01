@@ -83,7 +83,7 @@ function fgit_files () {
 
   echo "$files" | sed 's/ /\n/g' |
     fzf --preview '
-      highlight -O ansi {} ||
+      highlight --force=js -O ansi {} ||
       coderay {} ||
       rougify {} ||
       cat {} 2> /dev/null | head -500
@@ -108,7 +108,7 @@ function ftree () {
       if [ -d $target ]
         ls -lh $target
       else
-        highlight -O ansi $target ||
+        highlight --force=js -O ansi $target ||
         coderay $target ||
         cat $target 2> /dev/null | head -100
       fi' | \
@@ -119,25 +119,17 @@ function ftree () {
       xargs echo
 }
 
-function vim_from_tree () {
-  local selected_file=$(ftree)
-  if [ -n "$selected_file" ]; then
-    nvim "$selected_file"
-  fi
-}
-
-function vim_from_git_files () {
-  local selected_files=$(fgit_files)
+function frm () {
+  local selected_files=$(fgit_files i)
   if [ -n "$selected_files" ]; then
-    nvim $selected_files
+    rm $selected_files
   fi
 }
 
 function fvim () {
-  if git rev-parse 2> /dev/null; then
-    vim_from_git_files
-  else
-    vim_from_tree
+  local selected_files=$(fgit_files)
+  if [ -n "$selected_files"  ]; then
+    nvim $selected_files
   fi
 }
 zle -N fvim
@@ -231,8 +223,6 @@ alias cl='clip.exe'
 alias d='docker'
 alias e='explorer.exe .'
 alias fdf='git diff --ignore-space-change --no-index $(fd | fzf) $(fd | fzf)'
-alias frm="fzf -m | xargs rm"
-alias frmi="rg --files --hidden -g '!.git/*' --no-ignore-vcs | fzf -m | xargs rm"
 alias g='git'
 alias gd='go doc -all $(ghq list | fzf) | less'
 alias gr='go run'
@@ -242,7 +232,7 @@ alias m='cat $MEMO_PATH'
 alias md='mkdir -p'
 alias p='powershell.exe'
 alias rl='readlink -f'
-alias t='tmux -u'
+alias t='tmux'
 alias tl='tldr'
 alias v='nvim'
 alias vi='nvim'
