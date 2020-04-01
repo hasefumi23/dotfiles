@@ -98,3 +98,6 @@ build = 'make'
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'

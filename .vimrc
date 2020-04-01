@@ -128,6 +128,9 @@ map m/ <Plug>(incsearch-migemo-/)
 map m? <Plug>(incsearch-migemo-?)
 map mg/ <Plug>(incsearch-migemo-stay)
 
+" === plugin plasticboy/vim-markdown ===
+let g:vim_markdown_folding_disabled = 1
+
 scriptencoding utf-8
 set ambiwidth=double
 set autoread
@@ -189,7 +192,8 @@ endif
 
 "colorscheme pablo
 "colorscheme neuromancer
-colorscheme iceberg
+"colorscheme iceberg
+colorscheme Tomorrow-Night-Blue
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd InsertLeave * set nopaste
 
@@ -250,7 +254,9 @@ vnoremap > >gv
 vnoremap @ i`
 vnoremap [ i[
 " replace currently selected text with default register without yanking it
-vnoremap p "_dp
+vnoremap p "0p
+vnoremap P "0P
+" vnoremap p "_dp
 vnoremap { i{
 vmap f <Plug>Sneak_f
 
