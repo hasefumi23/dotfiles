@@ -82,7 +82,7 @@ function fgit_files () {
   fi
 
   echo "$files" | sed 's/ /\n/g' |
-    fzf --preview '
+    fzf --multi --preview '
       highlight --force=js -O ansi {} ||
       coderay {} ||
       rougify {} ||
