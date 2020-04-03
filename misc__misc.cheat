@@ -39,3 +39,6 @@ getent group wheel
 # [tar] ファイル先頭の数バイトで判別してよしなに解答してくれるコマンド:
 tar -xvf
 
+# [curl] [corona] コロナの状況をグラフィカルに表示してくれる
+curl https://corona-stats.online/Japan
+

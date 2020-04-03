@@ -190,9 +190,8 @@ else
   set ttymouse=xterm2
 endif
 
-"colorscheme pablo
-"colorscheme neuromancer
-"colorscheme iceberg
+" colorscheme pablo
+" colorscheme iceberg
 colorscheme Tomorrow-Night-Blue
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd InsertLeave * set nopaste
