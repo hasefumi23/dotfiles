@@ -81,12 +81,6 @@ repo = 'osyo-manga/vim-anzu'
 repo = 'haya14busa/incsearch.vim'
 
 [[plugins]]
-repo = 'glacambre/firenvim'
-hook_post_update = '''
-  call firenvim#install(0)
-'''
-
-[[plugins]]
 repo = 'haya14busa/incsearch-fuzzy.vim'
 
 [[plugins]]
