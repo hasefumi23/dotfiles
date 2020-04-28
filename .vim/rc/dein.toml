@@ -95,3 +95,6 @@ repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
+
+[[plugins]]
+repo = 'haya14busa/vim-edgemotion'

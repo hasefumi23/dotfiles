@@ -223,6 +223,9 @@ function! s:split_line()
 endfunction
 
 " normal mapping
+map <C-j> <Plug>(edgemotion-j)
+map <C-k> <Plug>(edgemotion-k)
+
 " cmap
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
@@ -307,14 +310,14 @@ nnoremap zo <C-w><Bar><C-w>_
 nnoremap zs :<C-u>sp<CR><C-w>w
 nnoremap zv :<C-u>vs<CR><C-w>w
 
-call submode#enter_with('bufmove', 'n', '', 'z>', '<C-w>>')
-call submode#enter_with('bufmove', 'n', '', 'z<', '<C-w><')
-call submode#enter_with('bufmove', 'n', '', 'z+', '<C-w>+')
-call submode#enter_with('bufmove', 'n', '', 'z-', '<C-w>-')
-call submode#map('bufmove', 'n', '', '>', '<C-w>>')
-call submode#map('bufmove', 'n', '', '<', '<C-w><')
-call submode#map('bufmove', 'n', '', '+', '<C-w>+')
-call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+call submode#enter_with('bufmove', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', '<C-w>+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', '<C-w>-', '<C-w>-')
+call submode#map('bufmove', 'n', '', '>', '5<C-w>>')
+call submode#map('bufmove', 'n', '', '<', '5<C-w><')
+call submode#map('bufmove', 'n', '', '+', '5<C-w>+')
+call submode#map('bufmove', 'n', '', '-', '5<C-w>-')
 
 runtime macros/matchit.vim
 
