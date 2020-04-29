@@ -320,6 +320,7 @@ call submode#map('bufmove', 'n', '', '+', '5<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '5<C-w>-')
 
 runtime macros/matchit.vim
+runtime! ftplugin/man.vim
 
 set hidden
 if has("autocmd")
