@@ -26,7 +26,7 @@ export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 export NO_PROXY=127.0.0.1
 export LANG=ja_JP.UTF-8
 export LESS="-R"
-export MANPAGER="nvim -R +MAN +'set ft=man nolist nonu noma'"
+export MANPAGER="nvim -R +MAN +'set ft=man nolist nonu noma' +'runtime ftplugin/man.vim'"
 export RUBYOPT=-EUTF-8
 export FZF_DEFAULT_COMMAND="rg --files --hidden -g '!.git/*'"
 export FZF_DEFAULT_OPTS='
@@ -233,6 +233,7 @@ alias p='powershell.exe'
 alias rl='readlink -f'
 alias root='cd $(git rev-parse --show-toplevel)'
 alias t='tmux'
+alias to='touch'
 alias tl='tldr'
 alias v='nvim'
 alias vi='nvim'
