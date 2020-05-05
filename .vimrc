@@ -75,23 +75,19 @@ nmap <Leader>c <Plug>NERDCommenterToggle
 vmap <Leader>c <Plug>NERDCommenterToggle
 
 " === plugin fzf.vim ===
-nnoremap <silent> <Leader>p :<C-u>Files<CR>
-nnoremap <silent> <Leader>f :<C-u>GFiles<CR>
-nnoremap <silent> <C-p> :<C-u>Buffers<CR>
 nnoremap <silent> <C-g> :<C-u>Lines<CR>
+nnoremap <silent> <C-p> :<C-u>Buffers<CR>
+nnoremap <silent> <Leader>f :<C-u>GFiles<CR>
+nnoremap <silent> <Leader>p :<C-u>Files<CR>
 
-let g:fzf_layout = { 'down': '~100%'  }
 " :Filesによる表示の変更
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'sharp' } }
 let g:fzf_files_options =
       \ '--tiebreak=end,index --preview "(bat {-1} || rougify {-1} || ccat {-1} || cat {-1}) 2> /dev/null"'
 let g:fzf_buffers_jump = 1
 
 let g:indent_guides_enable_on_vim_startup = 1
 highlight Normal ctermbg=NONE
-
-nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
-nnoremap <silent> <C-p> :<C-u>Buffers<CR>
-nnoremap <silent> <C-g> :<C-u>Lines<CR>
 
 " === plugin quickrun ===
 let g:quickrun_config={'*': {'split': ''}}
