@@ -67,8 +67,10 @@ nmap <Leader>k <Plug>(easymotion-k)
 map <Leader>s <Plug>(easymotion-s2)
 
 " === plugin sneak ===
-nmap f <Plug>Sneak_f
-nmap s <Plug>Sneak_s
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map s <Plug>Sneak_s
+map S <Plug>Sneak_S
 
 " === plugin nerdcommenter ===
 nmap <Leader>c <Plug>NERDCommenterToggle
@@ -228,10 +230,9 @@ cnoremap <C-p> <Up>
 
 " imap
 inoremap <C-a> <C-o>:call <SID>home()<CR>
-inoremap <C-a> ^
+inoremap <C-a> <Home>
 inoremap <C-b> <Left>
 inoremap <C-d> <Del>
-inoremap <C-e> $
 inoremap <C-e> <End>
 inoremap <C-f> <Right>
 inoremap <C-h> <BS>
@@ -256,7 +257,6 @@ vnoremap p "0p
 vnoremap P "0P
 " vnoremap p "_dp
 vnoremap { i{
-vmap f <Plug>Sneak_f
 
 " omap
 onoremap , i<
@@ -316,7 +316,6 @@ call submode#map('bufmove', 'n', '', '+', '5<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '5<C-w>-')
 
 runtime macros/matchit.vim
-runtime! ftplugin/man.vim
 
 set hidden
 if has("autocmd")
