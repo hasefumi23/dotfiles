@@ -61,6 +61,7 @@ brew install python
 brew install q
 brew install readline
 brew install ripgrep
+brew install shellcheck
 brew install socat
 brew install thefuck
 brew install tig
