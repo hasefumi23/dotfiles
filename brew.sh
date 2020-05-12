@@ -31,6 +31,7 @@ brew install ghq
 brew install gibo
 brew install git-extras
 brew install git-now
+brew install git-delta
 brew install guumaster/tap/hostctl
 brew install highlight
 brew install hub

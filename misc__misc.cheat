@@ -65,3 +65,11 @@ script ~/`whoami`_`hostname`_`date "+%Y-%m-%d_%H%M"`.log
 
 # [Linux] スクリプトの現在のディレクトリを取得する
 $(cd $(dirname $0); pwd)
+
+# [Vim] バイナリモードで開く / バッファの中身を文字列 -> バイナリに変換 / バッファの中身をバイナリ -> 文字列に変換
+vim -b file.bin
+:%!xxd
+:%!xxd -r
+
+# [Linux] ポートと使用するソフトウェアのマッピング
+view /etc/services

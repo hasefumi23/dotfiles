@@ -64,6 +64,8 @@ function fcode () {
     code $selected_files
   fi
 }
+zle -N fcode
+bindkey '^o' fcode
 
 function fkill () {
   local pid=$(ps -xf | sed 1d | fzf -m | awk '{print $1}')
@@ -217,6 +219,7 @@ alias ber='bundle exec rspec'
 alias bi='bundle install'
 alias c='code'
 alias cdu='cd-gitroot'
+alias cg='cargo'
 alias ci='code-insiders'
 alias cl='clip.exe'
 alias d='docker'
