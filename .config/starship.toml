@@ -22,3 +22,6 @@ disabled = true
 [package]
 disabled = true
 
+[rust]
+disabled = true
+

@@ -78,9 +78,10 @@ vmap <Leader>c <Plug>NERDCommenterToggle
 
 " === plugin fzf.vim ===
 nnoremap <silent> <C-g> :<C-u>Lines<CR>
-nnoremap <silent> <C-p> :<C-u>Buffers<CR>
-nnoremap <silent> <Leader>f :<C-u>GFiles<CR>
-nnoremap <silent> <Leader>p :<C-u>Files<CR>
+nnoremap <silent> <C-f>l :<C-u>Lines<CR>
+nnoremap <silent> <C-f>b :<C-u>Buffers<CR>
+nnoremap <silent> <C-f>g :<C-u>GFiles<CR>
+nnoremap <silent> <C-f>f :<C-u>Files<CR>
 
 " :Filesによる表示の変更
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'sharp' } }
@@ -278,7 +279,6 @@ nnoremap <Leader>q :<C-u>q!<CR>
 nnoremap <Leader>vim :e ~/.vimrc<CR>
 nnoremap <Leader>y :<C-u>%y<CR>
 nnoremap <f5> :!ctags -R<CR>
-nnoremap <silent> <C-g> :<C-u>Lines<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 nnoremap <silent> <C-p> :<C-u>Buffers<CR>
 nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
@@ -376,3 +376,8 @@ endfunction
 
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
+function! g:PrintRangeFromZero(end)
+  put = range(0, a:end)
+endfunction
+
+noremap <leader>gp :call g:PrintRangeFromZero()<left>

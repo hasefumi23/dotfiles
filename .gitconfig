@@ -46,8 +46,9 @@
   insteadOf = "gist:"
 
 [core]
-  editor = vim
-  pager = less
+  editor = nvim
+  ;pager = less
+  pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
   excludesfile = ~/.gitignore_global
   quotepath = false
 
@@ -74,3 +75,6 @@
 
 [pull]
 	rebase = true
+
+[interactive]
+  diffFilter = delta --color-only
