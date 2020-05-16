@@ -21,9 +21,6 @@ repo = 'andymass/vim-matchup'
 repo = 'machakann/vim-highlightedyank'
 
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
-
-[[plugins]]
 repo = 'kana/vim-textobj-user'
 
 [[plugins]]
@@ -98,3 +95,15 @@ repo = 'plasticboy/vim-markdown'
 
 [[plugins]]
 repo = 'haya14busa/vim-edgemotion'
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+merged = '0'
+
+[[plugins]]
+repo = 'roxma/vim-tmux-clipboard'
+
+#[[plugins]]
+#repo = 'alx741/vim-hindent'
+

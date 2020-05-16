@@ -8,10 +8,13 @@ umask 002
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
+eval "$(anyenv init -)"
+eval "$(goenv init -)"
 
 #export DOCKER_HOST=tcp://localhost:2375
 export EDITOR=vim
 export THOR_MERGE=vim
+export GOROOT=$HOME
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
@@ -37,6 +40,7 @@ export FZF_DEFAULT_OPTS='
 '
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/highlighters
 stty stop undef
+export GOENV_DISABLE_GOPATH=1
 
 # If not running interactively, don't do anything
 case $- in
