@@ -192,7 +192,10 @@ endif
 
 " colorscheme pablo
 " colorscheme iceberg
+" colorscheme cobalt2
 colorscheme Tomorrow-Night-Blue
+" アンダーラインを引く(color terminal)
+ highlight CursorLine cterm=underline ctermfg=white ctermbg=black
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd InsertLeave * set nopaste
 hi NonText    ctermbg=None ctermfg=59 guibg=NONE guifg=None
