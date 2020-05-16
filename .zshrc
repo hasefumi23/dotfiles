@@ -12,7 +12,7 @@ eval "$(anyenv init -)"
 eval "$(goenv init -)"
 
 #export DOCKER_HOST=tcp://localhost:2375
-export EDITOR=vim
+export EDITOR=nvim
 export THOR_MERGE=vim
 export GOROOT=$HOME
 export GOPATH=$HOME/go
