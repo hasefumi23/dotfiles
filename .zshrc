@@ -358,8 +358,11 @@ bindkey '^g' peco-src
 bindkey -M viins '^o' fcode
 bindkey -M viins '^s' fssh
 bindkey -M viins '^v' fvim
-bindkey -M viins '^g'  peco-src
-bindkey -M viins '^R' fzf-history-widget
+bindkey -M viins '^g' peco-src
+bindkey -M viins '^r' fzf-history-widget
+
+bindkey -M vicmd 'g' peco-src
+bindkey -M vicmd 'r' fzf-history-widget
 
 [ -f ~/.local/.zshrc ] && source ~/.local/.zshrc
 # 遅くなったら zprof 使って原因を特定する
