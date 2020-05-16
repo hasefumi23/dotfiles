@@ -63,8 +63,8 @@ edit ++encoding=sjis
 # [Linux] ログ撮るときのコマンド
 script ~/`whoami`_`hostname`_`date "+%Y-%m-%d_%H%M"`.log
 
-# [Linux] スクリプトの現在のディレクトリを取得する
-$(cd $(dirname $0); pwd)
+# [Linux] スクリプトの現在のディレクトリを取得する $(cd $(dirname $0); pwd)
+echo $(cd $(dirname $0); pwd)
 
 # [Vim] バイナリモードで開く / バッファの中身を文字列 -> バイナリに変換 / バッファの中身をバイナリ -> 文字列に変換
 vim -b file.bin
@@ -73,3 +73,7 @@ vim -b file.bin
 
 # [Linux] ポートと使用するソフトウェアのマッピング
 view /etc/services
+
+# [zsh] キーに割り当てられているアクションの一覧
+bindkey -L
+

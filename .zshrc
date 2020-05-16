@@ -51,6 +51,8 @@ SAVEHIST=10000
 HISTFILE=~/.zsh_history
 HISTCONTROL=ignoreboth
 
+fpath=(~/.zsh/completions $fpath)
+
 # Use modern completion system
 autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
@@ -250,6 +252,7 @@ alias vimgit='vim ~/.gitconfig'
 alias vimtmux='vim ~/.tmux.conf'
 alias vimdein='vim ~/.vim/rc/dein.toml'
 alias vimdeinl='vim ~/.vim/rc/lazy_dein.toml'
+alias vimnavi='vim ~/.local/share/navi/cheats/denisidoro__cheats/misc__misc.cheat'
 alias vimmemo='vim $MEMO_PATH'
 alias vimhosts='vim /etc/hosts'
 alias refish='source ~/.config/fish/config.fish'
