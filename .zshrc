@@ -44,12 +44,16 @@ case $- in
       *) return;;
 esac
 
-bindkey -e
+bindkey -v
 
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 HISTCONTROL=ignoreboth
+
+# Use modern completion system
+autoload -Uz compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
 
 function gh () {
   open $(git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')
@@ -64,8 +68,6 @@ function fcode () {
     code $selected_files
   fi
 }
-zle -N fcode
-bindkey '^o' fcode
 
 function fkill () {
   local pid=$(ps -xf | sed 1d | fzf -m | awk '{print $1}')
@@ -99,8 +101,6 @@ function fssh () {
   fi
   ssh $sshLoginHost
 }
-zle -N fssh
-bindkey '^js' fssh
 
 function ftree () {
   tree -N -a --charset=o -f -I '.git|.idea|resolution-cache|target/streams|node_modules' | \
@@ -133,8 +133,6 @@ function fvim () {
     nvim $selected_files
   fi
 }
-zle -N fvim
-bindkey '^jv' fvim
 
 function fvimi () {
   local selected_files=$(fgit_files i)
@@ -158,7 +156,6 @@ function fs () {
     cd "$dir"
   fi
 }
-zle -N fs
 
 function fbr () {
   local branch=$(git branch -a -vv | fzf +m)
@@ -175,8 +172,6 @@ function peco-src () {
   fi
   zle clear-screen
 }
-zle -N peco-src
-bindkey '^g' peco-src
 
 function chpwd() {
   if [ `ls -Al | wc -l` -eq 0 ]; then
@@ -260,10 +255,6 @@ alias vimhosts='vim /etc/hosts'
 alias refish='source ~/.config/fish/config.fish'
 alias rezsh='source ~/.zshrc'
 
-# Use modern completion system
-autoload -Uz compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
-
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
@@ -323,8 +314,47 @@ zinit light zdharma/fast-syntax-highlighting
 zinit ice wait'!0' zinit load zsh-users/zsh-completions
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.local/.zshrc ] && source ~/.local/.zshrc
 
+# ZLE
+bindkey -M viins '\er' history-incremental-pattern-search-forward
+bindkey -M viins '^?'  backward-delete-char
+bindkey -M viins '^A'  beginning-of-line
+bindkey -M viins '^B'  backward-char
+bindkey -M viins '^D'  delete-char-or-list
+bindkey -M viins '^E'  end-of-line
+bindkey -M viins '^F'  forward-char
+bindkey -M viins '^G'  send-break
+bindkey -M viins '^H'  backward-delete-char
+bindkey -M viins '^K'  kill-line
+bindkey -M viins '^N'  down-line-or-history
+bindkey -M viins '^P'  up-line-or-history
+bindkey -M viins '^R'  history-incremental-pattern-search-backward
+bindkey -M viins '^U'  backward-kill-line
+bindkey -M viins '^W'  backward-kill-word
+bindkey -M viins '^Y'  yank
+
+zle -N fcode
+zle -N fssh
+zle -N fvim
+zle -N fs
+zle -N peco-src
+zle -N zle-line-init
+zle -N zle-line-finish
+zle -N zle-keymap-select
+zle -N edit-command-line
+
+bindkey '^o' fcode
+bindkey '^s' fssh
+bindkey '^v' fvim
+bindkey '^g' peco-src
+
+bindkey -M viins '^o' fcode
+bindkey -M viins '^s' fssh
+bindkey -M viins '^v' fvim
+bindkey -M viins '^g'  peco-src
+bindkey -M viins '^R' fzf-history-widget
+
+[ -f ~/.local/.zshrc ] && source ~/.local/.zshrc
 # 遅くなったら zprof 使って原因を特定する
 # if (which zprof > /dev/null 2>&1) ;then
 #   zprof
