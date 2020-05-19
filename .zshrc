@@ -64,6 +64,7 @@ autoload -U +X bashcompinit && bashcompinit
 function gh () {
   open $(git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')
 }
+
 function fhistory () {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g')
 }
@@ -91,7 +92,7 @@ function fgit_files () {
   fi
 
   echo "$files" | sed 's/ /\n/g' |
-    fzf --preview-window=right:75% --multi --preview '
+    fzf --keep-right --preview-window=right:65% --multi --preview '
       highlight --force=js -O ansi {} ||
       coderay {} ||
       rougify {} ||
