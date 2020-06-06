@@ -102,16 +102,6 @@ highlight SignColumn ctermbg=brown
 nmap gp <Plug>GitGutterPrevHunk
 nmap gn <Plug>GitGutterNextHunk
 
-" === plugin anzu ===
-nmap n <Plug>(anzu-n-with-echo)
-nmap N <Plug>(anzu-N-with-echo)
-nmap * <Plug>(anzu-star-with-echo)
-nmap # <Plug>(anzu-sharp-with-echo)
-" clear status
-nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
-" statusline
-set statusline=%{anzu#search_status()}
-
 " === plugin incsearch ===
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
@@ -168,6 +158,7 @@ set relativenumber
 set scrolloff=5
 set shiftround
 set shiftwidth=2
+set shortmess-=S
 set showcmd
 set showmatch
 set showtabline=2
@@ -190,10 +181,16 @@ else
   set ttymouse=xterm2
 endif
 
-" colorscheme pablo
-" colorscheme iceberg
-" colorscheme cobalt2
-colorscheme Tomorrow-Night-Blue
+ 
+if has('win32') || has ('win64')
+  colorscheme iceberg
+else
+  " colorscheme pablo
+  " colorscheme iceberg
+  " colorscheme cobalt2
+  colorscheme Tomorrow-Night-Blue
+endif
+
 " アンダーラインを引く(color terminal)
  highlight CursorLine cterm=underline ctermfg=white ctermbg=black
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -389,7 +386,7 @@ endfunction
 noremap <leader>gp :call g:PrintRangeFromZero()<left>
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.

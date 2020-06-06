@@ -72,9 +72,6 @@ depends = 'fzf'
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
-repo = 'osyo-manga/vim-anzu'
-
-[[plugins]]
 repo = 'haya14busa/incsearch.vim'
 
 [[plugins]]
@@ -103,6 +100,12 @@ merged = '0'
 
 [[plugins]]
 repo = 'roxma/vim-tmux-clipboard'
+
+[[plugins]]
+repo = 'glacambre/firenvim'
+hook_post_update = '''
+  call firenvim#install(0)
+'''
 
 #[[plugins]]
 #repo = 'alx741/vim-hindent'
