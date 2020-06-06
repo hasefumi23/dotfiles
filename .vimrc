@@ -353,7 +353,7 @@ endif
 if system('uname -a | grep -E "(M|m)icrosoft"') != ''
   augroup myYank
     autocmd!
-    autocmd TextYankPost * :call system('clip.exe', @")
+    autocmd TextYankPost * :call system('win32yank.exe', @")
   augroup END
 endif
 
