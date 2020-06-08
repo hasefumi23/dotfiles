@@ -100,6 +100,15 @@ function fgit_files () {
     '
 }
 
+function fzf-pre () {
+  fzf --multi --preview '
+    highlight --force=js -O ansi {} ||
+    coderay {} ||
+    rougify {} ||
+    cat {} 2> /dev/null | head -500
+  '
+}
+
 function fssh () {
   local sshLoginHost=$(cat ~/.ssh/config | grep "^Host" | grep -v '*' | awk '{print $2}' | fzf)
   if [ "$sshLoginHost" = "" ]; then

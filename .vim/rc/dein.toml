@@ -99,14 +99,8 @@ rev = 'release'
 merged = '0'
 
 [[plugins]]
-repo = 'roxma/vim-tmux-clipboard'
-
-[[plugins]]
 repo = 'glacambre/firenvim'
 hook_post_update = '''
   call firenvim#install(0)
 '''
-
-#[[plugins]]
-#repo = 'alx741/vim-hindent'
 
