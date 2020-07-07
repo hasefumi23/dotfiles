@@ -180,16 +180,16 @@ bind main    <Esc>m ?git merge %(commit)
 bind diff    <Esc>m ?git merge %(commit)
 
 # R で rebase
-bind main    R      ?git rebase %(branch)
-bind diff    R      ?git rebase %(branch)
-bind refs    R      ?git rebase %(branch)
+bind main    R      ?git reset %(commit)
+bind diff    R      ?git reset %(commit)
+bind refs    R      ?git reset %(commit)
 bind main    <Esc>r ?git rebase %(commit)
 bind diff    <Esc>r ?git rebase %(commit)
 
 # I で rebase -i
-bind main    I      ?git rebase -i %(branch)
-bind diff    I      ?git rebase -i %(branch)
-bind refs    I      ?git rebase -i %(branch)
+bind main    I      ?git rebase -i %(commit)
+bind diff    I      ?git rebase -i %(commit)
+bind refs    I      ?git rebase -i %(commit)
 bind main    <Esc>i ?git rebase -i %(commit)
 bind diff    <Esc>i ?git rebase -i %(commit)
 

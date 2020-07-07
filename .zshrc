@@ -308,10 +308,10 @@ setopt histignorealldups
 setopt inc_append_history
 setopt list_types no_beep
 setopt prompt_subst
+setopt auto_pushd
 setopt pushd_ignore_dups
 setopt sh_word_split auto_param_keys
 setopt share_history
-setopt sharehistory
 # comment out these are to much sideeffect
 # setopt auto_menu
 # setopt correct rm_star_silent

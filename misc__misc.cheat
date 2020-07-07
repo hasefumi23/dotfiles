@@ -77,3 +77,5 @@ view /etc/services
 # [zsh] キーに割り当てられているアクションの一覧
 bindkey -L
 
+# [Windows] hosts file
+C:\Windows\System32\drivers\etc\hosts
