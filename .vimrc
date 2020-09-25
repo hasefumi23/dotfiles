@@ -84,7 +84,8 @@ nnoremap <silent> <C-f>g :<C-u>GFiles<CR>
 nnoremap <silent> <C-f>f :<C-u>Files<CR>
 
 " :Filesによる表示の変更
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'sharp' } }
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'sharp' } }
+let g:fzf_layout = { 'down': '~100%' }
 let g:fzf_files_options =
       \ '--tiebreak=end,index --preview "(bat {-1} || rougify {-1} || ccat {-1} || cat {-1}) 2> /dev/null"'
 let g:fzf_buffers_jump = 1
@@ -126,6 +127,7 @@ set autoread
 set backspace=indent,eol,start
 set breakindent
 set clipboard+=unnamed
+set cursorcolumn
 set cursorline
 set cmdwinheight=20
 set display=lastline
@@ -192,11 +194,12 @@ else
 endif
 
 " アンダーラインを引く(color terminal)
- highlight CursorLine cterm=underline ctermfg=white ctermbg=black
+highlight CursorColumn ctermbg=black
+highlight CursorLine ctermbg=black
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd InsertLeave * set nopaste
-hi NonText    ctermbg=None ctermfg=59 guibg=NONE guifg=None
-hi SpecialKey ctermbg=None ctermfg=59 guibg=NONE guifg=None
+" hi NonText    ctermbg=None ctermfg=59 guibg=NONE guifg=None
+" hi SpecialKey ctermbg=None ctermfg=59 guibg=NONE guifg=None
 
 function! s:home()
   let start_column = col('.')
@@ -350,12 +353,12 @@ if has('persistent_undo')
   set undofile
 endif
 
-if system('uname -a | grep -E "(M|m)icrosoft"') != ''
-  augroup myYank
-    autocmd!
-    autocmd TextYankPost * :call system('win32yank.exe -i', @")
-  augroup END
-endif
+" if system('uname -a | grep -E "(M|m)icrosoft"') != ''
+"   augroup myYank
+"     autocmd!
+"     autocmd TextYankPost * :call system('win32yank.exe -i', @")
+"   augroup END
+" endif
 
 function! WrapForTmux(s)
   if !exists('$TMUX')
@@ -523,3 +526,7 @@ nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Show signature help on placeholder jump
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+" Explorer
+nmap <space>e :CocCommand explorer<CR>
+nmap <space>f :CocCommand explorer --preset floating<CR>
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
