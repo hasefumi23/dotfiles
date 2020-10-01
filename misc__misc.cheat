@@ -79,3 +79,15 @@ bindkey -L
 
 # [Windows] hosts file
 C:\Windows\System32\drivers\etc\hosts
+
+# [Vim] カレントファイルのパスをクリップボードにヤンクする
+let @* = expand("%")
+
+# [tmux] セッションを共有して作業する
+# Aさん側
+$ tmux -S /tmp/tmux_shared_socket # 共有するためのソケットを指定
+# Bさん側
+$ tmux -S /tmp/tmux_shared_socket attach
+
+# [PG] 接続されているコネクションを調査するためのコマンド
+SELECT pid, query_start, substr(query, 0, 50) FROM pg_stat_activity WHERE state='active' ORDER BY query_start;
