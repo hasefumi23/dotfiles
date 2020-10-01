@@ -7,17 +7,12 @@ umask 002
 
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval "$(starship init zsh)"
-eval "$(direnv hook zsh)"
-eval "$(anyenv init -)"
-eval "$(goenv init -)"
 
 #export DOCKER_HOST=tcp://localhost:2375
 export EDITOR=nvim
 export THOR_MERGE=vim
-export GOROOT=$HOME
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-export GO111MODULE=on
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 export PATH=$PATH:$HOME/.cargo/bin
@@ -40,7 +35,6 @@ export FZF_DEFAULT_OPTS='
 '
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/highlighters
 stty stop undef
-export GOENV_DISABLE_GOPATH=1
 
 # If not running interactively, don't do anything
 case $- in
@@ -60,6 +54,10 @@ fpath=(~/.zsh/completions $fpath)
 # Use modern completion system
 autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
+
+function gi() {
+  curl -sLw n https://www.toptal.com/developers/gitignore/api/$@
+}
 
 function gh () {
   open $(git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')
@@ -222,7 +220,7 @@ alias l='exa -alF --color=auto'
 alias ll='exa -alF --color=auto'
 alias la='exa -a --color=auto'
 
-alias -g open='explorer.exe'
+alias -g open="powershell.exe /c start"
 alias ap='ansible-playbook'
 alias b='brew'
 alias be='bundle exec'
@@ -232,7 +230,7 @@ alias c='code'
 alias cdu='cd-gitroot'
 alias cg='cargo'
 alias ci='code-insiders'
-alias cl='clip.exe'
+alias cl='win32yank.exe -i'
 alias d='docker'
 alias dotp="(cd /mnt/c/.ghq/github.com/hasefumi23/dotfiles && git pull && cd -)"
 alias e='explorer.exe .'
@@ -244,6 +242,7 @@ alias h='runhaskell'
 alias i='sudo apt update && sudo apt install --yes'
 alias m='cat $MEMO_PATH'
 alias md='mkdir -p'
+alias mux='tmuxinator'
 alias p='powershell.exe'
 alias rl='readlink -f'
 alias root='cd $(git rev-parse --show-toplevel)'
@@ -255,6 +254,7 @@ alias vi='nvim'
 alias vim='nvim'
 alias vimc='vim --clean'
 alias vimr='vim -R -'
+alias view='vim -R'
 
 # edit
 alias vimfish='vim ~/.config/fish/config.fish'
