@@ -247,6 +247,7 @@ alias p='powershell.exe'
 alias rl='readlink -f'
 alias root='cd $(git rev-parse --show-toplevel)'
 alias t='tmux'
+alias tigs="tig status"
 alias to='touch'
 alias tl='tldr'
 alias v='nvim'
