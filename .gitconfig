@@ -46,9 +46,8 @@
   insteadOf = "gist:"
 
 [core]
-  editor = nvim
-  ;pager = less
-  pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
+  editor = "nvim"
+  pager = delta
   excludesfile = ~/.gitignore_global
   quotepath = false
 
@@ -62,11 +61,6 @@
 [fetch]
   prune = true
 
-[pager]
-  log = diff-highlight | less
-  show = diff-highlight | less
-  diff = diff-highlight | less
-
 [push]
   default = simple
 
@@ -78,3 +72,9 @@
 
 [interactive]
   diffFilter = delta --color-only
+
+[delta]
+  side-by-side = true
+  line-numbers-left-format = ""
+  line-numbers-right-format = "│ "
+  syntax-theme = Nord
