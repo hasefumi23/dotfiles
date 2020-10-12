@@ -10,7 +10,7 @@ eval "$(starship init zsh)"
 
 #export DOCKER_HOST=tcp://localhost:2375
 export EDITOR=nvim
-export THOR_MERGE=vim
+export THOR_MERGE=nvim
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
@@ -19,6 +19,7 @@ export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:"/mnt/c/Program Files/Oracle/VirtualBox"
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:/opt/ghc/bin/
+export PATH=$PATH:/usr/local/go/bin
 export VAGRANT_PREFER_SYSTEM_BIN=0
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 export NO_PROXY=127.0.0.1
@@ -26,7 +27,7 @@ export LANG=ja_JP.UTF-8
 export LESS="-R"
 export MANPAGER="nvim -R +MAN +'set ft=man nolist nonu noma' +'runtime ftplugin/man.vim'"
 export RUBYOPT=-EUTF-8
-export FZF_DEFAULT_COMMAND="rg --files --hidden -g '!.git/*'"
+export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/*'"
 export FZF_DEFAULT_OPTS='
   --color=fg+:#d0d0d0,bg+:#9620b3,hl+:#5fd7ff
   --color=info:#afaf87,prompt:#d7005f,pointer:#ffffff
@@ -90,21 +91,8 @@ function fgit_files () {
   fi
 
   echo "$files" | sed 's/ /\n/g' |
-    fzf --keep-right --preview-window=right:65% --multi --preview '
-      highlight --force=js -O ansi {} ||
-      coderay {} ||
-      rougify {} ||
-      cat {} 2> /dev/null | head -500
-    '
-}
-
-function fzf-pre () {
-  fzf --multi --preview '
-    highlight --force=js -O ansi {} ||
-    coderay {} ||
-    rougify {} ||
-    cat {} 2> /dev/null | head -500
-  '
+    fzf --keep-right --preview-window=right:65% --multi \
+    --preview 'bat  --color=always --line-range :100 {} '
 }
 
 function fssh () {
@@ -381,3 +369,4 @@ bindkey -M vicmd 'r' fzf-history-widget
 #   zprof
 # fi
 ### End of Zinit's installer chunk
+
