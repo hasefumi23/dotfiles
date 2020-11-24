@@ -192,6 +192,14 @@ function ssh_tmux() {
     display-message  "Started logging to $HOME/.tmuxlog/#W/$(date +%Y-%m/%d/%H%M%S.log)"
 }
 
+function mdd() {
+  if [ -z ${1} ]; then
+    exit 1
+  fi
+
+  mkdir "$(date +%Y-%m-%d)_${1}"
+}
+
 #if [[ $TERM = screen  ]] || [[ $TERM = screen-256color  ]] ; then
 #  alias ssh=ssh_tmux
 #fi

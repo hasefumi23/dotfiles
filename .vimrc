@@ -312,6 +312,9 @@ nnoremap zo <C-w><Bar><C-w>_
 nnoremap zs :<C-u>sp<CR><C-w>w
 nnoremap zv :<C-u>vs<CR><C-w>w
 
+command! Sps :s/\v\s+/\r/g
+command! Spc :s/\v\s*,\s*/\r/g
+
 call submode#enter_with('bufmove', 'n', '', '<C-w>>', '<C-w>>')
 call submode#enter_with('bufmove', 'n', '', '<C-w><', '<C-w><')
 call submode#enter_with('bufmove', 'n', '', '<C-w>+', '<C-w>+')
