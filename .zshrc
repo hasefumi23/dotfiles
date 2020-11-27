@@ -378,3 +378,12 @@ bindkey -M vicmd 'r' fzf-history-widget
 # fi
 ### End of Zinit's installer chunk
 
+my_globalias() {
+   zle _expand_alias
+   zle expand-word
+   zle accept-line
+}
+zle -N my_globalias
+
+bindkey -M emacs "^m" my_globalias
+bindkey -M viins "^m" my_globalias
