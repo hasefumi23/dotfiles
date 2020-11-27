@@ -7,6 +7,8 @@ umask 002
 
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
+eval "$(gh completion -s zsh)"
 
 #export DOCKER_HOST=tcp://localhost:2375
 export EDITOR=nvim
@@ -62,8 +64,19 @@ function gi() {
   curl -sLw n https://www.toptal.com/developers/gitignore/api/$@
 }
 
-function gh () {
+function gh-open () {
   open $(git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')
+}
+
+# githubにリポジトリを作り、ghqで取得、vscodeでひらく
+function ghrepo () {
+  gh repo create ${argv}
+  ghq get git@github.com:hasefumi23/${argv[1]}.git
+  cd $(ghq root)/github.com/hasefumi23/${argv[1]}
+}
+
+function gi() {
+  curl -sLw n https://www.toptal.com/developers/gitignore/api/$@
 }
 
 function fhistory () {
