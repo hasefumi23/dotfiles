@@ -1,0 +1,1 @@
+/home/fumi/.ghq/github.com/hasefumi23/dotfiles/.vimrc

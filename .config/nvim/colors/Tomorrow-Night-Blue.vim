@@ -1,0 +1,1 @@
+/home/fumi/.ghq/github.com/hasefumi23/dotfiles/.vim/colors/Tomorrow-Night-Blue.vim
