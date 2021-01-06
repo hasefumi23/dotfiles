@@ -35,6 +35,7 @@ export FZF_DEFAULT_OPTS='
   --height 100% --reverse --border
 '
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/highlighters
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 stty stop undef
 
 # If not running interactively, don't do anything
@@ -229,7 +230,7 @@ alias ci='code-insiders'
 alias cl='win32yank.exe -i'
 alias d='docker'
 alias dotp="(cd /mnt/c/.ghq/github.com/hasefumi23/dotfiles && git pull && cd -)"
-alias e='explorer.exe .'
+alias e='explorer.exe'
 alias fdf='git diff --ignore-space-change --no-index $(fd | fgit_files) $(fd | fgit_files)'
 alias g='git'
 alias gd='go doc -all $(ghq list | fzf) | less'
