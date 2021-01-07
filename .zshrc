@@ -27,11 +27,12 @@ export LANG=ja_JP.UTF-8
 export LESS="-R"
 export MANPAGER="nvim -R +MAN +'set ft=man nolist nonu noma' +'runtime ftplugin/man.vim'"
 export RUBYOPT=-EUTF-8
+export FZF_TMUX_OPTIONS="-p 80%"
 export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/*'"
 export FZF_DEFAULT_OPTS='
-  --color=fg+:#d0d0d0,bg+:#9620b3,hl+:#5fd7ff
-  --color=info:#afaf87,prompt:#d7005f,pointer:#ffffff
-  --color=marker:#87ff00,spinner:#ae88d4,header:#87afaf
+  --color=dark
+  --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
+  --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
   --height 100% --reverse --border
 '
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/highlighters
