@@ -39,6 +39,9 @@ export FZF_DEFAULT_OPTS='
 '
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/highlighters
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
+export CPLUS_INCLUDE_PATH="${CPLUS_INCLUDE_PATH}:~/.ghq/github.com/atcoder/ac-library"
+export CPATH=${CPATH}:~/.ghq/github.com/atcoder/ac-library
+
 stty stop undef
 
 # If not running interactively, don't do anything
