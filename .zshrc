@@ -177,11 +177,28 @@ function fs () {
   fi
 }
 
-function fbr () {
-  local branch=$(git branch -a -vv | fzf +m)
+function fbr() {
+  local branches branch
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+function fbre () {
+  local branch=$(git branch -a -vv | fzf-tmux -- +m)
   if [ -n "$branch" ]; then
     git checkout $(echo "$branch" | sed "s/remotes\/origin\///" | awk '{print $1}' | sed "s/.* //")
   fi
+}
+
+function zf() {
+    local res=$(z | sort -rn | cut -c 12- | fzf)
+    if [ -n "$res" ]; then
+        BUFFER+="cd $res"
+        zle accept-line
+    else
+        return 1
+    fi
 }
 
 function peco-src () {
