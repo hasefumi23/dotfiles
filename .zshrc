@@ -20,7 +20,7 @@ export JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:"/mnt/c/Program Files/Oracle/VirtualBox"
 export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:/opt/ghc/bin/
+# export PATH=$PATH:/opt/ghc/bin/
 export PATH=$PATH:/usr/local/go/bin
 export VAGRANT_PREFER_SYSTEM_BIN=0
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
@@ -83,7 +83,7 @@ function gi() {
 }
 
 function fhistory () {
-  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g')
+  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf-tmux -- +s --tac | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g')
 }
 
 function fcode () {
@@ -94,7 +94,7 @@ function fcode () {
 }
 
 function fkill () {
-  local pid=$(ps -xf | sed 1d | fzf -m | awk '{print $1}')
+  local pid=$(ps -xf | sed 1d | fzf-tmux -- -m | awk '{print $1}')
 
   if [ "x$pid" != "x" ]; then
     echo $pid | xargs kill
@@ -114,7 +114,7 @@ function fgit_files () {
 }
 
 function fssh () {
-  local sshLoginHost=$(cat ~/.ssh/config | grep "^Host" | grep -v '*' | awk '{print $2}' | fzf)
+  local sshLoginHost=$(cat ~/.ssh/config | grep "^Host" | grep -v '*' | awk '{print $2}' | fzf-tmux)
   if [ "$sshLoginHost" = "" ]; then
     # ex) Ctrl-C.
     return 1
@@ -124,7 +124,7 @@ function fssh () {
 
 function ftree () {
   tree -N -a --charset=o -f -I '.git|.idea|resolution-cache|target/streams|node_modules' | \
-    fzf --preview '
+    fzf-tmux -- --preview '
       local target=$(echo {} | grep -o "\./.*\$" | xargs)
       if [ -d $target ]
         ls -lh $target
@@ -162,7 +162,7 @@ function fvimi () {
 }
 
 function fpsql () {
-  local psqlLoginHost=$(cat ~/.ssh/config | grep "^Host" | grep -v '*' | awk '{print $2}' | fzf)
+  local psqlLoginHost=$(cat ~/.ssh/config | grep "^Host" | grep -v '*' | awk '{print $2}' | fzf-tmux)
   if [ "$psqlLoginHost" = "" ]; then
     # ex) Ctrl-C.
     return 1
@@ -171,7 +171,7 @@ function fpsql () {
 }
 
 function fs () {
-  local dir=$(fd -t d 2> /dev/null | fzf +m --preview 'exa -alh {}')
+  local dir=$(fd -t d 2> /dev/null | fzf-tmux -- +m --preview 'exa -alh {}')
   if [ -n "$dir" ]; then
     cd "$dir"
   fi
@@ -202,7 +202,7 @@ function zf() {
 }
 
 function peco-src () {
-  local selected_dir=$(ghq list -p | fzf --query "$LBUFFER")
+  local selected_dir=$(ghq list -p | fzf-tmux -- --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
     BUFFER="cd ${selected_dir}"
     zle accept-line
@@ -263,9 +263,11 @@ alias cg='cargo'
 alias ci='code-insiders'
 alias cl='win32yank.exe -i'
 alias d='docker'
+alias dc='docker-compose'
 alias dotp="(cd /mnt/c/.ghq/github.com/hasefumi23/dotfiles && git pull && cd -)"
 alias e='explorer.exe'
 alias fdf='git diff --ignore-space-change --no-index $(fd | fgit_files) $(fd | fgit_files)'
+alias -g fzf-tmux='fzf-tmux -p 80%'
 alias g='git'
 alias gd='go doc -all $(ghq list | fzf) | less'
 alias gr='go run'
