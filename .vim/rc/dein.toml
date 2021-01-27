@@ -42,6 +42,9 @@ repo = 'kana/vim-operator-replace'
 repo = 'kana/vim-operator-user'
 
 [[plugins]]
+repo = 'kana/vim-textobj-entire'
+
+[[plugins]]
 repo = 'terryma/vim-expand-region'
 
 [[plugins]]
