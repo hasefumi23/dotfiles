@@ -94,3 +94,7 @@ ls -al /proc/$(pgrep -x auditd)/fd
 
 # [Linux] ファイルサイズの大きいディレクトリを表示する
 du -m --max-depth 2 /* | sort -rn | head -10
+
+# [misc] format as bookmarklet style
+http://userjs.up.seesaa.net/js/bookmarklet.html
+
