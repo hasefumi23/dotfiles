@@ -172,7 +172,7 @@ set title
 set ttyfast
 set virtualedit=block
 set visualbell
-set whichwrap=b,s,[,],<,>
+set whichwrap=b,s,h,l,<,>,[,],~
 set wildmenu
 set wildmode=list:full
 
