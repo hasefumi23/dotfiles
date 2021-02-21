@@ -6,15 +6,13 @@
 umask 002
 
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval "$(starship init zsh)"
-eval "$(direnv hook zsh)"
-eval "$(gh completion -s zsh)"
 
 #export DOCKER_HOST=tcp://localhost:2375
 export EDITOR=nvim
 export THOR_MERGE=nvim
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/usr/local/go/bin
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 export PATH=$PATH:$HOME/.cargo/bin
@@ -22,6 +20,7 @@ export PATH=$PATH:"/mnt/c/Program Files/Oracle/VirtualBox"
 export PATH=$PATH:$HOME/.local/bin
 # export PATH=$PATH:/opt/ghc/bin/
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/.rbenv/bin
 export VAGRANT_PREFER_SYSTEM_BIN=0
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 export NO_PROXY=127.0.0.1
@@ -41,6 +40,10 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/home/linuxbrew/.linuxbrew/share/zsh-synta
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 export CPLUS_INCLUDE_PATH="${CPLUS_INCLUDE_PATH}:~/.ghq/github.com/atcoder/ac-library"
 export CPATH=${CPATH}:~/.ghq/github.com/atcoder/ac-library
+eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
+eval "$(gh completion -s zsh)"
+eval "$(rbenv init -)"
 
 stty stop undef
 
@@ -101,6 +104,11 @@ function fkill () {
   fi
 }
 
+function fzfp() {
+  fzf --preview-window=right:65% --multi \
+  --preview 'bat  --color=always --line-range :100 {} '
+}
+
 function fgit_files () {
   if [ "$1" = "i" ]; then
     local files=$(fd --type f --hidden --exclude .git --no-ignore)
@@ -108,9 +116,7 @@ function fgit_files () {
     local files=$(fd --type f --hidden --exclude .git)
   fi
 
-  echo "$files" | sed 's/ /\n/g' |
-    fzf --keep-right --preview-window=right:65% --multi \
-    --preview 'bat  --color=always --line-range :100 {} '
+  echo "$files" | sed 's/ /\n/g' | fzfp
 }
 
 function fssh () {
@@ -389,10 +395,6 @@ zle -N fssh
 zle -N fvim
 zle -N fs
 zle -N peco-src
-zle -N zle-line-init
-zle -N zle-line-finish
-zle -N zle-keymap-select
-zle -N edit-command-line
 
 bindkey '^o' fcode
 bindkey '^s' fssh
@@ -407,6 +409,31 @@ bindkey -M viins '^r' fzf-history-widget
 
 bindkey -M vicmd 'g' peco-src
 bindkey -M vicmd 'r' fzf-history-widget
+
+autoload -U select-bracketed
+zle -N select-bracketed
+for m in visual viopp; do
+  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+    bindkey -M $m $c select-bracketed
+  done
+done
+
+autoload -U select-quoted
+zle -N select-quoted
+for m in visual viopp; do
+  for c in {a,i}{\',\",\`}; do
+    bindkey -M $m $c select-quoted
+  done
+done
+
+autoload -Uz surround
+zle -N delete-surround surround
+zle -N change-surround surround
+zle -N add-surround surround
+bindkey -a cs change-surround
+bindkey -a ds delete-surround
+bindkey -a ys add-surround
+bindkey -M visual S add-surround
 
 [ -f ~/.local/.zshrc ] && source ~/.local/.zshrc
 # 遅くなったら zprof 使って原因を特定する
