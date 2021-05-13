@@ -8,6 +8,7 @@ umask 002
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 #export DOCKER_HOST=tcp://localhost:2375
+export BAT_THEME='Solarized (light)'
 export EDITOR=nvim
 export THOR_MERGE=nvim
 export GOPATH=$HOME/go
@@ -65,6 +66,9 @@ fpath=(~/.zsh/completions $fpath)
 # Use modern completion system
 autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
 
 function gi() {
   curl -sLw n https://www.toptal.com/developers/gitignore/api/$@
@@ -106,7 +110,7 @@ function fkill () {
 
 function fzfp() {
   fzf --preview-window=right:65% --multi \
-  --preview 'bat  --color=always --line-range :100 {} '
+    --preview 'bat --style=numbers --color=always --line-range=:100 {} '
 }
 
 function fgit_files () {
@@ -208,7 +212,7 @@ function zf() {
 }
 
 function peco-src () {
-  local selected_dir=$(ghq list -p | fzf-tmux -- --query "$LBUFFER")
+  local selected_dir=$(ghq list -p | fzf --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
     BUFFER="cd ${selected_dir}"
     zle accept-line
@@ -275,6 +279,7 @@ alias e='explorer.exe'
 alias fdf='git diff --ignore-space-change --no-index $(fd | fgit_files) $(fd | fgit_files)'
 alias -g fzf-tmux='fzf-tmux -p 80%'
 alias g='git'
+alias gg='g++ -std=c++17 -O2'
 alias gd='go doc -all $(ghq list | fzf) | less'
 alias gr='go run'
 alias h='runhaskell'
