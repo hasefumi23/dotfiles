@@ -283,11 +283,12 @@ nnoremap <Leader>R :source ~/.vimrc<CR>
 nnoremap <Leader>a ggVG
 nnoremap <Leader>q :<C-u>q!<CR>
 nnoremap <Leader>vim :e ~/.vimrc<CR>
-nnoremap <Leader>y :<C-u>%y<CR>
+nnoremap <Leader>y "Ayy
+nnoremap <Leader>p "Ap
 nnoremap <f5> :!ctags -R<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 nnoremap <silent> <C-p> :<C-u>Buffers<CR>
-nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
+" nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
 nnoremap <silent> <Leader>te :<C-u>term<cr>
 nnoremap <silent> <S-tab> :<C-u>bprevious<CR>
 nnoremap <silent> <tab> :<C-u>bnext<CR>
@@ -526,7 +527,7 @@ nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for previous item.
 " nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Show signature help on placeholder jump
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 " Explorer
