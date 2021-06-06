@@ -312,6 +312,9 @@ nnoremap zl <C-w>l
 nnoremap zo <C-w><Bar><C-w>_
 nnoremap zs :<C-u>sp<CR><C-w>w
 nnoremap zv :<C-u>vs<CR><C-w>w
+" delete はレジスタへの登録はしない
+vnoremap d "_d
+nnoremap d "_d
 
 command! Sps :s/\v\s+/\r/g
 command! Spc :s/\v\s*,\s*/\r/g
