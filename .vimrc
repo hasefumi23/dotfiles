@@ -121,6 +121,16 @@ map mg/ <Plug>(incsearch-migemo-stay)
 " === plugin plasticboy/vim-markdown ===
 let g:vim_markdown_folding_disabled = 1
 
+" === plugin reireias/vim-cheatsheet ===
+let g:cheatsheet#cheat_file = '~/.ghq/github.com/hasefumi23/dotfiles/vim_cheat.md'
+command! EditCheat :edit ~/.ghq/github.com/hasefumi23/dotfiles/vim_cheat.md
+let g:cheatsheet#float_window = 1
+" you can change float window size.
+let g:cheatsheet#float_window_width_ratio = 0.6
+let g:cheatsheet#float_window_height_ratio = 0.6
+nnoremap <Leader>? <Cmd>Cheat<CR>
+nnoremap <leader>f. <Cmd>EditCheat<CR>
+
 scriptencoding utf-8
 set ambiwidth=double
 set autoread

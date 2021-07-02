@@ -102,6 +102,12 @@ rev = 'release'
 merged = '0'
 
 [[plugins]]
+repo = 'tversteeg/registers.nvim'
+
+[[plugins]]
+repo = 'reireias/vim-cheatsheet'
+
+[[plugins]]
 repo = 'glacambre/firenvim'
 hook_post_update = '''
   call firenvim#install(0)
