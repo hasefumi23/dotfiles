@@ -113,3 +113,8 @@ hook_post_update = '''
   call firenvim#install(0)
 '''
 
+[[plugins]]
+repo = 'rickhowe/diffchar.vim'
+
+[[plugins]]
+repo = 'mattn/sonictemplate-vim'

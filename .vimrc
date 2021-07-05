@@ -131,6 +131,9 @@ let g:cheatsheet#float_window_height_ratio = 0.6
 nnoremap <Leader>? <Cmd>Cheat<CR>
 nnoremap <leader>f. <Cmd>EditCheat<CR>
 
+" === plugin plasticboy/vim-markdown ===
+let g:sonictemplate_vim_template_dir = ['~/.vim/template']
+
 scriptencoding utf-8
 set ambiwidth=double
 set autoread
