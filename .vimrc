@@ -126,8 +126,8 @@ let g:cheatsheet#cheat_file = '~/.ghq/github.com/hasefumi23/dotfiles/vim_cheat.m
 command! EditCheat :edit ~/.ghq/github.com/hasefumi23/dotfiles/vim_cheat.md
 let g:cheatsheet#float_window = 1
 " you can change float window size.
-let g:cheatsheet#float_window_width_ratio = 0.6
-let g:cheatsheet#float_window_height_ratio = 0.6
+let g:cheatsheet#float_window_width_ratio = 0.8
+let g:cheatsheet#float_window_height_ratio = 0.8
 nnoremap <Leader>? <Cmd>Cheat<CR>
 nnoremap <leader>f. <Cmd>EditCheat<CR>
 
@@ -294,7 +294,6 @@ nnoremap <C-y> 5<C-y>
 nnoremap <Leader><CR> V:!sh<CR>
 nnoremap <Leader>R :source ~/.vimrc<CR>
 nnoremap <Leader>a ggVG
-nnoremap <Leader>q :<C-u>q!<CR>
 nnoremap <Leader>vim :e ~/.vimrc<CR>
 nnoremap <Leader>y "Ayy
 nnoremap <Leader>p "Ap
@@ -408,6 +407,28 @@ endfunction
 
 noremap <leader>gp :call g:PrintRangeFromZero()<left>
 
+" Toggle quickfix
+if exists('g:__QUICKFIX_TOGGLE__')
+    finish
+endif
+let g:__QUICKFIX_TOGGLE__ = 1
+
+function! ToggleQuickfix()
+    let l:nr = winnr('$')
+    cwindow
+    let l:nr2 = winnr('$')
+    if l:nr == l:nr2
+        cclose
+    endif
+endfunction
+nnoremap <script> <silent> <leader>q :call ToggleQuickfix()<CR>
+
+if executable('rg')
+  let &grepprg = 'rg --vimgrep --hidden'
+  set grepformat=%f:%l:%c:%m
+endif
+
+" === coc.vim ===
 " Give more space for displaying messages.
 set cmdheight=1
 
