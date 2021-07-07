@@ -298,16 +298,20 @@ nnoremap <Leader>vim :e ~/.vimrc<CR>
 nnoremap <Leader>y "Ayy
 nnoremap <Leader>p "Ap
 nnoremap <f5> :!ctags -R<CR>
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-nnoremap <silent> <C-p> :<C-u>Buffers<CR>
-" nnoremap <silent> <Leader>p :<C-u>GFiles<CR>
-nnoremap <silent> <Leader>te :<C-u>term<cr>
-nnoremap <silent> <S-tab> :<C-u>bprevious<CR>
-nnoremap <silent> <tab> :<C-u>bnext<CR>
-nnoremap <silent> [B :<C-u>bfirst<CR>
-nnoremap <silent> [b :<C-u>bprevious<CR>
-nnoremap <silent> ]B :<C-u>blast<CR>
-nnoremap <silent> ]b :<C-u>bnext<CR>
+nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
+nnoremap <silent> <C-p> :Buffers<CR>
+" nnoremap <silent> <Leader>p :GFiles<CR>
+nnoremap <silent> <Leader>te :term<cr>
+nnoremap <silent> <S-tab> :bprevious<CR>
+nnoremap <silent> <tab> :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]B :blast<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [C :cfirst<CR>
+nnoremap <silent> [c :cprevious<CR>
+nnoremap <silent> ]C :clast<CR>
+nnoremap <silent> ]c :cnext<CR>
 nnoremap H ^
 nnoremap L $
 nnoremap Y y$
@@ -322,11 +326,12 @@ nnoremap zj <C-w>j
 nnoremap zk <C-w>k
 nnoremap zl <C-w>l
 nnoremap zo <C-w><Bar><C-w>_
-nnoremap zs :<C-u>sp<CR><C-w>w
-nnoremap zv :<C-u>vs<CR><C-w>w
-" delete はレジスタへの登録はしない
-vnoremap d "_d
-nnoremap d "_d
+nnoremap zs :sp<CR><C-w>w
+nnoremap zv :vs<CR><C-w>w
+" cut はレジスタへの登録はしない(若干直感に反するが、実用性を重視する)
+vnoremap x "_x
+nnoremap x "_x
+nnoremap dx "_dd
 
 command! Sps :s/\v\s+/\r/g
 command! Spc :s/\v\s*,\s*/\r/g
