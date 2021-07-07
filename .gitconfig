@@ -1,13 +1,17 @@
 [ghq]
-  root = /mnt/c/.ghq
   root = ~/go/src
+  root = /mnt/c/.ghq
+  root = /mnt/c/Users/hasegawa-f.ES-DOMAIN/.ghq
+  root = ~/.ghq
 
 [ghq "CODECOMMIT-URL"]
   vcs = git
 
 [user]
-  email = hasefumi23@gmail.com
-  name = hasefumi23
+  ;email = hasefumi23@gmail.com
+  ;name = hasefumi23
+  email = hasegawa-f@east-inc.jp
+  name = hasegawa-f
 
 [alias]
   ac = !git add -A . && git commit -av
@@ -66,6 +70,7 @@
 
 [rebase]
   autostash = true
+  autosquash = true
 
 [pull]
 	rebase = true
