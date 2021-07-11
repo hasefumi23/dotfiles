@@ -118,3 +118,6 @@ repo = 'rickhowe/diffchar.vim'
 
 [[plugins]]
 repo = 'mattn/sonictemplate-vim'
+
+[[plugins]]
+repo = 'tpope/vim-unimpaired'
