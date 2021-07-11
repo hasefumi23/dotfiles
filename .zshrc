@@ -55,8 +55,6 @@ case $- in
       *) return;;
 esac
 
-bindkey -v
-
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
@@ -70,10 +68,6 @@ autoload -U +X bashcompinit && bashcompinit
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
-
-function gi() {
-  curl -sLw n https://www.toptal.com/developers/gitignore/api/$@
-}
 
 function gh-open () {
   open $(git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')
@@ -250,10 +244,6 @@ function mdd() {
 #  alias ssh=ssh_tmux
 #fi
 
-bindkey '^[u' undo
-bindkey '^[r' redo
-bindkey '^U' backward-kill-line
-
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -406,6 +396,10 @@ bindkey '^o' fcode
 bindkey '^s' fssh
 bindkey '^v' fvim
 bindkey '^g' peco-src
+bindkey '^]u' undo
+bindkey '^]r' redo
+bindkey '^U' backward-kill-line
+bindkey -v
 
 bindkey -M viins '^o' fcode
 bindkey -M viins '^s' fssh
