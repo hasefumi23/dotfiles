@@ -82,6 +82,7 @@ nnoremap <silent> <C-f>l :<C-u>Lines<CR>
 nnoremap <silent> <C-f>b :<C-u>Buffers<CR>
 nnoremap <silent> <C-f>g :<C-u>GFiles<CR>
 nnoremap <silent> <C-f>f :<C-u>Files<CR>
+nnoremap <silent> <C-f>r :<C-u>Rg<CR>
 
 " :Filesによる表示の変更
 " let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'sharp' } }

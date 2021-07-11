@@ -37,6 +37,7 @@ export FZF_DEFAULT_OPTS='
   --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
   --height 100% --reverse --border
 '
+export FZF_CTRL_T_COMMAND="rg --files --hidden --glob '!.git/*'"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/highlighters
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 export CPLUS_INCLUDE_PATH="${CPLUS_INCLUDE_PATH}:~/.ghq/github.com/atcoder/ac-library"
@@ -181,7 +182,7 @@ function fpsql () {
 }
 
 function fs () {
-  local dir=$(fd -t d 2> /dev/null | fzf-tmux -- +m --preview 'exa -alh {}')
+  local dir=$(fd -t d --hidden --exclude .git 2> /dev/null | fzf-tmux -- +m --preview 'exa -alh {}')
   if [ -n "$dir" ]; then
     cd "$dir"
   fi
