@@ -92,7 +92,6 @@ let g:fzf_files_options =
 let g:fzf_buffers_jump = 1
 
 let g:indent_guides_enable_on_vim_startup = 1
-highlight Normal ctermbg=NONE
 
 " === plugin quickrun ===
 let g:quickrun_config={'*': {'split': ''}}
@@ -135,6 +134,16 @@ nnoremap <leader>f. <Cmd>EditCheat<CR>
 " === plugin plasticboy/vim-markdown ===
 let g:sonictemplate_vim_template_dir = ['~/.vim/template']
 
+" === plugin glacambre/firenvim ===
+let g:firenvim_config = { 
+    \ 'localSettings': {
+        \ '.*': {
+            \ 'priority': 0,
+            \ 'takeover': 'never',
+        \ },
+    \ }
+\ }
+
 scriptencoding utf-8
 set ambiwidth=double
 set autoread
@@ -150,7 +159,7 @@ set expandtab
 set fenc=utf-8
 set fileformat=unix
 set fileencoding=utf-8
-set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+set fileencodings=utf-8,sjis,utf-16,iso-2022-jp,euc-jp
 set fileformats=unix,dos,mac
 set foldmethod=marker
 set helplang=ja,en
@@ -197,19 +206,23 @@ else
   set ttymouse=xterm2
 endif
 
- 
 if has('win32') || has ('win64')
-  colorscheme iceberg
+  " colorscheme iceberg
+  colorscheme nord
 else
   " colorscheme pablo
   " colorscheme iceberg
+  colorscheme nord
   " colorscheme cobalt2
-  colorscheme Tomorrow-Night-Blue
+  " colorscheme Tomorrow-Night-Blue
 endif
 
 " アンダーラインを引く(color terminal)
 highlight CursorColumn ctermbg=black
 highlight CursorLine ctermbg=black
+
+highlight Normal ctermbg=NONE
+highlight Visual cterm=reverse
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd InsertLeave * set nopaste
 " hi NonText    ctermbg=None ctermfg=59 guibg=NONE guifg=None

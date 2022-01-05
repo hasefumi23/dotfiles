@@ -121,3 +121,6 @@ repo = 'mattn/sonictemplate-vim'
 
 [[plugins]]
 repo = 'tpope/vim-unimpaired'
+
+[[plugins]]
+repo = 'arcticicestudio/nord-vim'
