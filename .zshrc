@@ -95,6 +95,13 @@ function fcode () {
   fi
 }
 
+function fopen () {
+  local selected_files=$(fgit_files)
+  if [ -n "$selected_files" ]; then
+    open $selected_files
+  fi
+}
+
 function fkill () {
   local pid=$(ps -xf | sed 1d | fzf-tmux -- -m | awk '{print $1}')
 
@@ -238,6 +245,18 @@ function mdd() {
   fi
 
   mkdir "$(date +%Y-%m-%d)_${1}"
+}
+
+function open() {
+    if [ $# != 1 ]; then
+        explorer.exe .
+    else
+        if [ -e $1 ]; then
+            cmd.exe /c start $(wslpath -w $1) 2> /dev/null
+        else
+            echo "open: $1 : No such file or directory" 
+        fi
+    fi
 }
 
 #if [[ $TERM = screen  ]] || [[ $TERM = screen-256color  ]] ; then
@@ -387,12 +406,13 @@ bindkey -M viins '^W'  backward-kill-word
 bindkey -M viins '^Y'  yank
 
 zle -N fcode
+zle -N fopen
 zle -N fssh
 zle -N fvim
 zle -N fs
 zle -N peco-src
 
-bindkey '^o' fcode
+bindkey '^o' fopen
 bindkey '^s' fssh
 bindkey '^v' fvim
 bindkey '^g' peco-src
@@ -401,7 +421,7 @@ bindkey '^]r' redo
 bindkey '^U' backward-kill-line
 bindkey -v
 
-bindkey -M viins '^o' fcode
+bindkey -M viins '^o' fopen
 bindkey -M viins '^s' fssh
 bindkey -M viins '^v' fvim
 bindkey -M viins '^g' peco-src
