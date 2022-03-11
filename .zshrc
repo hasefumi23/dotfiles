@@ -70,7 +70,7 @@ zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 
 function gh-open () {
-  open $(git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')
+  wslview $(git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')
 }
 
 # githubにリポジトリを作り、ghqで取得、vscodeでひらく
@@ -98,7 +98,7 @@ function fcode () {
 function fopen () {
   local selected_files=$(fgit_files)
   if [ -n "$selected_files" ]; then
-    open $selected_files
+    wslview $selected_files
   fi
 }
 
@@ -108,6 +108,11 @@ function fkill () {
   if [ "x$pid" != "x" ]; then
     echo $pid | xargs kill
   fi
+}
+
+function fgf() {
+  fzf --preview-window=right:65% --multi \
+  --preview 'git diff {} '
 }
 
 function fzfp() {
@@ -126,7 +131,7 @@ function fgit_files () {
 }
 
 function fssh () {
-  local sshLoginHost=$(cat ~/.ssh/config | grep "^Host" | grep -v '*' | awk '{print $2}' | fzf-tmux)
+  local sshLoginHost=$(cat ~/.ssh/config | grep "^Host" | grep -v '*' | awk '{print $2}' | fzf)
   if [ "$sshLoginHost" = "" ]; then
     # ex) Ctrl-C.
     return 1
@@ -197,7 +202,7 @@ function fbr() {
 }
 
 function fbre () {
-  local branch=$(git branch -a -vv | fzf-tmux -- +m)
+  local branch=$(git branch -a -vv | fzf +m)
   if [ -n "$branch" ]; then
     git checkout $(echo "$branch" | sed "s/remotes\/origin\///" | awk '{print $1}' | sed "s/.* //")
   fi
@@ -247,18 +252,6 @@ function mdd() {
   mkdir "$(date +%Y-%m-%d)_${1}"
 }
 
-function open() {
-    if [ $# != 1 ]; then
-        explorer.exe .
-    else
-        if [ -e $1 ]; then
-            cmd.exe /c start $(wslpath -w $1) 2> /dev/null
-        else
-            echo "open: $1 : No such file or directory" 
-        fi
-    fi
-}
-
 #if [[ $TERM = screen  ]] || [[ $TERM = screen-256color  ]] ; then
 #  alias ssh=ssh_tmux
 #fi
@@ -294,9 +287,12 @@ alias gd='go doc -all $(ghq list | fzf) | less'
 alias gr='go run'
 alias h='runhaskell'
 alias i='sudo apt update && sudo apt install --yes'
+alias k='kubectl'
+complete -F __start_kubectl k
 alias m='cat $MEMO_PATH'
 alias md='mkdir -p'
 alias mux='tmuxinator'
+alias o='wslview'
 alias p='powershell.exe'
 alias rl='readlink -f'
 alias root='cd $(git rev-parse --show-toplevel)'
@@ -379,9 +375,10 @@ autoload -Uz _zinit
 ### End of zinit's installer chunk
 
 zinit light zsh-users/zsh-autosuggestions
-zinit light rupa/z
 zinit light mollifier/cd-gitroot
 zinit light zdharma/fast-syntax-highlighting
+zinit light rupa/z
+zinit light changyuheng/fz
 
 zinit ice wait'!0' zinit load zsh-users/zsh-completions
 
