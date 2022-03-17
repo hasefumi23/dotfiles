@@ -412,7 +412,6 @@ zle -N peco-src
 bindkey '^o' fopen
 bindkey '^s' fssh
 bindkey '^v' fvim
-bindkey '^i' fcode
 bindkey '^g' peco-src
 bindkey '^]u' undo
 bindkey '^]r' redo
@@ -422,7 +421,6 @@ bindkey -v
 bindkey -M viins '^o' fopen
 bindkey -M viins '^s' fssh
 bindkey -M viins '^v' fvim
-bindkey -M viins '^i' fcode
 bindkey -M viins '^g' peco-src
 bindkey -M viins '^r' fzf-history-widget
 
