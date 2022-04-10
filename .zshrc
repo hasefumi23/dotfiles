@@ -38,6 +38,10 @@ export FZF_DEFAULT_OPTS='
   --height 100% --reverse --border
 '
 export FZF_CTRL_T_COMMAND="rg --files --hidden --glob '!.git/*'"
+export FZF_CTRL_T_OPTS="
+  --preview-window=right:65% --multi \
+    --preview 'bat --style=numbers --color=always --line-range=:100 {} '
+"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/highlighters
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 export CPLUS_INCLUDE_PATH="${CPLUS_INCLUDE_PATH}:~/.ghq/github.com/atcoder/ac-library"
