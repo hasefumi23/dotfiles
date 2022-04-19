@@ -52,6 +52,12 @@ echo "Link: ${PWD}/.config/fish => ${FISHDIR}"
 rm -Rf ${FISHDIR}
 ln -fs ${PWD}/.config/fish ${HOME}/.config
 
+# neovim config
+ln -fs ${PWD}/.vimrc ~/.config/nvim/init.vim
+
+# starship
+ln -fs ${PWD}/starship.toml ~/.config/starship.toml
+
 # for vim plugin config
 VIMDIR=${HOME}/.vim/rc
 mkdir -p ${BACKUPDIR}/.vim
