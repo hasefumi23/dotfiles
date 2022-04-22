@@ -186,7 +186,7 @@ function fpsql () {
 }
 
 function fs () {
-  local dir=$(fd -t d --hidden --exclude .git 2> /dev/null | fzf-tmux -- +m --preview 'exa -alh {}')
+  local dir=$(fd -t d --hidden --exclude .git 2> /dev/null | fzf +m --preview 'exa -alh {}')
   if [ -n "$dir" ]; then
     cd "$dir"
   fi
@@ -300,6 +300,7 @@ alias m='cat $MEMO_PATH'
 alias md='mkdir -p'
 alias mux='tmuxinator'
 alias o='wslview'
+alias open='wslview'
 alias p='powershell.exe'
 alias rl='readlink -f'
 alias root='cd $(git rev-parse --show-toplevel)'

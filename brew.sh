@@ -55,15 +55,12 @@ brew install patchelf
 brew install pcre2
 brew install peco
 brew install pkgconfig
-brew install postgresql
 brew install pv
-brew install python
 brew install q
 brew install readline
 brew install ripgrep
 brew install shellcheck
 brew install socat
-brew install thefuck
 brew install tig
 brew install tmux
 brew install tree
@@ -77,9 +74,6 @@ brew install xz
 brew install yarn
 brew install zlib
 brew install zsh
-
-brew tap cjbassi/gotop
-brew install gotop
 
 brew cleanup
 

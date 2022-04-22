@@ -3,7 +3,7 @@
 # symlinks
 PWD=`pwd`
 DOTFILES=`ls -a`
-IGNOREFILES=( . .. backup bootstrap.sh brew.sh .config README.md .git .gitignore .vim alacritty.yml profile.json )
+IGNOREFILES=( . .. backup bootstrap.sh brew.sh .config README.md .git .gitignore .vim alacritty.yml profile.json settings.json vim_cheat.md vimium-options.json  )
 
 BACKUPTIME=`date +%F-%H%M%S`
 
