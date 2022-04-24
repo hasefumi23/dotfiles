@@ -29,7 +29,6 @@ export LANG=ja_JP.UTF-8
 export LESS="-R"
 export MANPAGER="nvim -R +MAN +'set ft=man nolist nonu noma' +'runtime ftplugin/man.vim'"
 export RUBYOPT=-EUTF-8
-export FZF_TMUX_OPTIONS="-p 80%"
 export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/*'"
 export FZF_DEFAULT_OPTS='
   --color=dark
@@ -37,19 +36,14 @@ export FZF_DEFAULT_OPTS='
   --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
   --height 100% --reverse --border
 '
-export FZF_CTRL_T_COMMAND="rg --files --hidden --glob '!.git/*'"
-export FZF_CTRL_T_OPTS="
-  --preview-window=right:65% --multi \
-    --preview 'bat --style=numbers --color=always --line-range=:100 {} '
-"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/highlighters
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 export CPLUS_INCLUDE_PATH="${CPLUS_INCLUDE_PATH}:~/.ghq/github.com/atcoder/ac-library"
 export CPATH=${CPATH}:~/.ghq/github.com/atcoder/ac-library
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
-eval "$(gh completion -s zsh)"
-eval "$(rbenv init -)"
+#eval "$(gh completion -s zsh)"
+#eval "$(rbenv init -)"
 
 stty stop undef
 
@@ -256,6 +250,15 @@ function mdd() {
   mkdir "$(date +%Y-%m-%d)_${1}"
 }
 
+function ffiles() {
+  local buf=$(rg --files --hidden --glob '!.git/*' | fzf \
+    --preview-window=right:65% --multi \
+    --preview 'bat --style=numbers --color=always --line-range=:100 {} ')
+
+  # バッファを入れ替える
+  BUFFER=$buf
+}
+
 #if [[ $TERM = screen  ]] || [[ $TERM = screen-256color  ]] ; then
 #  alias ssh=ssh_tmux
 #fi
@@ -412,6 +415,7 @@ zle -N fssh
 zle -N fvim
 zle -N fs
 zle -N peco-src
+zle -N ffiles
 
 bindkey '^o' fopen
 bindkey '^s' fssh
@@ -420,6 +424,7 @@ bindkey '^g' peco-src
 bindkey '^]u' undo
 bindkey '^]r' redo
 bindkey '^U' backward-kill-line
+bindkey '^t' ffiles
 bindkey -v
 
 bindkey -M viins '^o' fopen
@@ -427,6 +432,7 @@ bindkey -M viins '^s' fssh
 bindkey -M viins '^v' fvim
 bindkey -M viins '^g' peco-src
 bindkey -M viins '^r' fzf-history-widget
+bindkey -M viins '^t' ffiles
 
 bindkey -M vicmd 'g' peco-src
 bindkey -M vicmd 'r' fzf-history-widget
