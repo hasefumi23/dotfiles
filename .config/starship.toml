@@ -4,13 +4,6 @@ add_newline = false
 truncation_length = 6
 truncation_symbol = "…"
 
-[line_break]
-disabled = true
-
-[character]
-symbol = "λ"
-#symbol = "⋊>"
-
 [git_status]
 disabled = true
 
@@ -29,3 +22,5 @@ disabled = true
 [rust]
 disabled = true
 
+[aws]
+disabled = true
