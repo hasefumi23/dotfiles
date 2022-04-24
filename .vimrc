@@ -77,7 +77,8 @@ nmap <Leader>c <Plug>NERDCommenterToggle
 vmap <Leader>c <Plug>NERDCommenterToggle
 
 " === plugin fzf.vim ===
-nnoremap <silent> <C-g> :<C-u>Lines<CR>
+nnoremap <silent> <C-g> :<C-u>BLines<CR>
+nnoremap <silent> <C-p> :<C-u>Files .<CR>
 nnoremap <silent> <C-f>l :<C-u>Lines<CR>
 nnoremap <silent> <C-f>b :<C-u>Buffers<CR>
 nnoremap <silent> <C-f>g :<C-u>GFiles<CR>
@@ -85,13 +86,8 @@ nnoremap <silent> <C-f>f :<C-u>Files<CR>
 nnoremap <silent> <C-f>r :<C-u>Rg<CR>
 
 " :Filesによる表示の変更
-" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'sharp' } }
-let g:fzf_layout = { 'down': '~100%' }
-let g:fzf_files_options =
-      \ '--tiebreak=end,index --preview "(bat {-1} || rougify {-1} || ccat {-1} || cat {-1}) 2> /dev/null"'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8, 'highlight': 'Todo', 'border': 'horizontal' } }
 let g:fzf_buffers_jump = 1
-
-let g:indent_guides_enable_on_vim_startup = 1
 
 " === plugin quickrun ===
 let g:quickrun_config={'*': {'split': ''}}
@@ -99,19 +95,18 @@ let g:quickrun_config={'*': {'split': ''}}
 nnoremap <Leader>d :Gdiffsplit<CR>
 set updatetime=200
 let g:gitgutter_override_sign_column_highlight = 0
-highlight SignColumn ctermbg=brown
-nmap gp <Plug>GitGutterPrevHunk
-nmap gn <Plug>GitGutterNextHunk
+nmap gp <Plug>(GitGutterPrevHunk)
+nmap gn <Plug>(GitGutterNextHunk)
 
 " === plugin incsearch ===
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+" map /  <Plug>(incsearch-forward)
+" map ?  <Plug>(incsearch-backward)
+" map g/ <Plug>(incsearch-stay)
 
 " === plugin incsearch-fuzzy.vim ===
-map z/ <Plug>(incsearch-fuzzyspell-/)
-map z? <Plug>(incsearch-fuzzyspell-?)
-map zg/ <Plug>(incsearch-fuzzyspell-stay)
+" map z/ <Plug>(incsearch-fuzzyspell-/)
+" map z? <Plug>(incsearch-fuzzyspell-?)
+" map zg/ <Plug>(incsearch-fuzzyspell-stay)
 
 " === plugin haya14busa/incsearch-migemo.vim ===
 map m/ <Plug>(incsearch-migemo-/)
@@ -199,7 +194,7 @@ set autoread
 set backspace=indent,eol,start
 set breakindent
 set clipboard+=unnamed
-set cursorcolumn
+" set cursorcolumn
 set cursorline
 set cmdwinheight=20
 set display=lastline
@@ -265,10 +260,6 @@ else
   " colorscheme cobalt2
   " colorscheme Tomorrow-Night-Blue
 endif
-
-" アンダーラインを引く(color terminal)
-highlight CursorColumn ctermbg=black
-highlight CursorLine ctermbg=black
 
 highlight Normal ctermbg=NONE
 highlight Visual cterm=reverse
@@ -362,8 +353,6 @@ nnoremap <Leader>y "Ayy
 nnoremap <Leader>p "Ap
 nnoremap <f5> :!ctags -R<CR>
 nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
-nnoremap <silent> <C-p> :Buffers<CR>
-" nnoremap <silent> <Leader>p :GFiles<CR>
 nnoremap <silent> <Leader>te :term<cr>
 nnoremap <silent> <S-tab> :bprevious<CR>
 nnoremap <silent> <tab> :bnext<CR>
