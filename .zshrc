@@ -256,7 +256,7 @@ function ffiles() {
     --preview 'bat --style=numbers --color=always --line-range=:100 {} ')
 
   # バッファを入れ替える
-  BUFFER=$buf
+  BUFFER=${BUFFER}${buf}
 }
 
 #if [[ $TERM = screen  ]] || [[ $TERM = screen-256color  ]] ; then
