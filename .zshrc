@@ -45,7 +45,11 @@ eval "$(direnv hook zsh)"
 #eval "$(gh completion -s zsh)"
 #eval "$(rbenv init -)"
 
-stty stop undef
+# disable <C-s> and <C-q>
+if [[ -t 0 ]]; then
+  stty stop undef
+  stty start undef
+fi
 
 # If not running interactively, don't do anything
 case $- in
@@ -251,17 +255,17 @@ function mdd() {
 }
 
 function ffiles() {
-  local buf=$(rg --files --hidden --glob '!.git/*' | fzf \
+  local buf
+  local item
+  rg --files --hidden --glob '!.git/*' | fzf \
     --preview-window=right:65% --multi \
-    --preview 'bat --style=numbers --color=always --line-range=:100 {} ')
-
+    --preview 'bat --style=numbers --color=always --line-range=:100 {} ' | while read item; do
+    buf="${buf} ${item}"
+  done
   # バッファを入れ替える
-  BUFFER=${BUFFER}${buf}
+  LBUFFER="${LBUFFER}${buf}"
+  zle reset-prompt
 }
-
-#if [[ $TERM = screen  ]] || [[ $TERM = screen-256color  ]] ; then
-#  alias ssh=ssh_tmux
-#fi
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -271,7 +275,7 @@ alias l='exa -alF --color=auto'
 alias ll='exa -alF --color=auto'
 alias la='exa -a --color=auto'
 
-alias -g open="powershell.exe /c start"
+#alias -g open="powershell.exe /c start"
 alias ap='ansible-playbook'
 alias b='brew'
 alias be='bundle exec'
@@ -470,12 +474,3 @@ bindkey -M visual S add-surround
 # fi
 ### End of Zinit's installer chunk
 
-my_globalias() {
-   zle _expand_alias
-   zle expand-word
-   zle accept-line
-}
-zle -N my_globalias
-
-bindkey -M emacs "^m" my_globalias
-bindkey -M viins "^m" my_globalias
