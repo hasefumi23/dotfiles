@@ -86,10 +86,6 @@ function gi() {
   curl -sLw n https://www.toptal.com/developers/gitignore/api/$@
 }
 
-function fhistory () {
-  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf-tmux -- +s --tac | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g')
-}
-
 function fcode () {
   local selected_files=$(fgit_files)
   if [ -n "$selected_files" ]; then
