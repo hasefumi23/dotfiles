@@ -191,7 +191,7 @@ function fpsql () {
 }
 
 function fs () {
-  local dir=$(fd -t d --hidden --exclude .git 2> /dev/null | fzf +m --preview 'exa -alh {}')
+  local dir=$(fd --no-ignore -t d --hidden --exclude .git 2> /dev/null | fzf +m --preview 'exa -alh {}')
   if [ -n "$dir" ]; then
     cd "$dir"
   fi
@@ -258,7 +258,7 @@ function mdd() {
 function ffiles() {
   local buf
   local item
-  rg --files --hidden --glob '!.git/*' | fzf \
+  fd --hidden --exclude .git | fzf \
     --preview-window=right:65% --multi \
     --preview 'bat --style=numbers --color=always --line-range=:100 {} ' | while read item; do
     buf="${buf} ${item}"
