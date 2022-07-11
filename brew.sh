@@ -15,7 +15,6 @@ brew update
 brew upgrade
 
 brew install ag
-brew install anyenv
 brew install autossh
 brew install awscli
 brew install bat
