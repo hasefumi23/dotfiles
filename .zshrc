@@ -40,6 +40,9 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/home/linuxbrew/.linuxbrew/share/zsh-synta
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 export CPLUS_INCLUDE_PATH="${CPLUS_INCLUDE_PATH}:~/.ghq/github.com/atcoder/ac-library"
 export CPATH=${CPATH}:~/.ghq/github.com/atcoder/ac-library
+export DENO_INSTALL="/home/fumi/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 #eval "$(gh completion -s zsh)"
@@ -263,6 +266,10 @@ function ffiles() {
   zle reset-prompt
 }
 
+function me() {
+  echo "$@" >> "${MEMO_PATH}"
+}
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -391,6 +398,7 @@ zinit light changyuheng/fz
 zinit ice wait'!0' zinit load zsh-users/zsh-completions
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.zsh/scripts/pipr_hotkey.zsh ] && source ~/.zsh/scripts/pipr_hotkey.zsh
 
 # ZLE
 bindkey -M viins '\er' history-incremental-pattern-search-forward
