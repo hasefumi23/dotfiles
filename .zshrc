@@ -27,6 +27,7 @@ export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 export NO_PROXY=127.0.0.1
 export LANG=ja_JP.UTF-8
 export LESS="-R"
+export PAGER=less
 export MANPAGER="nvim -R +MAN +'set ft=man nolist nonu noma' +'runtime ftplugin/man.vim'"
 export RUBYOPT=-EUTF-8
 export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/*'"
@@ -91,15 +92,15 @@ function gi() {
 
 function fcode () {
   local selected_files=$(fgit_files)
-  if [ -n "$selected_files" ]; then
-    code $selected_files
+  if [ -n "${selected_files}" ]; then
+    LBUFFER="code ${selected_files}"
   fi
 }
 
 function fopen () {
   local selected_files=$(fgit_files)
-  if [ -n "$selected_files" ]; then
-    wslview $selected_files
+  if [ -n "${selected_files}" ]; then
+    LBUFFER="wslview ${selected_files}"
   fi
 }
 
@@ -160,22 +161,22 @@ function ftree () {
 
 function frm () {
   local selected_files=$(fgit_files i)
-  if [ -n "$selected_files" ]; then
-    rm $selected_files
+  if [ -n "${selected_files}" ]; then
+    LBUFFER="rm ${selected_files}"
   fi
 }
 
 function fvim () {
   local selected_files=$(fgit_files)
-  if [ -n "$selected_files"  ]; then
-    nvim $selected_files
+  if [ -n "${selected_files}"  ]; then
+    LBUFFER="nvim ${selected_files}"
   fi
 }
 
 function fvimi () {
   local selected_files=$(fgit_files i)
-  if [ -n "$selected_files" ]; then
-    nvim $selected_files
+  if [ -n "${selected_files}" ]; then
+    LBUFFER="nvim ${selected_files}"
   fi
 }
 
