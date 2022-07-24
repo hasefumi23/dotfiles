@@ -399,6 +399,7 @@ zinit ice wait'!0' zinit load zsh-users/zsh-completions
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.zsh/scripts/pipr_hotkey.zsh ] && source ~/.zsh/scripts/pipr_hotkey.zsh
+[[ kubectl ]] && source <(kubectl completion zsh)
 
 # ZLE
 bindkey -M viins '\er' history-incremental-pattern-search-forward
@@ -472,9 +473,19 @@ bindkey -a ys add-surround
 bindkey -M visual S add-surround
 
 [ -f ~/.local/.zshrc ] && source ~/.local/.zshrc
+
 # 遅くなったら zprof 使って原因を特定する
 # if (which zprof > /dev/null 2>&1) ;then
 #   zprof
 # fi
 ### End of Zinit's installer chunk
 
+#my_globalias() {
+   #zle _expand_alias
+   #zle expand-word
+   #zle accept-line
+#}
+#zle -N my_globalias
+
+#bindkey -M emacs "^m" my_globalias
+#bindkey -M viins "^m" my_globalias
