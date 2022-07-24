@@ -5,6 +5,6 @@ function tmuxpopup() {
   if [ $(echo ${session} | grep "popup") ]; then
     tmux detach-client
   else
-    tmux popup -d '#{pane_current_path}' -xC -yC -w${width} -h${height} -K -E -R "tmux attach -t popup || tmux new -s popup"
+    tmux popup -d '#{pane_current_path}' -xC -yC -w${width} -h${height} -E "tmux attach -t popup || tmux new -s popup"
   fi
 }
