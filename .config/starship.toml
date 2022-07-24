@@ -2,14 +2,14 @@ add_newline = false
 
 [status]
 symbol = "✖"
-format = '[$symbol$signal_name$maybe_int]($style) '
+format = '[$symbol $signal_name$maybe_int]($style) '
 disabled = false
 
 [gcloud]
 disabled = true
 
 [git_branch]
-truncation_length = 6
+# truncation_length = 10
 truncation_symbol = "…"
 
 [git_status]
