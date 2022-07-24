@@ -98,3 +98,5 @@ du -m --max-depth 2 /* | sort -rn | head -10
 # [misc] format as bookmarklet style
 http://userjs.up.seesaa.net/js/bookmarklet.html
 
+# [Linux] drop cashe
+echo 3 > /proc/sys/vm/drop_caches
