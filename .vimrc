@@ -69,8 +69,8 @@ map <Leader>s <Plug>(easymotion-s2)
 " === plugin sneak ===
 map f <Plug>Sneak_f
 map F <Plug>Sneak_F
-map s <Plug>Sneak_s
-map S <Plug>Sneak_S
+" map s <Plug>Sneak_s
+" map S <Plug>Sneak_S
 
 " === plugin nerdcommenter ===
 nmap <Leader>c <Plug>NERDCommenterToggle
@@ -294,10 +294,6 @@ function! s:split_line()
   return [text_before, text_after]
 endfunction
 
-" normal mapping
-map <C-j> <Plug>(edgemotion-j)
-map <C-k> <Plug>(edgemotion-k)
-
 " cmap
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
@@ -341,7 +337,16 @@ onoremap @ i`
 onoremap [ i[
 onoremap { i{
 
-" nmap
+" normal mapping
+map <C-j> <Plug>(edgemotion-j)
+map <C-k> <Plug>(edgemotion-k)
+nmap S[ v$hS]
+nmap S] veS]
+nmap S8 v$hS)
+nmap S9 veS)
+nmap S2 v$hS"
+nmap S7 v$hS'
+
 nnoremap * *N
 nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
@@ -380,6 +385,7 @@ nnoremap zl <C-w>l
 nnoremap zo <C-w><Bar><C-w>_
 nnoremap zs :sp<CR><C-w>w
 nnoremap zv :vs<CR><C-w>w
+
 " cut はレジスタへの登録はしない(若干直感に反するが、実用性を重視する)
 vnoremap x "_x
 nnoremap x "_x
