@@ -6,7 +6,10 @@ sudo -v
 if [ "$(uname -s)" == "Linux" ]
 then
 
-brew doctor
+# at first, install gcc
+# brew install gcc
+
+# brew doctor
 
 brew update
 brew upgrade
@@ -15,6 +18,7 @@ brew install ag
 brew install anyenv
 brew install autossh
 brew install awscli
+brew install bat
 brew install coreutils
 brew install ctags
 brew install denisidoro/tools/navi
@@ -25,8 +29,7 @@ brew install fd
 brew install figlet
 brew install fish
 brew install fzf
-brew install gcc
-brew install github/gh/gh
+brew install gh
 brew install ghq
 brew install gibo
 brew install git-extras
@@ -57,10 +60,13 @@ brew install peco
 brew install pkgconfig
 brew install pv
 brew install q
+brew install rbenv
 brew install readline
 brew install ripgrep
 brew install shellcheck
 brew install socat
+brew install startship
+brew install thefuck
 brew install tig
 brew install tmux
 brew install tree
