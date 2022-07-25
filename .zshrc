@@ -93,14 +93,15 @@ function gi() {
 function fcode () {
   local selected_files=$(fgit_files)
   if [ -n "${selected_files}" ]; then
-    LBUFFER="code ${selected_files}"
+    LBUFFER="code '${selected_files}'"
   fi
 }
 
 function fopen () {
   local selected_files=$(fgit_files)
   if [ -n "${selected_files}" ]; then
-    LBUFFER="wslview ${selected_files}"
+    # 本当はLBUFFERを使いたいが、wslviewでWindows側でエラーが発生するので、直接起動する
+    wslview ${selected_files}
   fi
 }
 
@@ -162,21 +163,21 @@ function ftree () {
 function frm () {
   local selected_files=$(fgit_files i)
   if [ -n "${selected_files}" ]; then
-    LBUFFER="rm ${selected_files}"
+    LBUFFER="rm '${selected_files}'"
   fi
 }
 
 function fvim () {
   local selected_files=$(fgit_files)
   if [ -n "${selected_files}"  ]; then
-    LBUFFER="nvim ${selected_files}"
+    LBUFFER="nvim '${selected_files}'"
   fi
 }
 
 function fvimi () {
   local selected_files=$(fgit_files i)
   if [ -n "${selected_files}" ]; then
-    LBUFFER="nvim ${selected_files}"
+    LBUFFER="nvim '${selected_files}'"
   fi
 }
 
