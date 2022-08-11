@@ -61,8 +61,8 @@ case $- in
       *) return;;
 esac
 
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 HISTFILE=~/.zsh_history
 HISTCONTROL=ignoreboth
 
@@ -314,6 +314,7 @@ alias p='powershell.exe'
 alias rl='readlink -f'
 alias root='cd $(git rev-parse --show-toplevel)'
 alias t='tmux'
+alias tf='terraform'
 alias tigs="tig status"
 alias to='touch'
 alias tl='tldr'
