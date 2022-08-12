@@ -66,6 +66,9 @@ brew install ripgrep
 brew install shellcheck
 brew install socat
 brew install startship
+brew install tfenv
+brew install tflint
+brew install tfsec
 brew install thefuck
 brew install tig
 brew install tmux
