@@ -67,6 +67,7 @@ brew install ripgrep
 brew install shellcheck
 brew install socat
 brew install startship
+brew install terraformer
 brew install tfenv
 brew install tflint
 brew install tfsec
@@ -74,6 +75,7 @@ brew install thefuck
 brew install tig
 brew install tmux
 brew install tree
+brew install aquasecurity/trivy/trivy
 brew install unixodbc
 brew install unzip
 brew install vim
