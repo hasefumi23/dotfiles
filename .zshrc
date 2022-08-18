@@ -127,7 +127,7 @@ function fgit_files () {
   if [ "$1" = "i" ]; then
     local files=$(fd --type f --hidden --exclude .git --no-ignore)
   else
-    local files=$(fd --type f --hidden --exclude .git)
+    local files=$(fd --type f --hidden --exclude .git --exclude node_modules --no-ignore)
   fi
 
   echo "$files" | sed 's/ /\n/g' | fzfp
@@ -272,6 +272,32 @@ function me() {
   echo "$@" >> "${MEMO_PATH}"
 }
 
+slack() {
+  if [ -z "${SLACK_URL}" ]; then
+    echo env SLACK_URL is neccesarry!
+    return
+  fi
+  if [ -z "${SLACK_MENTION_USER}" ]; then
+    echo env SLACK_MENTION_USER is neccesarry!
+    return
+  fi
+
+  msg="${*}"
+  if [ -z "${msg}" ]; then
+    echo message is neccesarry!
+    return
+  fi
+
+  data=$(cat << EOS
+{
+  "text":"${SLACK_MENTION_USER} ${msg}"
+}
+EOS
+)
+
+  curl -X POST -H 'Content-type: application/json' --data "${data}" "${SLACK_URL}"
+}
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -314,7 +340,8 @@ alias open='wslview'
 alias p='powershell.exe'
 alias rl='readlink -f'
 alias root='cd $(git rev-parse --show-toplevel)'
-alias t='tmux attach || tmux'
+alias t='tmux'
+alias ta='tmux attach || tmux'
 alias tf='terraform'
 alias tigs="tig status"
 alias to='touch'
