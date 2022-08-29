@@ -115,6 +115,8 @@ map mg/ <Plug>(incsearch-migemo-stay)
 
 " === plugin plasticboy/vim-markdown ===
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_auto_insert_bullets = 0
+let g:vim_markdown_new_list_item_indent = 0
 
 " === plugin reireias/vim-cheatsheet ===
 let g:cheatsheet#cheat_file = '~/.ghq/github.com/hasefumi23/dotfiles/vim_cheat.md'
@@ -203,7 +205,7 @@ set expandtab
 set fenc=utf-8
 set fileformat=unix
 set fileencoding=utf-8
-set fileencodings=utf-8,sjis,utf-16,iso-2022-jp,euc-jp
+set fileencodings=utf-8,cp932,sjis,utf-16,iso-2022-jp,euc-jp
 set fileformats=unix,dos,mac
 set foldmethod=marker
 set helplang=ja,en
@@ -215,6 +217,8 @@ set ignorecase
 set laststatus=2
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+set iskeyword-==
+set iskeyword-=-
 set mouse=a
 set nobackup
 set nowritebackup
@@ -327,6 +331,7 @@ vnoremap p "0p
 vnoremap P "0P
 " vnoremap p "_dp
 vnoremap { i{
+vnoremap v $h
 
 " omap
 onoremap , i<
