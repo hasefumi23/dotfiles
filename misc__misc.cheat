@@ -37,7 +37,7 @@ SELECT datname, pg_size_pretty(pg_database_size(datname)) FROM pg_database;
 :%left
 
 # [sudo] sudo権限追加:
-sudo usermod -aG wheel hasegawa-f
+sudo usermod -aG wheel hasefumi23
 
 # [sudo] wheelに所属するユーザ確認:
 getent group wheel
@@ -100,3 +100,47 @@ http://userjs.up.seesaa.net/js/bookmarklet.html
 
 # [Linux] drop cashe
 echo 3 > /proc/sys/vm/drop_caches
+
+# [Windows] ユーザのパスワードなどの情報を確認するコマンド(cmd.exeで実行)
+net user hasefumi23 /domain
+
+# [Zabbix] path of slack alert script
+/usr/lib/zabbix/alertscripts/slack.sh
+
+# [Linux] awk で合計を求める
+ls -la | awk '{ total += $5  }; END { print total  }'
+
+# [Linux] awk で平均を求める
+ls -la | awk '{ total += $5  }; END { print total/NR  }'
+
+# [Java] build command
+// (1) プロジェクトのクリーン
+mvn clean -f pom.xml
+// (2) 環境依存設定ビルド(ローカル指定)
+mvn install -P local -DskipTests=true -f env/pom.xml
+// (3) ビルド (最大スタックサイズ4m指定)
+MAVEN_OPTS="-Xss4m" mvn install -P warpack -P prod -DskipTests=true -f pom.xml
+// (4) 環境依存設定ビルド(テスト指定)
+mvn install -P test -DskipTests=true -f env/pom.xml
+// (5) 環境依存設定ビルド(サポート指定)
+mvn install -P support -DskipTests=true -f env/pom.xml
+// (6) 環境依存設定ビルド(DEV指定)
+mvn install -P dev -DskipTests=true -f env/pom.xml
+
+# [Linux]
+# -N: 行番号表示
+# -R: いい感じに表示
+# -m: 現在位置の%を表示
+less -NRm
+
+# [Jenkins]
+# jobで設定されているbranchを一覧する
+find /var/lib/jenkins/jobs -type f -name config.xml | xargs grep "<branches>" -A 3 | grep "<name>" | grep -v master
+
+# [Linux]
+yum --showduplicates search ${target}
+
+# [Linux]
+# curl ip address
+curl inet-ip.info
+
