@@ -57,8 +57,8 @@ endif
 
 " === plugin ===
 map _ <Plug>(operator-replace)
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
+" vmap v <Plug>(expand_region_expand)
+" vmap <C-v> <Plug>(expand_region_shrink)
 
 " === plugin easymotion ===
 nmap <Leader>w <Plug>(easymotion-bd-w)
@@ -180,7 +180,7 @@ let g:searchx.nohlsearch = {}
 let g:searchx.nohlsearch.jump = v:true
 
 " Marker characters.
-let g:searchx.markers = split('ABCDEFGHIJKLMNOPQRSTUVWXYZ-=@`[{}];+:*,.<>', '.\zs')
+let g:searchx.markers = split('ABCDEFGHIJKLMNOPQRSTUVWXYZ=@`[{}];+:*,.<>', '.\zs')
 
 " Convert search pattern.
 function g:searchx.convert(input) abort
