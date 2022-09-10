@@ -332,6 +332,7 @@ alias h='runhaskell'
 alias i='sudo apt update && sudo apt install --yes'
 alias k='kubectl'
 complete -F __start_kubectl k
+alias lg='lazygit'
 alias m='cat $MEMO_PATH'
 alias md='mkdir -p'
 alias mux='tmuxinator'
