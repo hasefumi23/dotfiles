@@ -11,8 +11,6 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 export BAT_THEME='Solarized (light)'
 export EDITOR=nvim
 export THOR_MERGE=nvim
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
@@ -25,6 +23,8 @@ export PATH=$PATH:$HOME/.rbenv/bin
 export VAGRANT_PREFER_SYSTEM_BIN=0
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 export NO_PROXY=127.0.0.1
+export LANGUAGE=ja_JP.UTF-8
+export LC_ALL=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
 export LESS="-R"
 export PAGER=less
@@ -39,6 +39,7 @@ export FZF_DEFAULT_OPTS='
 '
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/highlighters
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
+export LD_PRELOAD=/lib/x86_64-linux-gnu/libgcc_s.so.1
 export CPLUS_INCLUDE_PATH="${CPLUS_INCLUDE_PATH}:~/.ghq/github.com/atcoder/ac-library"
 export CPATH=${CPATH}:~/.ghq/github.com/atcoder/ac-library
 export DENO_INSTALL="/home/fumi/.deno"
@@ -260,9 +261,10 @@ function ffiles() {
   local item
   fd --hidden --exclude .git | fzf \
     --preview-window=right:65% --multi \
-    --preview 'bat --style=numbers --color=always --line-range=:100 {} ' | while read item; do
-    buf="${buf} ${item}"
-  done
+    --preview 'bat --style=numbers --color=always --line-range=:100 {} 2&>/dev/null || ls {}' | \
+    while read item; do;
+      buf="${buf} ${item}"
+    done
   # バッファを入れ替える
   LBUFFER="${LBUFFER}${buf}"
   zle reset-prompt
@@ -353,6 +355,8 @@ alias vim='nvim'
 alias vimc='vim --clean'
 alias vimr='vim -R -'
 alias view='vim -R'
+alias y='yarn'
+alias w='wrangler'
 
 # edit
 alias vimfish='vim ~/.config/fish/config.fish'
@@ -458,6 +462,7 @@ zle -N fvim
 zle -N fs
 zle -N peco-src
 zle -N ffiles
+zle -N fzf-history-widget
 
 bindkey '^o' fopen
 bindkey '^s' fssh
@@ -521,3 +526,4 @@ bindkey -M visual S add-surround
 
 #bindkey -M emacs "^m" my_globalias
 #bindkey -M viins "^m" my_globalias
+
