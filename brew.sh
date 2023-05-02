@@ -3,180 +3,177 @@
 set -e
 sudo -v
 
-if [ "$(uname -s)" == "Linux" ]
-then
-
 brew update
 brew upgrade
 
-brew install act
-brew install actionlint
-brew install alsa-lib
-brew install anyenv
-brew install autogen
-brew install autossh
-brew install bat
-brew install bdw-gc
-brew install berkeley-db
-brew install berkeley-db@5
-brew install binutils
-brew install bison
-brew install brotli
-brew install bzip2
-brew install c-ares
-brew install ca-certificates
-brew install cairo
-brew install cmake
-brew install cups
-brew install curl
-brew install dbus
-brew install exa
-brew install expat
-brew install fd
-brew install fontconfig
-brew install fpp
-brew install freetype
-brew install fzf
-brew install gcc
-brew install gdbm
-brew install gettext
-brew install ghostscript
-brew install ghq
-brew install giflib
-brew install git-delta
-brew install git-now
-brew install git-secrets
-brew install glib
-brew install glibc
-brew install gmp
-brew install gnu-getopt
-brew install gnutls
-brew install go
-brew install gperf
-brew install graphite2
-brew install grex
-brew install gron
-brew install guile
-brew install harfbuzz
-brew install httpie
-brew install icu4c
-brew install isl
-brew install isl@0.18
-brew install jbig2dec
-brew install jemalloc
-brew install jpeg
-brew install jpeg-turbo
-brew install jq
-brew install krb5
-brew install kubernetes-cli
-brew install lazygit
-brew install libdrm
-brew install libedit
-brew install libelf
-brew install libev
-brew install libevent
-brew install libffi
-brew install libgit2
-brew install libice
-brew install libidn
-brew install libidn2
-brew install libmpc
-brew install libnghttp2
-brew install libnsl
-brew install libpciaccess
-brew install libpng
-brew install libpthread-stubs
-brew install libsm
-brew install libssh2
-brew install libtasn1
-brew install libtermkey
-brew install libtiff
-brew install libtirpc
-brew install libtool
-brew install libunistring
-brew install libuv
-brew install libva
-brew install libvdpau
-brew install libvterm
-brew install libx11
-brew install libxau
-brew install libxcb
-brew install libxcrypt
-brew install libxdamage
-brew install libxdmcp
-brew install libxext
-brew install libxfixes
-brew install libxi
-brew install libxinerama
-brew install libxml2
-brew install libxrandr
-brew install libxrender
-brew install libxshmfence
-brew install libxt
-brew install libxtst
-brew install libxv
-brew install libxvmc
-brew install libxxf86vm
-brew install linux-headers@5.15
-brew install little-cms2
-brew install lm-sensors
-brew install lua
-brew install luajit-openresty
-brew install luarocks
-brew install luv
-brew install lz4
-brew install lzo
-brew install m4
-brew install mmv
-brew install mpdecimal
-brew install mpfr
-brew install msgpack
-brew install navi
-brew install ncurses
-brew install nettle
-brew install nghttp2
-brew install node
-brew install oniguruma
-brew install openjdk
-brew install openjpeg
-brew install openldap
-brew install openssl@1.1
-brew install openssl@3
-brew install p11-kit
-brew install patchelf
-brew install pcre
-brew install pcre2
-brew install perl
-brew install pixman
-brew install pkg-config
-brew install pygments
-brew install python@3.11
-brew install readline
-brew install ripgrep
-brew install rtmpdump
-brew install rust
-brew install sqlite
-brew install starship
-brew install terraformer
-brew install texinfo
-brew install tfenv
-brew install tflint
-brew install tfsec
-brew install tree-sitter
-brew install unbound
-brew install unibilium
-brew install unzip
-brew install util-linux
-brew install wayland
-brew install wayland-protocols
-brew install xinput
-brew install xorgproto
-brew install xz
-brew install yuicompressor
-brew install zip
-brew install zlib
-brew install zstd
+fomulas=(
+  act
+  actionlint
+  alsa-lib
+  anyenv
+  autogen
+  autossh
+  bat
+  bdw-gc
+  berkeley-db
+  berkeley-db@5
+  binutils
+  bison
+  brotli
+  bzip2
+  c-ares
+  ca-certificates
+  cairo
+  cmake
+  cups
+  curl
+  dbus
+  exa
+  expat
+  fd
+  fontconfig
+  fpp
+  freetype
+  gcc
+  gdbm
+  gettext
+  ghostscript
+  ghq
+  giflib
+  git-delta
+  git-now
+  git-secrets
+  glib
+  glibc
+  gmp
+  gnu-getopt
+  gnutls
+  go
+  gperf
+  graphite2
+  grex
+  gron
+  guile
+  harfbuzz
+  httpie
+  icu4c
+  isl
+  isl@0.18
+  jbig2dec
+  jemalloc
+  jpeg
+  jpeg-turbo
+  jq
+  krb5
+  kubernetes-cli
+  lazygit
+  libdrm
+  libedit
+  libelf
+  libev
+  libevent
+  libffi
+  libgit2
+  libice
+  libidn
+  libidn2
+  libmpc
+  libnghttp2
+  libnsl
+  libpciaccess
+  libpng
+  libpthread-stubs
+  libsm
+  libssh2
+  libtasn1
+  libtermkey
+  libtiff
+  libtirpc
+  libtool
+  libunistring
+  libuv
+  libva
+  libvdpau
+  libvterm
+  libx11
+  libxau
+  libxcb
+  libxcrypt
+  libxdamage
+  libxdmcp
+  libxext
+  libxfixes
+  libxi
+  libxinerama
+  libxml2
+  libxrandr
+  libxrender
+  libxshmfence
+  libxt
+  libxtst
+  libxv
+  libxvmc
+  libxxf86vm
+  linux-headers@5.15
+  little-cms2
+  lm-sensors
+  lua
+  luajit-openresty
+  luarocks
+  luv
+  lz4
+  lzo
+  m4
+  mmv
+  mpdecimal
+  mpfr
+  msgpack
+  navi
+  ncurses
+  nettle
+  nghttp2
+  node
+  oniguruma
+  openjdk
+  openjpeg
+  openldap
+  openssl@1.1
+  openssl@3
+  p11-kit
+  patchelf
+  pcre
+  pcre2
+  perl
+  pixman
+  pkg-config
+  pygments
+  python@3.11
+  readline
+  ripgrep
+  rtmpdump
+  rust
+  sqlite
+  terraformer
+  texinfo
+  tfenv
+  tflint
+  tfsec
+  tree-sitter
+  unbound
+  unibilium
+  unzip
+  util-linux
+  wayland
+  wayland-protocols
+  xinput
+  xorgproto
+  xz
+  yuicompressor
+  zip
+  zlib
+  zstd
+)
+
+brew install ${fomulas[@]}
 
 brew cleanup
-
-fi
