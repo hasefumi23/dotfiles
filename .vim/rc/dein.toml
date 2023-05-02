@@ -97,11 +97,6 @@ repo = 'plasticboy/vim-markdown'
 repo = 'haya14busa/vim-edgemotion'
 
 [[plugins]]
-repo = 'neoclide/coc.nvim'
-rev = 'release'
-merged = '0'
-
-[[plugins]]
 repo = 'tversteeg/registers.nvim'
 
 [[plugins]]
