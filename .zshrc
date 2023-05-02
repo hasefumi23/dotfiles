@@ -46,7 +46,11 @@ export DENO_INSTALL="/home/fumi/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 eval "$(starship init zsh)"
-eval "$(direnv hook zsh)"
+which direnv > /dev/null && eval "$(direnv hook zsh)"
+which kubectl > /dev/null && source <(kubectl completion zsh)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.zsh/scripts/pipr_hotkey.zsh ] && source ~/.zsh/scripts/pipr_hotkey.zsh
+
 #eval "$(gh completion -s zsh)"
 #eval "$(rbenv init -)"
 
@@ -419,24 +423,6 @@ setopt share_history
 # setopt correct rm_star_silent
 # setopt sun_keyboard_hack
 
-### Added by zinit's installer
-source ~/.zinit/bin/zinit.zsh
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of zinit's installer chunk
-
-zinit light zsh-users/zsh-autosuggestions
-zinit light mollifier/cd-gitroot
-zinit light zdharma/fast-syntax-highlighting
-zinit light rupa/z
-zinit light changyuheng/fz
-
-zinit ice wait'!0' zinit load zsh-users/zsh-completions
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.zsh/scripts/pipr_hotkey.zsh ] && source ~/.zsh/scripts/pipr_hotkey.zsh
-[[ kubectl ]] && source <(kubectl completion zsh)
-
 # ZLE
 bindkey -M viins '\er' history-incremental-pattern-search-forward
 bindkey -M viins '^?'  backward-delete-char
@@ -515,8 +501,6 @@ bindkey -M visual S add-surround
 # if (which zprof > /dev/null 2>&1) ;then
 #   zprof
 # fi
-### End of Zinit's installer chunk
-
 #my_globalias() {
    #zle _expand_alias
    #zle expand-word
@@ -527,3 +511,20 @@ bindkey -M visual S add-surround
 #bindkey -M emacs "^m" my_globalias
 #bindkey -M viins "^m" my_globalias
 
+### Added by zinit's installer
+[ ! -f "$HOME/.local/share/zinit/zinit.git/zinit.zsh" ] && \
+  # zinitがなかったらインストールする
+  bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+zinit light-mode for zsh-users/zsh-autosuggestions \
+  mollifier/cd-gitroot \
+  zdharma/fast-syntax-highlighting \
+  rupa/z \
+  changyuheng/fz \
+  zsh-users/zsh-completions
+### End of Zinit's installer chunk
