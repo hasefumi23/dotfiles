@@ -7,6 +7,13 @@ umask 002
 
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
+# Use modern completion system
+autoload -Uz compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
 #export DOCKER_HOST=tcp://localhost:2375
 export BAT_THEME='Solarized (light)'
 export EDITOR=nvim
@@ -72,13 +79,6 @@ HISTFILE=~/.zsh_history
 HISTCONTROL=ignoreboth
 
 fpath=(~/.zsh/completions $fpath)
-
-# Use modern completion system
-autoload -Uz compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '^x^e' edit-command-line
 
 function gh-open () {
   wslview $(git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')
