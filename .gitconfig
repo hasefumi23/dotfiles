@@ -1,5 +1,6 @@
 [ghq]
   root = ~/go/src
+  root = /mnt/c/.ghq
   root = ~/.ghq
 
 [ghq "CODECOMMIT-URL"]
@@ -89,3 +90,4 @@
   allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [init]
   templatedir = ~/.git-templates/git-secrets
+  defaultBranch = main
