@@ -98,7 +98,7 @@ function gi() {
 function fcode () {
   local selected_files=$(fgit_files)
   if [ -n "${selected_files}" ]; then
-    LBUFFER="code '${selected_files}'"
+    LBUFFER="code $(echo ${selected_files})"
   fi
 }
 
@@ -168,21 +168,21 @@ function ftree () {
 function frm () {
   local selected_files=$(fgit_files i)
   if [ -n "${selected_files}" ]; then
-    LBUFFER="rm '${selected_files}'"
+    LBUFFER="rm $(echo ${selected_files})"
   fi
 }
 
 function fvim () {
   local selected_files=$(fgit_files)
   if [ -n "${selected_files}"  ]; then
-    LBUFFER="nvim '${selected_files}'"
+    LBUFFER="nvim $(echo ${selected_files})"
   fi
 }
 
 function fvimi () {
   local selected_files=$(fgit_files i)
   if [ -n "${selected_files}" ]; then
-    LBUFFER="nvim '${selected_files}'"
+    LBUFFER="nvim $(echo ${selected_files})"
   fi
 }
 

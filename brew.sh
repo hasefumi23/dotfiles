@@ -38,6 +38,7 @@ fomulas=(
   gdbm
   gettext
   ghostscript
+  gh
   ghq
   giflib
   git-delta
