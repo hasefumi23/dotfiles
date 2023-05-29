@@ -17,7 +17,7 @@ mkdir -p ~/.config/nvim/ && ln -snfv ${PWD}/.vimrc ~/.config/nvim/init.vim
 mkdir -p ~/.vim/rc && ln -snfv ${PWD}/.vim/rc/dein.toml ~/.vim/rc/dein.toml
 ln -snfv ${PWD}/.config/starship.toml ~/.config/starship.toml
 
-if [[ "$(uname -r)" == *microsoft* ]]; then
+if [[ $(cat /etc/os-release | grep -E 'NAME="Ubuntu.*"' -i) ]]; then
   sudo apt update && sudo apt install build-essential procps curl file git -y
 fi
 
@@ -27,19 +27,20 @@ if [[ ! -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
 fi
 
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+# これがないと、github actions上でbrew install実行時にエラーになる
+brew update
 brew install starship zsh fzf neovim
 
 # init zinit plugins
 echo setup zsh
-# ここにインタラクティブな処理が入ので、環境変数CIを見て、CI上だったらスキップする
+# ここにインタラクティブな処理が入るので、環境変数CIを見て、CI上だったらスキップする
 if [[ ${CI} != "true" ]]; then
   zsh -i -c exit
 fi
 
-# init noevim
-echo setup noevim
+# init neovim
+echo setup neovim
 nvim --headless -c 'qall'
 
 echo "run this command to change login shell"
 echo "chsh -s $(which zsh)"
-
