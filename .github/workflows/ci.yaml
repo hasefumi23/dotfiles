@@ -1,0 +1,22 @@
+name: test-dotfiels-setup
+
+on:
+  pull_request:
+    branches: ['*']
+  push:
+    branches:
+      - main
+
+jobs:
+  install-deps:
+    name: test-dotfiles-setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: run bootstrap script
+        run: |
+          ./bootstrap.sh
+          eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+          ./brew.sh
+

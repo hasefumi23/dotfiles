@@ -31,7 +31,10 @@ brew install starship zsh fzf neovim
 
 # init zinit plugins
 echo setup zsh
-zsh -i -c exit
+# ここにインタラクティブな処理が入ので、環境変数CIを見て、CI上だったらスキップする
+if [[ ${CI} != "true" ]]; then
+  zsh -i -c exit
+fi
 
 # init noevim
 echo setup noevim
