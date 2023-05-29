@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - main
+      - master
 
 jobs:
   install-deps:
@@ -19,4 +20,3 @@ jobs:
           ./bootstrap.sh
           eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
           ./brew.sh
-
