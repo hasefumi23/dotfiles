@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 set -e
-sudo -v
 
 brew update
 brew upgrade
@@ -70,7 +69,6 @@ fomulas=(
   lazygit
   libdrm
   libedit
-  libelf
   libev
   libevent
   libffi
@@ -125,7 +123,7 @@ fomulas=(
   lz4
   lzo
   m4
-  mmv
+  itchyny/tap/mmv
   mpdecimal
   mpfr
   msgpack

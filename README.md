@@ -2,7 +2,7 @@
 
 ## Installation
 
-```
+```bash
 # config and minimus packages
 ./bootstrap.sh
 
@@ -23,9 +23,14 @@ Dockerを使って、簡単に試行錯誤できるようにしている。
 docker build -t dotfiles-vm .
 
 # 実行する
-docker run -it --rm --name dotfiles-vm --mount type=bind,source="$(pwd)",target=/var/dotfiles dotfiles-vm
+docker run -it --rm --name dotfiles-vm --mount type=bind,source="$(pwd)",target=/var/dotfiles -e CI=true dotfiles-vm \
+    /bin/bash -c './bootstrap.sh && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) && ./brew.sh'
 ```
 
-## Requirements
+## act
 
-- [Homebrew](http://brew.sh/)
+変な依存関係はないので、actを実行するだけ。
+
+```bash
+act
+```
