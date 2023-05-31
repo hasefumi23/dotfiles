@@ -209,6 +209,10 @@ set backspace=indent,eol,start
 set breakindent
 set clipboard+=unnamed
 " set cursorcolumn
+" set clipboard+=unnamed
+set clipboard&
+set clipboard^=unnamedplus
+" set cursorcolumn
 set cursorline
 set cmdwinheight=20
 set display=lastline
