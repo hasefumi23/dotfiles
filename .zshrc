@@ -73,10 +73,10 @@ case $- in
       *) return;;
 esac
 
-HISTSIZE=100000
-SAVEHIST=100000
-HISTFILE=~/.zsh_history
-HISTCONTROL=ignoreboth
+export HISTSIZE=100000
+export SAVEHIST=100000
+export HISTFILE=~/.zsh_history
+export HISTCONTROL=ignoreboth
 
 fpath=(~/.zsh/completions $fpath)
 

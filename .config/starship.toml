@@ -12,7 +12,7 @@ vimcmd_visual_symbol = '[<](bold yellow)'
 # Disable the package module, hiding it from the prompt completely
 [status]
 symbol = "X"
-format = '[$symbol $signal_name $maybe_int]($style)'
+format = '[$symbol $signal_name$maybe_int]($style)'
 disabled = false
 
 [gcloud]
