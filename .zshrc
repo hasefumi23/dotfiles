@@ -12,7 +12,7 @@ autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey '^x^e' edit-command-line
+bindkey '^j^e' edit-command-line
 
 #export DOCKER_HOST=tcp://localhost:2375
 export BAT_THEME='Solarized (light)'
@@ -52,7 +52,7 @@ export CPATH=${CPATH}:~/.ghq/github.com/atcoder/ac-library
 export DENO_INSTALL="/home/fumi/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
-eval "$(starship init zsh)"
+which starship > /dev/null && eval "$(starship init zsh)"
 which direnv > /dev/null && eval "$(direnv hook zsh)"
 which kubectl > /dev/null && source <(kubectl completion zsh)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -336,8 +336,7 @@ alias gd='go doc -all $(ghq list | fzf) | less'
 alias gr='go run'
 alias h='runhaskell'
 alias i='sudo apt update && sudo apt install --yes'
-alias k='kubectl'
-complete -F __start_kubectl k
+alias k='kubectl' && complete -F __start_kubectl k
 alias lg='lazygit'
 alias m='cat $MEMO_PATH'
 alias md='mkdir -p'
@@ -497,20 +496,6 @@ bindkey -M visual S add-surround
 
 [ -f ~/.local/.zshrc ] && source ~/.local/.zshrc
 
-# 遅くなったら zprof 使って原因を特定する
-# if (which zprof > /dev/null 2>&1) ;then
-#   zprof
-# fi
-#my_globalias() {
-   #zle _expand_alias
-   #zle expand-word
-   #zle accept-line
-#}
-#zle -N my_globalias
-
-#bindkey -M emacs "^m" my_globalias
-#bindkey -M viins "^m" my_globalias
-
 ### Added by zinit's installer
 [ ! -f "$HOME/.local/share/zinit/zinit.git/zinit.zsh" ] && \
   # zinitがなかったらインストールする
@@ -528,3 +513,9 @@ zinit light-mode for zsh-users/zsh-autosuggestions \
   changyuheng/fz \
   zsh-users/zsh-completions
 ### End of Zinit's installer chunk
+
+# 遅くなったら zprof 使って原因を特定する
+# if (which zprof > /dev/null 2>&1) ;then
+#   zprof
+# fi
+

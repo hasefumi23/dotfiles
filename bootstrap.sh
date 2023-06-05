@@ -29,16 +29,17 @@ fi
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 # これがないと、github actions上でbrew install実行時にエラーになる
 brew update
-brew install starship zsh fzf neovim
+brew install zsh fzf neovim
 
-# init zinit plugins
+# fzfのキーバインディングなどのセットアップを実行する
+$(brew --prefix)/opt/fzf/install --all
+
 echo setup zsh
 # ここにインタラクティブな処理が入るので、環境変数CIを見て、CI上だったらスキップする
 if [[ ${CI} != "true" ]]; then
   zsh -i -c exit
 fi
 
-# init neovim
 echo setup neovim
 nvim --headless -c 'qall'
 

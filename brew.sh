@@ -8,169 +8,35 @@ brew upgrade
 fomulas=(
   act
   actionlint
-  alsa-lib
   anyenv
-  autogen
-  autossh
   bat
-  bdw-gc
-  berkeley-db
-  berkeley-db@5
-  binutils
-  bison
-  brotli
-  bzip2
-  c-ares
-  ca-certificates
-  cairo
-  cmake
-  cups
   curl
-  dbus
   exa
-  expat
   fd
-  fontconfig
-  fpp
-  freetype
-  gcc
-  gdbm
-  gettext
-  ghostscript
+  fzf
   gh
   ghq
-  giflib
   git-delta
   git-now
   git-secrets
-  glib
-  glibc
-  gmp
-  gnu-getopt
-  gnutls
-  go
-  gperf
-  graphite2
-  grex
   gron
-  guile
-  harfbuzz
   httpie
-  icu4c
-  isl
-  isl@0.18
-  jbig2dec
-  jemalloc
   jpeg
-  jpeg-turbo
   jq
-  krb5
   kubernetes-cli
   lazygit
-  libdrm
-  libedit
-  libev
-  libevent
-  libffi
-  libgit2
-  libice
-  libidn
-  libidn2
-  libmpc
-  libnghttp2
-  libnsl
-  libpciaccess
-  libpng
-  libpthread-stubs
-  libsm
-  libssh2
-  libtasn1
-  libtermkey
-  libtiff
-  libtirpc
-  libtool
-  libunistring
-  libuv
-  libva
-  libvdpau
-  libvterm
-  libx11
-  libxau
-  libxcb
-  libxcrypt
-  libxdamage
-  libxdmcp
-  libxext
-  libxfixes
-  libxi
-  libxinerama
-  libxml2
-  libxrandr
-  libxrender
-  libxshmfence
-  libxt
-  libxtst
-  libxv
-  libxvmc
-  libxxf86vm
-  linux-headers@5.15
-  little-cms2
-  lm-sensors
-  lua
-  luajit-openresty
-  luarocks
-  luv
-  lz4
-  lzo
-  m4
   itchyny/tap/mmv
-  mpdecimal
-  mpfr
-  msgpack
   navi
-  ncurses
-  nettle
-  nghttp2
-  node
-  oniguruma
-  openjdk
-  openjpeg
-  openldap
-  openssl@1.1
-  openssl@3
-  p11-kit
-  patchelf
-  pcre
-  pcre2
-  perl
-  pixman
-  pkg-config
-  pygments
-  python@3.11
-  readline
+  neovim
   ripgrep
-  rtmpdump
-  rust
-  sqlite
+  starship
   terraformer
-  texinfo
   tfenv
   tflint
   tfsec
-  tree-sitter
-  unbound
-  unibilium
   unzip
-  util-linux
-  wayland
-  wayland-protocols
-  xinput
-  xorgproto
-  xz
-  yuicompressor
   zip
-  zlib
-  zstd
+  zsh
 )
 
 brew install ${fomulas[@]}

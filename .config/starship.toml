@@ -3,7 +3,7 @@ add_newline = false
 [character]
 # アイコンフォントを使うと、タブを押して補完する際にプロンプトがずれるので、それを避けるために">"を使う
 success_symbol = '[>](bold green)'
-error_symbol = ' [>](bold red)'
+error_symbol = '[>](bold red)'
 vimcmd_symbol = '[<](bold green)'
 vimcmd_replace_one_symbol = '[<](bold purple)'
 vimcmd_replace_symbol = '[<](bold purple)'
@@ -12,7 +12,7 @@ vimcmd_visual_symbol = '[<](bold yellow)'
 # Disable the package module, hiding it from the prompt completely
 [status]
 symbol = "X"
-format = '[$symbol $signal_name$maybe_int]($style)'
+format = '[$symbol $signal_name $maybe_int]($style)'
 disabled = false
 
 [gcloud]
