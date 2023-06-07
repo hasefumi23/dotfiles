@@ -20,7 +20,16 @@ mkdir -p ~/.vim/rc && ln -snfv ${PWD}/.vim/rc/dein.toml ~/.vim/rc/dein.toml
 ln -snfv ${PWD}/.config/starship.toml ~/.config/starship.toml
 
 if [[ $(cat /etc/os-release | grep -E 'NAME="Ubuntu.*"' -i) ]]; then
-  sudo apt update && sudo apt install build-essential procps curl file git -y
+  # homebrewniに必要なパッケージ
+  sudo apt update && sudo apt install -y build-essential procps curl file git
+  # その他パッケージ
+  sudo apt install -y wslu
+  # 日本語化
+  sudo apt -y install language-pack-ja-base language-pack-ja
+  sudo localectl set-locale LANG=ja_JP.UTF-8 LANGUAGE="ja_JP:ja"
+  echo setup git
+  sudo chmod +x /usr/share/doc/git/contrib/diff-highlight/diff-highlight
+  sudo ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
 fi
 
 # install homebrew
@@ -35,14 +44,6 @@ brew install zsh fzf neovim
 
 # fzfのキーバインディングなどのセットアップを実行する
 $(brew --prefix)/opt/fzf/install --all
-
-# 日本語化
-sudo apt -y install language-pack-ja-base language-pack-ja
-sudo localectl set-locale LANG=ja_JP.UTF-8 LANGUAGE="ja_JP:ja"
-
-echo setup git
-sudo chmod +x /usr/share/doc/git/contrib/diff-highlight/diff-highlight
-sudo ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
 
 echo setup zsh
 # ここにインタラクティブな処理が入るので、CI上だったらスキップする
