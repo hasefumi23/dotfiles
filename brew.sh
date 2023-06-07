@@ -31,6 +31,7 @@ fomulas=(
   ripgrep
   starship
   terraformer
+  tig
   tfenv
   tflint
   tfsec

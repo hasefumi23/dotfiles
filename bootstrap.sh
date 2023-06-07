@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+sudo -v
+
 # symlinks
 PWD=`pwd`
 DOTFILES=$(find . -maxdepth 1 -type f -name ".*")
@@ -34,14 +36,25 @@ brew install zsh fzf neovim
 # fzfのキーバインディングなどのセットアップを実行する
 $(brew --prefix)/opt/fzf/install --all
 
+# 日本語化
+sudo apt -y install language-pack-ja-base language-pack-ja
+sudo localectl set-locale LANG=ja_JP.UTF-8 LANGUAGE="ja_JP:ja"
+
+echo setup git
+sudo chmod +x /usr/share/doc/git/contrib/diff-highlight/diff-highlight
+sudo ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
+
 echo setup zsh
-# ここにインタラクティブな処理が入るので、環境変数CIを見て、CI上だったらスキップする
+# ここにインタラクティブな処理が入るので、CI上だったらスキップする
 if [[ ${CI} != "true" ]]; then
   zsh -i -c exit
 fi
 
 echo setup neovim
 nvim --headless -c 'qall'
+
+echo setup tpm for tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 echo "run this command to change login shell"
 echo "chsh -s $(which zsh)"
