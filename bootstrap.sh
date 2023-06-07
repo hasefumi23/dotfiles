@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -x
+
 sudo -v
 
 # symlinks
@@ -24,12 +26,10 @@ if [[ $(cat /etc/os-release | grep -E 'NAME="Ubuntu.*"' -i) ]]; then
   sudo apt update && sudo apt install -y build-essential procps curl file git
   # その他パッケージ
   sudo apt install -y wslu
-  # 日本語化
-  sudo apt -y install language-pack-ja-base language-pack-ja
-  sudo localectl set-locale LANG=ja_JP.UTF-8 LANGUAGE="ja_JP:ja"
   echo setup git
-  sudo chmod +x /usr/share/doc/git/contrib/diff-highlight/diff-highlight
-  sudo ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
+  sudo test -f /usr/share/doc/git/contrib/diff-highlight/diff-highlight && \
+    sudo chmod +x /usr/share/doc/git/contrib/diff-highlight/diff-highlight && \
+    sudo ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
 fi
 
 # install homebrew
@@ -45,17 +45,23 @@ brew install zsh fzf neovim
 # fzfのキーバインディングなどのセットアップを実行する
 $(brew --prefix)/opt/fzf/install --all
 
-echo setup zsh
-# ここにインタラクティブな処理が入るので、CI上だったらスキップする
-if [[ ${CI} != "true" ]]; then
-  zsh -i -c exit
-fi
-
 echo setup neovim
 nvim --headless -c 'qall'
 
 echo setup tpm for tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+if [[ ${CI} != "true" ]]; then
+  echo setup for no CI env
+  # 日本語化
+  sudo apt -y install language-pack-ja-base language-pack-ja
+  # コンテナなどでは、systemdが稼働していないので、CI以外の場合のみ実行する
+  sudo localectl set-locale LANG=ja_JP.UTF-8 LANGUAGE="ja_JP:ja"
+
+  # ここにインタラクティブな処理が入るので、CI上だったらスキップする
+  zsh -i -c exit
+fi
+
 echo "run this command to change login shell"
 echo "chsh -s $(which zsh)"
+
