@@ -2,11 +2,11 @@ FROM ubuntu:22.10
 
 ENV DEBIAN_FRONTEND=noninteractive
 # timezone setting
-RUN apt-get update && apt-get install -y tzdata
+RUN apt update && apt install -y tzdata
 ENV TZ=Asia/Tokyo
 
-RUN apt-get update \
-    && apt-get install -y \
+RUN apt update \
+    && apt install -y \
     build-essential \
     curl \
     file \

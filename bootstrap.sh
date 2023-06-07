@@ -53,8 +53,8 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 if [[ ${CI} != "true" ]]; then
   echo setup for no CI env
-  # 日本語化
-  sudo apt -y install language-pack-ja-base language-pack-ja
+  # 日本語化とタイムゾーンの設定
+  sudo apt -y install language-pack-ja-base language-pack-ja tzdata
   # コンテナなどでは、systemdが稼働していないので、CI以外の場合のみ実行する
   sudo localectl set-locale LANG=ja_JP.UTF-8 LANGUAGE="ja_JP:ja"
 
