@@ -22,7 +22,7 @@ mkdir -p ~/.vim/rc && ln -snfv ${PWD}/.vim/rc/dein.toml ~/.vim/rc/dein.toml
 ln -snfv ${PWD}/.config/starship.toml ~/.config/starship.toml
 
 if [[ $(cat /etc/os-release | grep -E 'NAME="Ubuntu.*"' -i) ]]; then
-  # homebrewniに必要なパッケージ
+  # homebrewに必要なパッケージ
   sudo apt update && sudo apt install -y build-essential procps curl file git
   # その他パッケージ
   sudo apt install -y wslu

@@ -1,6 +1,9 @@
 FROM ubuntu:22.10
 
 ENV DEBIAN_FRONTEND=noninteractive
+
+RUN sed -i.bak -e "s%http://archive.ubuntu.com/ubuntu/%http://ftp.jaist.ac.jp/pub/Linux/ubuntu/%g" /etc/apt/sources.list
+
 # timezone setting
 RUN apt update && apt install -y tzdata
 ENV TZ=Asia/Tokyo
@@ -27,3 +30,5 @@ RUN eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) && \
 
 RUN mkdir -p /var/dotfiles
 WORKDIR /var/dotfiles
+
+CMD ["/bin/bash"]
