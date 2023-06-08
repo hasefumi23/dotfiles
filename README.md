@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-# config and minimus packages
+# config and minimum packages
 ./bootstrap.sh
 
 # install brew fomula

@@ -57,6 +57,7 @@ which direnv > /dev/null && eval "$(direnv hook zsh)"
 which kubectl > /dev/null && source <(kubectl completion zsh)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.zsh/scripts/pipr_hotkey.zsh ] && source ~/.zsh/scripts/pipr_hotkey.zsh
+eval "$(anyenv init -)"
 
 #eval "$(gh completion -s zsh)"
 #eval "$(rbenv init -)"

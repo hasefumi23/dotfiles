@@ -62,6 +62,12 @@ if [[ ${CI} != "true" ]]; then
   zsh -i -c exit
 fi
 
+if [[ "$(uname -r)" == *microsoft* ]]; then
+  # wslで便利なsymlinkを作成する
+  ln -snfv /mnt/c/Users/${USER}/Downloads ~/downloads
+  ln -snfv /mnt/c/Users/${USER}/Desktop ~/desktop
+  ln -snfv /mnt/c/Users/${USER} ~/winhome
+fi
+
 echo "run this command to change login shell"
 echo "chsh -s $(which zsh)"
-
