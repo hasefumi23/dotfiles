@@ -13,9 +13,10 @@ jobs:
     name: run-bootstrap
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+    - uses: Kesin11/actions-timeline@v1
+    - uses: actions/checkout@v3
 
-      - name: run bootstrap script
-        run: |
-          # brew.shはbrew installを大量に実行しているだけなので、ciではbootstrap.shのみの検証とする
-          ./bootstrap.sh
+    - name: run bootstrap script
+      run: |
+        # brew.shはbrew installを大量に実行しているだけなので、ciではbootstrap.shのみの検証とする
+        ./bootstrap.sh
