@@ -38,6 +38,7 @@ export LESS="-R"
 export PAGER=less
 export MANPAGER="nvim -R +MAN +'set ft=man nolist nonu noma' +'runtime ftplugin/man.vim'"
 export RUBYOPT=-EUTF-8
+export RUNEWIDTH_EASTASIAN=0
 export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/*'"
 export FZF_DEFAULT_OPTS='
   --color=dark
