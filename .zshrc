@@ -27,6 +27,7 @@ export PATH=$PATH:$HOME/.local/bin
 # export PATH=$PATH:/opt/ghc/bin/
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/.rbenv/bin
+export PATH=$PATH:$HOME/.bun/bin/bun
 export VAGRANT_PREFER_SYSTEM_BIN=0
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 export NO_PROXY=127.0.0.1
@@ -197,7 +198,7 @@ function fpsql () {
 }
 
 function fs () {
-  local dir=$(fd --no-ignore -t d --hidden --exclude .git 2> /dev/null | fzf +m --preview 'exa -alh {}')
+  local dir=$(fd --no-ignore -t d --hidden --exclude .git 2> /dev/null | fzf +m --preview 'eza -alh {}')
   if [ -n "$dir" ]; then
     cd "$dir"
   fi
@@ -309,9 +310,9 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-alias l='exa -alF --color=auto'
-alias ll='exa -alF --color=auto'
-alias la='exa -a --color=auto'
+alias l='eza -alF --color=auto'
+alias ll='eza -alF --color=auto'
+alias la='eza -a --color=auto'
 
 #alias -g open="powershell.exe /c start"
 alias ap='ansible-playbook'
@@ -520,3 +521,10 @@ zinit light-mode for zsh-users/zsh-autosuggestions \
 #   zprof
 # fi
 
+
+# bun completions
+[ -s "/home/fumi/.bun/_bun" ] && source "/home/fumi/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
