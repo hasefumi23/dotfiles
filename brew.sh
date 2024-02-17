@@ -9,33 +9,42 @@ fomulas=(
   act
   actionlint
   anyenv
+  argo
   bat
   curl
   exa
+  eza
   fd
   fzf
   gh
   ghq
+  git
   git-delta
   git-now
   git-secrets
   gron
+  helmfile
   httpie
+  itchyny/tap/mmv
   jpeg
   jq
+  krew
+  kubectx
   kubernetes-cli
   lazygit
-  itchyny/tap/mmv
   navi
   neovim
+  python@3.11
   ripgrep
   starship
   terraformer
-  tig
   tfenv
   tflint
   tfsec
+  tig
+  tmux
   unzip
+  yazi
   zip
   zsh
 )
@@ -43,3 +52,4 @@ fomulas=(
 brew install ${fomulas[@]}
 
 brew cleanup
+
