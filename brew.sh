@@ -12,7 +12,6 @@ fomulas=(
   argo
   bat
   curl
-  exa
   eza
   fd
   fzf
