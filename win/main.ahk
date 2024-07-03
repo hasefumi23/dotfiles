@@ -39,6 +39,20 @@ ActivateOrLaunchChrome() {
     }
 }
 
+ActivateOrLaunchFireFox() {
+    IfWinExist, ahk_exe firefox.exe
+    {
+        IfWinActive, ahk_exe firefox.exe
+        {
+            WinMinimize
+        } else {
+            WinActivate, ahk_exe firefox.exe
+        }
+    } Else {
+        Run, C:\Program Files\Mozilla Firefox\firefox.exe
+    }
+}
+
 ActivateOrLaunchVivaldi() {
     Process, Exist, vivaldi.exe
     if ErrorLevel = 0
@@ -114,6 +128,25 @@ ActivateOrLaunchTeams() {
     }
 }
 
+ActivateOrLaunchOutlook() {
+    ; Process, Exist, olk.exe
+    Process, Exist, OUTLOOK.EXE
+    if ErrorLevel = 0
+    {
+        ; Run, C:\Users\hasegawa-f.ES-DOMAIN\AppData\Local\Microsoft\WindowsApps\olk.exe
+        Run, C:\Program Files\Microsoft Office\root\Office16\OUTLOOK.EXE
+    } Else {
+        ; IfWinActive, ahk_exe olk.exe
+        IfWinActive, ahk_exe OUTLOOK.EXE
+        {
+            WinMinimize
+        } else {
+            ; WinActivate, ahk_exe olk.exe
+            WinActivate, ahk_exe OUTLOOK.EXE
+        }
+    }
+}
+
 ActivateOrLaunchObsidian() {
     Process, Exist, Obsidian.exe
     if ErrorLevel = 0
@@ -168,6 +201,20 @@ ActivateOrLaunchExplorer() {
     }
 }
 
+ActivateOrLaunchExcel() {
+    IfWinExist, ahk_exe EXCEL.EXE
+    {
+        IfWinActive, ahk_exe EXCEL.EXE
+        {
+            WinMinimize
+        } else {
+            WinActivate, ahk_exe EXCEL.EXE
+        }
+    } Else {
+        Run, C:\Program Files\Microsoft Office\Root\Office16\EXCEL.EXE
+    }
+}
+
 OpenRDP() {
     ; リモデを開く
     Run, C:\WINDOWS\system32\mstsc.exe
@@ -196,6 +243,10 @@ Return
     ActivateOrLaunchVSCodeInsider()
 Return
 
++!l::
+    ActivateOrLaunchOutlook()
+Return
+
 +!o::
     ActivateOrLaunchObsidian()
 Return
@@ -220,8 +271,20 @@ Return
     ActivateOrLaunchExplorer()
 Return
 
++!f::
+    ActivateOrLaunchFireFox()
+Return
+
++!x::
+    ActivateOrLaunchExcel()
+Return
+
 ^!+p::
     OpenRDP()
+Return
+
++!r::
+    Run, C:\tools\rapture-2.4.1\rapture.exe
 Return
 
 /**
@@ -244,10 +307,6 @@ Return
 
 +WheelLeft::
     Send, {WheelLeft 10}
-Return
-
-+!r::
-    Run, C:\tools\rapture-2.4.1\rapture.exe
 Return
 
 /*
