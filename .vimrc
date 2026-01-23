@@ -149,56 +149,56 @@ if exists('g:started_by_firenvim')
   nnoremap <leader>font :set guifont=UDEV_Gothic_NF:h18<CR>
 endif
 
-if !exists('g:vscode')
-  " === plugin hrsh7th/vim-searchx ===
-  " Overwrite / and ?.
-  nnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
-  nnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
-  xnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
-  xnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
-  cnoremap ; <Cmd>call searchx#select()<CR>
+"if !exists('g:vscode')
+  "" === plugin hrsh7th/vim-searchx ===
+  "" Overwrite / and ?.
+  "nnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
+  "nnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
+  "xnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
+  "xnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
+  "cnoremap ; <Cmd>call searchx#select()<CR>
 
-  " Move to next/prev match.
-  nnoremap N <Cmd>call searchx#prev_dir()<CR>
-  nnoremap n <Cmd>call searchx#next_dir()<CR>
-  xnoremap N <Cmd>call searchx#prev_dir()<CR>
-  xnoremap n <Cmd>call searchx#next_dir()<CR>
-  nnoremap <C-k> <Cmd>call searchx#prev()<CR>
-  nnoremap <C-j> <Cmd>call searchx#next()<CR>
-  xnoremap <C-k> <Cmd>call searchx#prev()<CR>
-  xnoremap <C-j> <Cmd>call searchx#next()<CR>
-  cnoremap <C-k> <Cmd>call searchx#prev()<CR>
-  cnoremap <C-j> <Cmd>call searchx#next()<CR>
+  "" Move to next/prev match.
+  "nnoremap N <Cmd>call searchx#prev_dir()<CR>
+  "nnoremap n <Cmd>call searchx#next_dir()<CR>
+  "xnoremap N <Cmd>call searchx#prev_dir()<CR>
+  "xnoremap n <Cmd>call searchx#next_dir()<CR>
+  "nnoremap <C-k> <Cmd>call searchx#prev()<CR>
+  "nnoremap <C-j> <Cmd>call searchx#next()<CR>
+  "xnoremap <C-k> <Cmd>call searchx#prev()<CR>
+  "xnoremap <C-j> <Cmd>call searchx#next()<CR>
+  "cnoremap <C-k> <Cmd>call searchx#prev()<CR>
+  "cnoremap <C-j> <Cmd>call searchx#next()<CR>
 
-  " Clear highlights
-  nnoremap <C-l> <Cmd>call searchx#clear()<CR>
+  "" Clear highlights
+  "nnoremap <C-l> <Cmd>call searchx#clear()<CR>
 
-  let g:searchx = {}
+  "let g:searchx = {}
 
-  " Auto jump if the recent input matches to any marker.
-  let g:searchx.auto_accept = v:true
+  "" Auto jump if the recent input matches to any marker.
+  "let g:searchx.auto_accept = v:true
 
-  " The scrolloff value for moving to next/prev.
-  let g:searchx.scrolloff = &scrolloff
+  "" The scrolloff value for moving to next/prev.
+  "let g:searchx.scrolloff = &scrolloff
 
-  " To enable scrolling animation.
-  let g:searchx.scrolltime = 500
+  "" To enable scrolling animation.
+  "let g:searchx.scrolltime = 500
 
-  " To enable auto nohlsearch after cursor is moved
-  let g:searchx.nohlsearch = {}
-  let g:searchx.nohlsearch.jump = v:true
+  "" To enable auto nohlsearch after cursor is moved
+  "let g:searchx.nohlsearch = {}
+  "let g:searchx.nohlsearch.jump = v:true
 
-  " Marker characters.
-  let g:searchx.markers = split('ABCDEFGHIJKLMNOPQRSTUVWXYZ=@`[{}];+:*,.<>', '.\zs')
+  "" Marker characters.
+  "let g:searchx.markers = split('ABCDEFGHIJKLMNOPQRSTUVWXYZ=@`[{}];+:*,.<>', '.\zs')
 
-  " Convert search pattern.
-  function g:searchx.convert(input) abort
-    if a:input !~# '\k'
-      return '\V' .. a:input
-    endif
-    return a:input[0] .. substitute(a:input[1:], '\\\@<! ', '.\\{-}', 'g')
-  endfunction
-end
+  "" Convert search pattern.
+  "function g:searchx.convert(input) abort
+    "if a:input !~# '\k'
+      "return '\V' .. a:input
+    "endif
+    "return a:input[0] .. substitute(a:input[1:], '\\\@<! ', '.\\{-}', 'g')
+  "endfunction
+"end
 
 if !exists('g:vscode')
   set ambiwidth=double
@@ -272,12 +272,12 @@ endif
 
 if !exists('g:vscode')
   if has('win32') || has ('win64')
-    " colorscheme iceberg
-    colorscheme nord
+    colorscheme iceberg
+    " colorscheme nord
   else
     " colorscheme pablo
-    " colorscheme iceberg
-    colorscheme nord
+    colorscheme iceberg
+    " colorscheme nord
     " colorscheme cobalt2
     " colorscheme Tomorrow-Night-Blue
   endif
@@ -408,8 +408,8 @@ nnoremap zl <C-w>l
 nnoremap zo <C-w><Bar><C-w>_
 nnoremap zs :sp<CR><C-w>w
 nnoremap zv :vs<CR><C-w>w
-nnoremap j gj
-nnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
 
 " cut はレジスタへの登録はしない(若干直感に反するが、実用性を重視する)
 vnoremap x "_x
@@ -462,12 +462,12 @@ if has('persistent_undo')
   set undofile
 endif
 
-" if system('uname -a | grep -E "(M|m)icrosoft"') != ''
-"   augroup myYank
-"     autocmd!
-"     autocmd TextYankPost * :call system('win32yank.exe -i', @")
-"   augroup END
-" endif
+if system('uname -a | grep -E "(M|m)icrosoft"') != ''
+  augroup myYank
+    autocmd!
+    autocmd TextYankPost * :call system('win32yank.exe -i', @")
+  augroup END
+endif
 
 function! WrapForTmux(s)
   if !exists('$TMUX')
