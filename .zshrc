@@ -60,6 +60,7 @@ which kubectl > /dev/null && source <(kubectl completion zsh)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.zsh/scripts/pipr_hotkey.zsh ] && source ~/.zsh/scripts/pipr_hotkey.zsh
 eval "$(anyenv init -)"
+source "$HOME/.rye/env"
 
 #eval "$(gh completion -s zsh)"
 #eval "$(rbenv init -)"
@@ -82,6 +83,10 @@ export HISTFILE=~/.zsh_history
 export HISTCONTROL=ignoreboth
 
 fpath=(~/.zsh/completions $fpath)
+
+function cdw() {
+  cd $(wslpath "$1")
+}
 
 function gh-open () {
   wslview $(git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e 's/ssh:\/\///' -e's/git@/http:\/\//' -e's/\.git\$//' | sed -E 's/(\/\/[^:]*):/\1\//')
@@ -529,3 +534,13 @@ zinit light-mode for zsh-users/zsh-autosuggestions \
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+#zinit light-mode for \
+    #zdharma-continuum/zinit-annex-as-monitor \
+    #zdharma-continuum/zinit-annex-bin-gem-node \
+    #zdharma-continuum/zinit-annex-patch-dl \
+    #zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk

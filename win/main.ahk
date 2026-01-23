@@ -39,20 +39,6 @@ ActivateOrLaunchChrome() {
     }
 }
 
-ActivateOrLaunchFireFox() {
-    IfWinExist, ahk_exe firefox.exe
-    {
-        IfWinActive, ahk_exe firefox.exe
-        {
-            WinMinimize
-        } else {
-            WinActivate, ahk_exe firefox.exe
-        }
-    } Else {
-        Run, C:\Program Files\Mozilla Firefox\firefox.exe
-    }
-}
-
 ActivateOrLaunchVivaldi() {
     Process, Exist, vivaldi.exe
     if ErrorLevel = 0
@@ -114,35 +100,21 @@ ActivateOrLaunchVSCode() {
 }
 
 ActivateOrLaunchTeams() {
-    Process, Exist, Teams.exe
+    ; Win10の場合、Teams.exeを使う
+    ; Process, Exist, Teams.exe
+    ; Win11の場合、ms-teams.exeを使う
+    Process, Exist, ms-teams.exe
     if ErrorLevel = 0
     {
         Run, %homeDirectory%\AppData\Local\Microsoft\Teams\Update.exe
     } Else {
-        IfWinActive, ahk_exe Teams.exe
+        ; IfWinActive, ahk_exe Teams.exe
+        IfWinActive, ahk_exe ms-teams.exe
         {
             WinMinimize
         } else {
-            WinActivate, ahk_exe Teams.exe
-        }
-    }
-}
-
-ActivateOrLaunchOutlook() {
-    ; Process, Exist, olk.exe
-    Process, Exist, OUTLOOK.EXE
-    if ErrorLevel = 0
-    {
-        ; Run, C:\Users\hasegawa-f.ES-DOMAIN\AppData\Local\Microsoft\WindowsApps\olk.exe
-        Run, C:\Program Files\Microsoft Office\root\Office16\OUTLOOK.EXE
-    } Else {
-        ; IfWinActive, ahk_exe olk.exe
-        IfWinActive, ahk_exe OUTLOOK.EXE
-        {
-            WinMinimize
-        } else {
-            ; WinActivate, ahk_exe olk.exe
-            WinActivate, ahk_exe OUTLOOK.EXE
+            ; WinActivate, ahk_exe Teams.exe
+            WinActivate, ahk_exe ms-teams.exe
         }
     }
 }
@@ -201,6 +173,38 @@ ActivateOrLaunchExplorer() {
     }
 }
 
+ActivateOrLaunchFireFox() {
+    IfWinExist, ahk_exe firefox.exe
+    {
+        IfWinActive, ahk_exe firefox.exe
+        {
+            WinMinimize
+        } else {
+            WinActivate, ahk_exe firefox.exe
+        }
+    } Else {
+        Run, C:\Program Files\Mozilla Firefox\firefox.exe
+    }
+}
+
+ActivateOrLaunchOutlook() {
+    ; Process, Exist, olk.exe
+    Process, Exist, OUTLOOK.EXE
+    if ErrorLevel = 0
+    {
+        Run, C:\Program Files\Microsoft Office\root\Office16\OUTLOOK.EXE
+    } Else {
+        ; IfWinActive, ahk_exe olk.exe
+        IfWinActive, ahk_exe OUTLOOK.EXE
+        {
+            WinMinimize
+        } else {
+            ; WinActivate, ahk_exe olk.exe
+            WinActivate, ahk_exe OUTLOOK.EXE
+        }
+    }
+}
+
 ActivateOrLaunchExcel() {
     IfWinExist, ahk_exe EXCEL.EXE
     {
@@ -227,64 +231,112 @@ OpenRDP() {
     Send, %rdPasswd%{Tab}{Tab}{Enter}
 }
 
+/*
+    ショートカットは、以下の2通りの記載で設定する。
+    +!t::
+        `shift+alt+t`を意味する。
+        これを通常の設定とする。
+    vk1C & t::
+        `変換+t`を意味する
+        これは、ノートPC用の設定。ノートPCは、いい感じの位置にaltがなく、代わりに変換があるので、変換を使うことにしている。
+    備考:
+        変換 + Shift + t -> アプリの活性非活性を制御しようとしたが、どうやら難しいらしいので、時間があるときに試す。
+        https://qiita.com/Qiitadelsol/items/340580eda434a8cf9bfd
+        今時点では、変換 + キーでトグルするようにした。変換キー自体ほぼ使わないので。
+*/
 +!t::
+    ActivateOrLaunchWinTerminal()
+Return
+vk1C & t::
     ActivateOrLaunchWinTerminal()
 Return
 
 +!v::
     ActivateOrLaunchVSCode()
 Return
-
-+!d::
-    ActivateOrLaunchEdge()
+vk1C & v::
+    ActivateOrLaunchVSCode()
 Return
+
+; +!e::
+;     ActivateOrLaunchEdge()
+; Return
+; vk1C & e::
+;     ActivateOrLaunchEdge()
+; Return
 
 +!c::
     ActivateOrLaunchVSCodeInsider()
 Return
-
-+!l::
-    ActivateOrLaunchOutlook()
+vk1C & c::
+    ActivateOrLaunchVSCodeInsider()
 Return
 
 +!o::
+    ActivateOrLaunchObsidian()
+Return
+vk1C & o::
     ActivateOrLaunchObsidian()
 Return
 
 +!m::
     ActivateOrLaunchTeams()
 Return
+vk1C & m::
+    ActivateOrLaunchTeams()
+Return
 
 +!s::
+    ActivateOrLaunchSlack()
+Return
+vk1C & s::
     ActivateOrLaunchSlack()
 Return
 
 +!g::
     ActivateOrLaunchChrome()
 Return
+vk1C & g::
+    ActivateOrLaunchChrome()
+Return
 
-+!j::
++!e::
+    ActivateOrLaunchVivaldi()
+Return
+vk1C & e::
     ActivateOrLaunchVivaldi()
 Return
 
-+!f::
-    ActivateOrLaunchExplorer()
-Return
+; +!f::
+;     ActivateOrLaunchExplorer()
+; Return
+; vk1C & f::
+;     ActivateOrLaunchExplorer()
+; Return
 
 +!f::
     ActivateOrLaunchFireFox()
+Return
+vk1C & f::
+    ActivateOrLaunchFireFox()
+Return
+
++!l::
+    ActivateOrLaunchOutlook()
+Return
+vk1C & l::
+    ActivateOrLaunchOutlook()
 Return
 
 +!x::
     ActivateOrLaunchExcel()
 Return
+vk1C & x::
+    ActivateOrLaunchExcel()
+Return
 
 ^!+p::
     OpenRDP()
-Return
-
-+!r::
-    Run, C:\tools\rapture-2.4.1\rapture.exe
 Return
 
 /**
@@ -307,6 +359,10 @@ Return
 
 +WheelLeft::
     Send, {WheelLeft 10}
+Return
+
++!r::
+    Run, C:\tools\rapture\rapture.exe
 Return
 
 /*
@@ -339,3 +395,12 @@ $Esc::
     sleep, 0.1
     Send, {Esc}
 Return
+
+!Space::
+    Send, {Escape}
+Return
+
+; vk1Csc079::
+;     Send, {Up}
+; Return
+
