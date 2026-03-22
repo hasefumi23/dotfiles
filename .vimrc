@@ -287,7 +287,8 @@ end
 " デフォルトだとIME入力中の文字色があまりにも見えにくいので、以下の設定を入れている
 augroup fix_ime_color
   autocmd!
-  autocmd ColorScheme nord NonText guifg=#616e88
+  autocmd ColorScheme nord highlight NonText guifg=#616e88
+  autocmd VimEnter * highlight NonText guifg=#616e88
 augroup END
 
 highlight Normal ctermbg=NONE
