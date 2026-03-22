@@ -283,12 +283,17 @@ if !exists('g:vscode')
   endif
 end
 
+" Windows Terminalの色問題に対応するための設定
+" デフォルトだとIME入力中の文字色があまりにも見えにくいので、以下の設定を入れている
+augroup fix_ime_color
+  autocmd!
+  autocmd ColorScheme nord NonText guifg=#616e88
+augroup END
+
 highlight Normal ctermbg=NONE
 highlight Visual cterm=reverse
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd InsertLeave * set nopaste
-" hi NonText    ctermbg=None ctermfg=59 guibg=NONE guifg=None
-" hi SpecialKey ctermbg=None ctermfg=59 guibg=NONE guifg=None
 
 function! s:home()
   let start_column = col('.')
