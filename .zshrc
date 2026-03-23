@@ -237,7 +237,7 @@ function zf() {
 function peco-src () {
   local selected_dir=$(ghq list -p | fzf --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
-    BUFFER="cd ${selected_dir}"
+    BUFFER="cd \"${selected_dir}\""
     zle accept-line
   fi
   zle clear-screen

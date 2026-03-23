@@ -10,6 +10,7 @@ fomulas=(
   actionlint
   anyenv
   argo
+  awscli
   bat
   curl
   eza
