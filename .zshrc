@@ -40,12 +40,10 @@ export MANPAGER='nvim +Man!'
 export RUBYOPT=-EUTF-8
 export RUNEWIDTH_EASTASIAN=0
 export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/*'"
-export FZF_DEFAULT_OPTS='
-  --color=dark
-  --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
-  --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
+export FZF_DEFAULT_OPTS="
+  --pointer='▶'
   --height 100% --reverse --border
-'
+"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/highlighters
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 export LD_PRELOAD=/lib/x86_64-linux-gnu/libgcc_s.so.1
