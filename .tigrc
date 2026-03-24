@@ -122,6 +122,9 @@ bind main    H      ?git reset --hard %(commit)
 bind diff    H      ?git reset --hard %(commit)
 bind refs    H      ?git reset --hard %(branch)
 
+# H で aicommit (status-view)
+bind status  A      !git aicommit
+
 # H で reset --hard HEAD (status-view)
 bind status  H      ?git reset --hard HEAD
 
