@@ -13,6 +13,10 @@ for DOTFILE in ${DOTFILES[@]}; do
   ln -snfv ${PWD}/${DOTFILE} ${SYMLINK}
 done
 
+# ~/.local/mybin
+mkdir -p ~/.local
+ln -snfv ${PWD}/.local/mybin ~/.local/mybin
+
 # ~/.config
 mkdir -p ~/.config/fish
 ln -snfv ${PWD}/.config/fish/config.fish ~/.config/fish/config.fish
