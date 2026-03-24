@@ -271,13 +271,13 @@ else
 endif
 
 if !exists('g:vscode')
-  if has('win32') || has ('win64')
-    colorscheme iceberg
+  if has('nvim')
+    colorscheme nord
+    " colorscheme iceberg
+  elseif has('win32') || has ('win64')
     " colorscheme nord
-  else
     " colorscheme pablo
     colorscheme iceberg
-    " colorscheme nord
     " colorscheme cobalt2
     " colorscheme Tomorrow-Night-Blue
   endif
@@ -463,9 +463,15 @@ function! QuickfixFilenames()
 endfunction
 
 if has('persistent_undo')
-  let undo_path = expand('~/.vim/undo')
-  exe 'set undodir=' . undo_path
-  set undofile
+  if has('nvim')
+    let undo_path = expand('~/.nvim/undo')
+    exe 'set undodir=' . undo_path
+    set undofile
+  else
+    let undo_path = expand('~/.vim/undo')
+    exe 'set undodir=' . undo_path
+    set undofile
+  endif
 endif
 
 if system('uname -a | grep -E "(M|m)icrosoft"') != ''
