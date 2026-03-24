@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+url="$(git remote get-url origin 2>/dev/null)" || {
+  echo "origin remote が取得できません。Git リポジトリ配下か確認してください。" >&2
+  exit 1
+}
+
+url="$(printf '%s' "$url" \
+  | sed -E \
+    -e 's#^git@([^:]+):#https://\1/#' \
+    -e 's#^ssh://git@([^/]+)/#https://\1/#' \
+    -e 's#\.git$##')"
+
+if command -v wslview >/dev/null 2>&1; then
+  wslview "$url" >/dev/null 2>&1
+elif command -v xdg-open >/dev/null 2>&1; then
+  xdg-open "$url" >/dev/null 2>&1
+elif command -v open >/dev/null 2>&1; then
+  open "$url" >/dev/null 2>&1
+else
+  echo "$url"
+fi

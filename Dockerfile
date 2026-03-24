@@ -1,4 +1,4 @@
-FROM ubuntu:22.10
+FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -19,6 +19,12 @@ RUN apt update \
     vim \
     zsh
 
+# 非rootユーザーの作成（homebrew用）
+RUN useradd -m -s /bin/bash linuxbrew \
+    && echo "linuxbrew ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+USER linuxbrew
+
 # install homebrew
 RUN NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -27,6 +33,8 @@ RUN eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) && \
   brew install zsh && \
   brew install fzf && \
   brew install neovim
+
+USER root
 
 RUN mkdir -p /var/dotfiles
 WORKDIR /var/dotfiles
