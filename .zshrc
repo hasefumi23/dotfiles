@@ -52,6 +52,7 @@ export CPATH=${CPATH}:~/.ghq/github.com/atcoder/ac-library
 export DENO_INSTALL="/home/fumi/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH="$HOME/.local/mybin:$PATH"
+export PATH="$HOME/.local/combin:$PATH"
 
 which starship > /dev/null && eval "$(starship init zsh)"
 which direnv > /dev/null && eval "$(direnv hook zsh)"
