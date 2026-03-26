@@ -11,8 +11,6 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '^j^e' edit-command-line
 
 #export DOCKER_HOST=tcp://localhost:2375
 export BAT_THEME='Solarized (light)'
@@ -453,22 +451,22 @@ zle -N peco-src
 zle -N ffiles
 zle -N fzf-history-widget
 
-bindkey '^o' fopen
-bindkey '^s' fssh
-bindkey '^v' fvim
+bindkey '^v^o' fopen
+bindkey '^v^s' fssh
+bindkey '^v^v' fvim
 bindkey '^g' peco-src
 bindkey '^]u' undo
 bindkey '^]r' redo
 bindkey '^U' backward-kill-line
-bindkey '^t' ffiles
+bindkey '^v^t' ffiles
 bindkey -v
 
-bindkey -M viins '^o' fopen
-bindkey -M viins '^s' fssh
-bindkey -M viins '^v' fvim
+bindkey -M viins '^v^o' fopen
+bindkey -M viins '^v^s' fssh
+bindkey -M viins '^v^v' fvim
 bindkey -M viins '^g' peco-src
 bindkey -M viins '^r' fzf-history-widget
-bindkey -M viins '^t' ffiles
+bindkey -M viins '^v^t' ffiles
 
 bindkey -M vicmd 'g' peco-src
 bindkey -M vicmd 'r' fzf-history-widget
@@ -497,6 +495,9 @@ bindkey -a cs change-surround
 bindkey -a ds delete-surround
 bindkey -a ys add-surround
 bindkey -M visual S add-surround
+
+zle -N edit-command-line
+bindkey '^v^e' edit-command-line
 
 [ -f ~/.local/.zshrc ] && source ~/.local/.zshrc
 
