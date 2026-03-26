@@ -497,7 +497,7 @@ bindkey -a ys add-surround
 bindkey -M visual S add-surround
 
 zle -N edit-command-line
-bindkey '^v^e' edit-command-line
+bindkey '^o' edit-command-line
 
 [ -f ~/.local/.zshrc ] && source ~/.local/.zshrc
 
