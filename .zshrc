@@ -11,6 +11,7 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 autoload -U edit-command-line
+zle -N edit-command-line
 
 #export DOCKER_HOST=tcp://localhost:2375
 export BAT_THEME='Solarized (light)'
@@ -497,7 +498,6 @@ bindkey -a ds delete-surround
 bindkey -a ys add-surround
 bindkey -M visual S add-surround
 
-zle -N edit-command-line
 bindkey '^o' edit-command-line
 
 [ -f ~/.local/.zshrc ] && source ~/.local/.zshrc

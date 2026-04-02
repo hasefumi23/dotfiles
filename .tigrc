@@ -125,7 +125,7 @@ bind refs    H      ?git reset --hard %(branch)
 # A で aicommit (status-view)
 bind status  A      !git aicommit
 
-# M で aicommit (status-view)
+# M で シンプルなcommit (status-view)
 bind status  M      !git commit -m "update"
 
 # H で reset --hard HEAD (status-view)
