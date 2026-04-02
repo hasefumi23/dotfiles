@@ -470,6 +470,7 @@ bindkey -M viins '^v^t' ffiles
 
 bindkey -M vicmd 'g' peco-src
 bindkey -M vicmd 'r' fzf-history-widget
+bindkey -M vicmd '^o' edit-command-line
 
 autoload -U select-bracketed
 zle -N select-bracketed
